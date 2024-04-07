@@ -17,6 +17,7 @@ typedef struct carte_construction
     int type;
     S_tuile tuile[MAX_ELEMENT];
     char nom[MAX_ELEMENT];
+    int valeur;                     // indice afficher indiquant ou ranger la carte dans l'ordre croissant
 }S_carte_construction;
 
 

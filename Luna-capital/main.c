@@ -19,7 +19,16 @@ int main()
     plein_ecran();
     system("pause");
 
-    dessiner_rectangle(10,10,12,10,10);
+    S_carte_construction carte_test;
+
+    strcpy(carte_test.nom,"jean");
+    carte_test.valeur = 12;
+
+    dessiner_carte_construction(5,5,carte_test);
+
+    positionner_curseur(20,25);
+    color(12,12);
+    //printf(" ");
     color(15,0);
     return 0;
 }

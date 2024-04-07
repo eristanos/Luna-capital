@@ -3,6 +3,15 @@
 #include <time.h>
 #include <windows.h>
 
+#include "declaration.h"
+#include "affichage.h"
+
+#define LAR_CARTE 15
+#define LON_CARTE 11
+
+#define MIL_CARTE_LAR 7
+#define MIL_CARTE_LON 5
+
 
 void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la)
 {
@@ -76,10 +85,27 @@ void color (int couleurDuTexte, int couleurDuFond)
 
 }
 
-void dessiner_carte_construction(int ligne, int colonne, int type)
+void dessiner_carte_construction(int ligne, int colonne, S_carte_construction carte_construction)
 {
-
+    //7.Gris clair
+    dessiner_rectangle(ligne,colonne,8,LON_CARTE, LAR_CARTE);
     positionner_curseur(ligne,colonne);
+    color(15,8);
+    printf("%d", carte_construction.valeur);
+    for(int i =0; i < LON_CARTE; i++)
+    {
+        positionner_curseur(ligne + i, colonne+MIL_CARTE_LAR);
+        color(7,8);
+        printf("%c", 179);
+    }
+    for(int i =0; i < LAR_CARTE; i++)
+    {
+        positionner_curseur(ligne + MIL_CARTE_LON, colonne+i);
+        color(7,8);
+        printf("%c", 196);
+    }
+    positionner_curseur(ligne + MIL_CARTE_LON, colonne + MIL_CARTE_LAR);
+    printf("%c", 197);
 
 
 
