@@ -38,6 +38,10 @@
 		<Unit filename="declaration.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="declaration_carte.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="declaration_cartes.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

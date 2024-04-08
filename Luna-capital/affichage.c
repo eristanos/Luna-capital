@@ -6,13 +6,6 @@
 #include "declaration.h"
 #include "affichage.h"
 
-#define LAR_CARTE 15
-#define LON_CARTE 11
-
-#define MIL_CARTE_LAR 7
-#define MIL_CARTE_LON 5
-
-
 void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la)
 {
     color(c,c);
@@ -116,10 +109,13 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affic
 
     // on affiche le design de la tuile selon son type
     switch(tuile.type){
-        case 0 :
+        case 0:
+            break;
+
+        case 1 :
             dessiner_vitales(ligne,colonne,tuile.sous_type);
             break;
-        case 1 :
+        case 2 :
             dessiner_meteorite(ligne,colonne);
             break;
         default :

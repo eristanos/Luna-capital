@@ -4,10 +4,9 @@
 #include <windows.h>
 #include "declaration.h"
 #include "affichage.h"
+#include "declaration_cartes.h"
 
-#define NB_CARTE_CONSTRUCTION_DECK 3
-#define MAX_ELEMENT 300
-#define NB_CHAR 30
+
 
 int main()
 {
@@ -16,20 +15,15 @@ int main()
     system("pause");
 
     // initialisation pour test
-    S_carte_construction carte_test;
+    S_carte_construction carte_test[MAX_ELEMENT];
+    for(int i = 0; i < MAX_ELEMENT ; i++)
+    {
+        carte_test[i] = generateur_carte();
+        dessiner_carte_construction(5,1 + i*(LAR_CARTE+1),carte_test[i]);
 
-    strcpy(carte_test.nom,"jean");
-    carte_test.valeur = 12;
-    carte_test.tuile[0].type=1;
-    carte_test.tuile[1].type=0;
-    carte_test.tuile[1].sous_type = 5;
-    carte_test.tuile[2].type=0;
-    carte_test.tuile[2].sous_type = 6;
-    carte_test.tuile[3].type=0;
-    carte_test.tuile[3].sous_type = 4;
+    }
 
     // test
-    dessiner_carte_construction(5,5,carte_test);
 
 
     // affichage du message de fermeture de fenêtre

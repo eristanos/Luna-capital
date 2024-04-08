@@ -1,6 +1,12 @@
 #ifndef AFFICHAGE_H_INCLUDED
 #define AFFICHAGE_H_INCLUDED
 
+#define LAR_CARTE 15
+#define LON_CARTE 11
+
+#define MIL_CARTE_LAR 7
+#define MIL_CARTE_LON 5
+
 void positionner_curseur(int ligne, int colonne);
 void color (int couleurDuTexte, int couleurDuFond);
 void plein_ecran();

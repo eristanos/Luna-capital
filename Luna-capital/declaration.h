@@ -2,9 +2,12 @@
 #define DECLARATION_H_INCLUDED
 
 #define NB_CARTE_CONSTRUCTION_DECK 3
-#define MAX_ELEMENT 300
+#define MAX_ELEMENT 4
 #define NB_CHAR 30
 #define NB_TUILE 4
+#define VALEUR_NUM_MAX 10
+#define NB_TYPE 2
+#define NB_TYPE_TUILE 3
 
 
 typedef struct tuile
@@ -18,7 +21,7 @@ typedef struct carte_construction
 {
     int type;
     S_tuile tuile[NB_TUILE];
-    char nom[MAX_ELEMENT];
+    char nom[MAX_ELEMENT];          // utilité ?
     int valeur;                     // indice afficher indiquant ou ranger la carte dans l'ordre croissant
 }S_carte_construction;
 
