@@ -19,16 +19,22 @@ int main()
     plein_ecran();
     system("pause");
 
+    // initialisation pour test
     S_carte_construction carte_test;
 
     strcpy(carte_test.nom,"jean");
     carte_test.valeur = 12;
-    carte_test.tuile[0].type=0;
-    carte_test.tuile[0].sous_type = 5;
+    carte_test.tuile[0].type=1;
+    carte_test.tuile[1].type=0;
+    carte_test.tuile[1].sous_type = 5;
+    carte_test.tuile[2].type=0;
+    carte_test.tuile[2].sous_type = 6;
+    carte_test.tuile[3].type=0;
+    carte_test.tuile[3].sous_type = 4;
 
+    // fin initialisation pour test
 
     dessiner_carte_construction(5,5,carte_test);
-    dessiner_tuile(5,5,carte_test.tuile[0],1);
     positionner_curseur(20,25);
     color(12,12);
     //printf(" ");

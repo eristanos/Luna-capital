@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1712610931 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
+1712613341 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -7,11 +7,11 @@
 	"declaration.h"
 	"affichage.h"
 
-1712609320 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
+1712613326 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
 
-1712608960 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
+1712613235 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
-1712609775 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
+1712613235 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>

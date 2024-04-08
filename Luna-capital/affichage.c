@@ -108,11 +108,18 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
     printf("%c", 197);
 
 
+    dessiner_tuile(ligne,colonne,carte_construction.tuile[0]);
+    dessiner_tuile(ligne,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[1]);
+    dessiner_tuile(ligne + MIL_CARTE_LON ,colonne,carte_construction.tuile[2]);
+    dessiner_tuile(ligne + MIL_CARTE_LON ,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[3]);
+
+
 }
 
-void dessiner_tuile(int ligne, int colonne, S_tuile tuile, int position)
+void dessiner_tuile(int ligne, int colonne, S_tuile tuile)
 {
-    // affichage contour
+    dessiner_rectangle(ligne + 1, colonne , 8 , 4 , 7);
+    color(15,8);
 
     positionner_curseur(ligne + 1,colonne);
     printf("%c%c%c", 196,196,217);
@@ -128,7 +135,7 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile, int position)
             dessiner_vital(ligne,colonne,tuile.sous_type);
             break;
         case 1 :
-            dessiner_vital(ligne,colonne,tuile.sous_type);
+            dessiner_meteorite(ligne,colonne);
             break;
 
         default :
@@ -143,6 +150,14 @@ void dessiner_vital(int ligne, int colonne, int sous_type)
 {
     dessiner_rectangle(ligne + 2, colonne + 1, 12, 3 , 5);
     dessiner_rectangle(ligne + 3, colonne + 2, sous_type, 1,3);
+
+}
+
+void dessiner_meteorite(int ligne, int colonne)
+{
+    dessiner_rectangle(ligne + 2 , colonne + 2 , 0 , 1, 3);
+    dessiner_rectangle(ligne + 3 , colonne + 1 , 0 , 1, 5);
+    dessiner_rectangle(ligne + 4 , colonne + 2 , 0 , 1, 3);
 
 }
 
