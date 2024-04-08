@@ -27,62 +27,38 @@ void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la)
 }
 
 void positionner_curseur(int ligne, int colonne)
-
 {
-
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);//permet de déclarer la variable "hstdout" qui fait référénce à la console
-
     COORD pos; // COORD est un type structuré défini dans la bibliothèque windows.h
-
     pos.X=colonne;// numéro de la colonne
-
     pos.Y=ligne;// numéro de la ligne
-
     SetConsoleCursorPosition(hStdout, pos);
-
 }
-
 
 void plein_ecran()
 {
-
     keybd_event(VK_MENU,0x38,0,0); //Appuie sur ALT
-
     keybd_event(VK_RETURN,0x1c,0,0); //Appuie ENTREE
-
     keybd_event(VK_RETURN,0x1c,KEYEVENTF_KEYUP,0); // Relache ENTREE
-
     keybd_event(VK_MENU,0x38,KEYEVENTF_KEYUP,0); //Relache ALT
-
 }
 
 void affichage_caractere_speciaux()
 {
-
      printf("%c\n\n",218);
-
      printf("%c\n\n",196);
-
      printf("%c\n\n",191);
-
      printf("%c\n\n",179);
-
      printf("%c\n\n",195);
-
      printf("%c\n\n",180);
-
      printf("%c\n\n",192);
-
      printf("%c\n\n",217);
 }
 
 void color (int couleurDuTexte, int couleurDuFond)
 {
-
     HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
-
     SetConsoleTextAttribute(H, couleurDuFond*16+couleurDuTexte);
-
 }
 
 void dessiner_carte_construction(int ligne, int colonne, S_carte_construction carte_construction)
@@ -107,13 +83,10 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
     positionner_curseur(ligne + MIL_CARTE_LON, colonne + MIL_CARTE_LAR);
     printf("%c", 197);
 
-
     dessiner_tuile(ligne,colonne,carte_construction.tuile[0]);
     dessiner_tuile(ligne,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[1]);
     dessiner_tuile(ligne + MIL_CARTE_LON ,colonne,carte_construction.tuile[2]);
     dessiner_tuile(ligne + MIL_CARTE_LON ,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[3]);
-
-
 }
 
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile)
@@ -130,27 +103,21 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)
         printf("%c",196);
     }
     switch(tuile.type){
-
         case 0 :
             dessiner_vital(ligne,colonne,tuile.sous_type);
             break;
         case 1 :
             dessiner_meteorite(ligne,colonne);
             break;
-
         default :
             break;
     }
-
-
 }
-
 
 void dessiner_vital(int ligne, int colonne, int sous_type)
 {
     dessiner_rectangle(ligne + 2, colonne + 1, 12, 3 , 5);
     dessiner_rectangle(ligne + 3, colonne + 2, sous_type, 1,3);
-
 }
 
 void dessiner_meteorite(int ligne, int colonne)
@@ -160,10 +127,6 @@ void dessiner_meteorite(int ligne, int colonne)
     dessiner_rectangle(ligne + 4 , colonne + 2 , 0 , 1, 3);
 
 }
-
-
-
-
 
 
 /*

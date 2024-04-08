@@ -7,11 +7,8 @@ void plein_ecran();
 void affichage_caractere_speciaux();
 void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la);
 
-
 void dessiner_carte_construction(int ligne, int colonne, S_carte_construction carte_construction);
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile);
-
-
 
 // design des tuiles
 void dessiner_vital(int ligne, int colonne , int sous_type);

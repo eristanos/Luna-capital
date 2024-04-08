@@ -9,11 +9,7 @@
 #define MAX_ELEMENT 300
 #define NB_CHAR 30
 
-
-
-
 int main()
-
 {
     srand(time(NULL)); // permet d'initialsier le générateur pseudo aléatoire doit se faire qu'un seule fois au début d'un programme si vous utiliser la fonction rand()
     plein_ecran();
