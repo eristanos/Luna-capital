@@ -23,9 +23,12 @@ int main()
 
     strcpy(carte_test.nom,"jean");
     carte_test.valeur = 12;
+    carte_test.tuile[0].type=0;
+    carte_test.tuile[0].sous_type = 5;
+
 
     dessiner_carte_construction(5,5,carte_test);
-
+    dessiner_tuile(5,5,carte_test.tuile[0],1);
     positionner_curseur(20,25);
     color(12,12);
     //printf(" ");

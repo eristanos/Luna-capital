@@ -8,7 +8,8 @@
 
 typedef struct tuile
 {
-    int type;
+    int type;                       // 0 : Vital
+    int sous_type;                  // l'indicatif sera celui d'une couleur pour eviter de mettre une variable redondante
     char nom[MAX_ELEMENT];
 }S_tuile;
 

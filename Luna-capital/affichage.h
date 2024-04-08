@@ -11,4 +11,9 @@ void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la);
 void dessiner_carte_construction(int ligne, int colonne, S_carte_construction carte_construction);
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile, int position);
 
+
+
+// design des tuiles
+void dessiner_vital(int ligne, int colonne , int sous_type);
+
 #endif // AFFICHAGE_H_INCLUDED

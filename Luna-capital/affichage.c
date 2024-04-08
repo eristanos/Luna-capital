@@ -107,12 +107,47 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
     positionner_curseur(ligne + MIL_CARTE_LON, colonne + MIL_CARTE_LAR);
     printf("%c", 197);
 
+
 }
 
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile, int position)
 {
+    // affichage contour
+
+    positionner_curseur(ligne + 1,colonne);
+    printf("%c%c%c", 196,196,217);
+    positionner_curseur(ligne,colonne +2);
+    printf("%c" , 218);
+    for(int i = 3; i < MIL_CARTE_LAR; i++)
+    {
+        printf("%c",196);
+    }
+    switch(tuile.type){
+
+        case 0 :
+            dessiner_vital(ligne,colonne,tuile.sous_type);
+            break;
+        case 1 :
+            dessiner_vital(ligne,colonne,tuile.sous_type);
+            break;
+
+        default :
+            break;
+    }
+
 
 }
+
+
+void dessiner_vital(int ligne, int colonne, int sous_type)
+{
+    dessiner_rectangle(ligne + 2, colonne + 1, 12, 3 , 5);
+    dessiner_rectangle(ligne + 3, colonne + 2, sous_type, 1,3);
+
+}
+
+
+
 
 
 
