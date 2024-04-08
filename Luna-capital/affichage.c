@@ -63,37 +63,48 @@ void color (int couleurDuTexte, int couleurDuFond)
 
 void dessiner_carte_construction(int ligne, int colonne, S_carte_construction carte_construction)
 {
-    //7.Gris clair
+    // affichage fond de carte
     dessiner_rectangle(ligne,colonne,8,LON_CARTE, LAR_CARTE);
+
+    // affichage numéro associé à la carte
     positionner_curseur(ligne,colonne);
     color(15,8);
     printf("%d", carte_construction.valeur);
+
+    // affichage ligne centrale verticale
     for(int i =0; i < LON_CARTE; i++)
     {
         positionner_curseur(ligne + i, colonne+MIL_CARTE_LAR);
         color(7,8);
         printf("%c", 179);
     }
+
+    // affichage ligne centrale horizontale
     for(int i =0; i < LAR_CARTE; i++)
     {
         positionner_curseur(ligne + MIL_CARTE_LON, colonne+i);
         color(7,8);
         printf("%c", 196);
     }
+
+    // affichage point centrale
     positionner_curseur(ligne + MIL_CARTE_LON, colonne + MIL_CARTE_LAR);
     printf("%c", 197);
 
+    // affichage de chacune des tuiles de la carte
     dessiner_tuile(ligne,colonne,carte_construction.tuile[0]);
     dessiner_tuile(ligne,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[1]);
     dessiner_tuile(ligne + MIL_CARTE_LON ,colonne,carte_construction.tuile[2]);
     dessiner_tuile(ligne + MIL_CARTE_LON ,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[3]);
 }
 
-void dessiner_tuile(int ligne, int colonne, S_tuile tuile)
+void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affichage des tuiles
 {
+    // on remet un fond pour supprimer les éventuels caractères présent
     dessiner_rectangle(ligne + 1, colonne , 8 , 4 , 7);
-    color(15,8);
 
+    // on affiche la ligne de délimitation supérieur
+    color(15,8);
     positionner_curseur(ligne + 1,colonne);
     printf("%c%c%c", 196,196,217);
     positionner_curseur(ligne,colonne +2);
@@ -102,9 +113,11 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)
     {
         printf("%c",196);
     }
+
+    // on affiche le design de la tuile selon son type
     switch(tuile.type){
         case 0 :
-            dessiner_vital(ligne,colonne,tuile.sous_type);
+            dessiner_vitales(ligne,colonne,tuile.sous_type);
             break;
         case 1 :
             dessiner_meteorite(ligne,colonne);
@@ -114,14 +127,16 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)
     }
 }
 
-void dessiner_vital(int ligne, int colonne, int sous_type)
+void dessiner_vitales(int ligne, int colonne, int sous_type)
 {
+    // affichage des tuiles de type vitales selon leur sous type
     dessiner_rectangle(ligne + 2, colonne + 1, 12, 3 , 5);
     dessiner_rectangle(ligne + 3, colonne + 2, sous_type, 1,3);
 }
 
 void dessiner_meteorite(int ligne, int colonne)
 {
+    // affichage de la tuile météorite
     dessiner_rectangle(ligne + 2 , colonne + 2 , 0 , 1, 3);
     dessiner_rectangle(ligne + 3 , colonne + 1 , 0 , 1, 5);
     dessiner_rectangle(ligne + 4 , colonne + 2 , 0 , 1, 3);

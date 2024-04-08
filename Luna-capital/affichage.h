@@ -11,7 +11,7 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile);
 
 // design des tuiles
-void dessiner_vital(int ligne, int colonne , int sous_type);
+void dessiner_vitales(int ligne, int colonne , int sous_type);
 void dessiner_meteorite(int ligne, int colonne);
 
 

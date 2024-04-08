@@ -28,12 +28,12 @@ int main()
     carte_test.tuile[3].type=0;
     carte_test.tuile[3].sous_type = 4;
 
-    // fin initialisation pour test
-
+    // test
     dessiner_carte_construction(5,5,carte_test);
+
+
+    // affichage du message de fermeture de fenêtre
     positionner_curseur(20,25);
-    color(12,12);
-    //printf(" ");
     color(15,0);
     return 0;
 }
