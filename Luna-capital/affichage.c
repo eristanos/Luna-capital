@@ -107,9 +107,13 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
     positionner_curseur(ligne + MIL_CARTE_LON, colonne + MIL_CARTE_LAR);
     printf("%c", 197);
 
+}
 
+void dessiner_tuile(int ligne, int colonne, S_tuile tuile, int position)
+{
 
 }
+
 
 
 /*
