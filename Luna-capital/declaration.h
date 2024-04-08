@@ -2,7 +2,7 @@
 #define DECLARATION_H_INCLUDED
 
 #define NB_CARTE_CONSTRUCTION_DECK 3
-#define MAX_ELEMENT 4
+#define MAX_ELEMENT 8
 #define NB_CHAR 30
 #define NB_TUILE 4
 #define VALEUR_NUM_MAX 10

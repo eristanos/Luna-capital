@@ -8,7 +8,7 @@
 	"affichage.h"
 	"declaration_cartes.h"
 
-1712618065 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
+1712620010 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
 
 1712617690 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
@@ -20,7 +20,7 @@
 	"declaration.h"
 	"affichage.h"
 
-1712618880 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
+1712620355 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>

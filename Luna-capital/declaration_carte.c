@@ -7,19 +7,28 @@
 
 S_carte_construction generateur_carte()
 {
-    srand(time(NULL));
+    struct timeb t;
+    ftime(&t);
+    srand(1000. * t.time + t.millitm);
+
     S_carte_construction carte;
     carte.type = rand() % NB_TYPE;
-    carte.valeur = rand() % VALEUR_NUM_MAX;
+    carte.valeur = (rand() % VALEUR_NUM_MAX) + 1;
     for(int i = 0; i < NB_TUILE ; i++)
     {
-        carte.tuile[i].type = rand() % NB_TYPE_TUILE;
-        int stock = (rand() % 12) + 1;
-        if(stock == 8)
+        int stock1 = (rand() % (NB_TYPE_TUILE + 4));
+        if(stock1 > NB_TYPE_TUILE)
         {
-            stock = 14;
+            stock1 = 0;
         }
-        carte.tuile[i].sous_type = stock;
+        carte.tuile[i].type = stock1;
+        int stock2 = (rand() % 12) + 1;
+        if(stock2 == 8)
+        {
+            stock2 = 14;
+        }
+
+        carte.tuile[i].sous_type = stock2;
 
     }
     return carte;
