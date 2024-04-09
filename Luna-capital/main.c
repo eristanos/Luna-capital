@@ -16,7 +16,13 @@ int main()
     system("pause");
 
     // initialisation pour test
-    printf("%d",Saisie_Nb_Joueur());
+    int nb_joueur = Saisie_Nb_Joueur();
+    S_joueur tab_joueur[nb_joueur];
+    Saisie_Nom_joueur(tab_joueur , nb_joueur);
+    for(int i = 0; i < nb_joueur; i++)
+    {
+        printf("%s\n", tab_joueur[i].nom);
+    }
 
     // test
 
