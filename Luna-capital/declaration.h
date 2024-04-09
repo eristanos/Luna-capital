@@ -12,26 +12,24 @@
 
 typedef struct tuile
 {
-    int type;                       // 0 : Vital
+    int type;                       // 0 : Vide , 1 : Vital , 2: Meteorite
     int sous_type;                  // l'indicatif sera celui d'une couleur pour eviter de mettre une variable redondante
-    char nom[MAX_ELEMENT];
 }S_tuile;
 
 typedef struct carte_construction
 {
     int type;
     S_tuile tuile[NB_TUILE];
-    char nom[MAX_ELEMENT];          // utilité ?
     int valeur;                     // indice afficher indiquant ou ranger la carte dans l'ordre croissant
 }S_carte_construction;
 
 
 typedef struct joueur
 {
-    S_carte_construction  deck_cartes[NB_CARTE_CONSTRUCTION_DECK];
-    S_tuile deck_tuiles[MAX_ELEMENT];
-    char sponsor[NB_CHAR];
-    int nb_selenite;
+    S_carte_construction  deck_cartes[NB_CARTE_CONSTRUCTION_DECK];  // deck de cartes à poser du joueur
+    S_tuile deck_tuiles[MAX_ELEMENT];                               // deck de tuile à poser du joueur
+    char sponsor[NB_CHAR];                                          // équipe / couleur du joueur
+    int nb_selenite;                                                // stock le nombre de bonus selenite du joueur
 }S_joueur;
 
 #endif // DECLARATION_H_INCLUDED
