@@ -5,6 +5,7 @@
 #include "declaration.h"
 #include "affichage.h"
 #include "declaration_cartes.h"
+#include "Saisie.h"
 
 
 
@@ -15,13 +16,7 @@ int main()
     system("pause");
 
     // initialisation pour test
-    S_carte_construction carte_test[MAX_ELEMENT];
-    for(int i = 0; i < MAX_ELEMENT ; i++)
-    {
-        carte_test[i] = generateur_carte();
-        dessiner_carte_construction(5,1 + i*(LAR_CARTE+1),carte_test[i]);
 
-    }
 
     // test
 
