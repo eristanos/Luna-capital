@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Saisie.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Saisie.h" />
 		<Unit filename="affichage.c">
 			<Option compilerVar="CC" />
 		</Unit>
