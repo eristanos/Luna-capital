@@ -25,3 +25,12 @@ void Saisie_Nom_joueur(S_joueur tab_joueur[] ,int nb_joueur)
     }
 
 }
+
+void affectation_sponsor(S_joueur tab_joueur[] , int nb_joueur)
+{
+    for(int i = 0; i <nb_joueur ; i++)
+    {
+    printf("joueur %d, saisir votre sponsor (4.Rouge fonce 1.Bleu fonce 2.Vert fonce 14.Jaune) : ", i+1);
+        scanf("%d", &tab_joueur[i].sponsor);
+    }
+}

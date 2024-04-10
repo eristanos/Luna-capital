@@ -28,7 +28,7 @@ typedef struct joueur
 {
     S_carte_construction  deck_cartes[NB_CARTE_CONSTRUCTION_DECK];  // deck de cartes à poser du joueur
     S_tuile deck_tuiles[MAX_ELEMENT];                               // deck de tuile à poser du joueur
-    char sponsor[NB_CHAR];                                          // sponsor/ couleur du joueur
+    int sponsor;                                          // sponsor/ couleur du joueur
     char nom[NB_CHAR];                                              // nom équipe
     int nb_selenite;                                                // stock le nombre de bonus selenite du joueur
 }S_joueur;
