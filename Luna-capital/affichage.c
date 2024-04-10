@@ -126,7 +126,7 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affic
 void dessiner_vitales(int ligne, int colonne, int sous_type)
 {
     // affichage des tuiles de type vitales selon leur sous type
-    dessiner_rectangle(ligne + 2, colonne + 1, 12, 3 , 5);
+    dessiner_rectangle(ligne + 2, colonne + 1, 4, 3 , 5);
     dessiner_rectangle(ligne + 3, colonne + 2, sous_type, 1,3);
 }
 
