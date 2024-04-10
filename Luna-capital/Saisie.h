@@ -3,5 +3,5 @@
 
 int Saisie_Nb_Joueur();
 void Saisie_Nom_joueur(S_joueur tab_joueur[] ,int nb_joueur);
-
+void affectation_sponsor(S_joueur tab_joueur[] , int nb_joueur);
 #endif // SAISIE_H_INCLUDED
