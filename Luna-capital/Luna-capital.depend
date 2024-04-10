@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1712618955 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
+1712703830 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -7,8 +7,9 @@
 	"declaration.h"
 	"affichage.h"
 	"declaration_cartes.h"
+	"Saisie.h"
 
-1712620010 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
+1712703271 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
 
 1712617690 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
@@ -20,7 +21,7 @@
 	"declaration.h"
 	"affichage.h"
 
-1712690048 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
+1712690199 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
@@ -28,4 +29,11 @@
 	"declaration.h"
 
 1712617587 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
+
+1712748439 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
+	<stdio.h>
+	"declaration.h"
+	"Saisie.h"
+
+1712703830 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.h
 
