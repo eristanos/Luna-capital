@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1712703830 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
+1713024008 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -7,13 +7,13 @@
 	"declaration.h"
 	"affichage.h"
 	"declaration_cartes.h"
-	"Saisie.h"
+	"saisie.h"
 
-1712703271 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
+1713024067 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
 
-1712617690 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
+1713022782 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
-1712688944 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
+1713022782 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -21,21 +21,21 @@
 	"declaration.h"
 	"affichage.h"
 
-1712690199 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
+1713022966 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
 	<time.h>
 	"declaration.h"
 
-1712617587 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
+1713022966 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
 
-1712748439 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
+1713024008 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
 	<stdio.h>
 	"declaration.h"
-	"Saisie.h"
+	"saisie.h"
 
-1712703830 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.h
+1713023904 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.h
 
 1712754284 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.c
 	<stdio.h>

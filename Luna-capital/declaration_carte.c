@@ -5,9 +5,12 @@
 
 #include "declaration.h"
 
-#define PART_METEORITE 5
-#define PART_VITAL 40
-#define PART_VIDE 55
+#define PART_METEORITE_CARTE 5
+#define PART_VITAUX_CARTE 40
+#define PART_VIDE_CARTE 50
+#define PART_ECHAFAUDAGE_CARTE 5
+
+#define PART_VITAUX_TUILE 30
 
 S_carte_construction generateur_carte()
 {
@@ -19,11 +22,11 @@ S_carte_construction generateur_carte()
         // génération du type de tuile
         int stock1 = (rand() % (101));
 
-        if(stock1 <= PART_METEORITE)
+        if(stock1 <= PART_METEORITE_CARTE)
         {
             carte.tuile[i].type = 2;
         }
-        else if(PART_METEORITE < stock1 && stock1 <= PART_VITAL+PART_METEORITE)
+        else if(PART_METEORITE_CARTE < stock1 && stock1 <= PART_VITAUX_CARTE+PART_METEORITE_CARTE)
         {
             carte.tuile[i].type = 1;
 
@@ -36,7 +39,11 @@ S_carte_construction generateur_carte()
 
             carte.tuile[i].sous_type = stock2;
         }
-        else if(PART_VITAL + PART_METEORITE < stock1 && stock1<=PART_METEORITE + PART_VITAL + PART_VIDE)
+        else if(PART_VITAUX_CARTE + PART_METEORITE_CARTE < stock1 && stock1<=PART_METEORITE_CARTE + PART_VITAUX_CARTE + PART_VIDE_CARTE)
+        {
+            carte.tuile[i].type = 0;
+        }
+        else if(PART_VITAUX_CARTE + PART_METEORITE_CARTE + PART_VIDE_CARTE < stock1 && stock1<=PART_METEORITE_CARTE + PART_VITAUX_CARTE + PART_VIDE_CARTE + PART_ECHAFAUDAGE_CARTE)
         {
             carte.tuile[i].type = 0;
         }
@@ -44,3 +51,6 @@ S_carte_construction generateur_carte()
     }
     return carte;
 }
+
+
+

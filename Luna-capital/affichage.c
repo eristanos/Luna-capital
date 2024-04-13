@@ -113,7 +113,7 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affic
             break;
 
         case 1 :
-            dessiner_vitales(ligne,colonne,tuile.sous_type);
+            dessiner_vitaux(ligne,colonne,tuile.sous_type);
             break;
         case 2 :
             dessiner_meteorite(ligne,colonne);
@@ -123,7 +123,7 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affic
     }
 }
 
-void dessiner_vitales(int ligne, int colonne, int sous_type)
+void dessiner_vitaux(int ligne, int colonne, int sous_type)
 {
     // affichage des tuiles de type vitales selon leur sous type
     dessiner_rectangle(ligne + 2, colonne + 1, 4, 3 , 5);

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "declaration.h"
-#include "Saisie.h"
+#include "saisie.h"
 
-int  Saisie_Nb_Joueur()
+int  Saisie_Nb_Joueurs()
 {
     int n;
 
@@ -16,7 +16,7 @@ int  Saisie_Nb_Joueur()
 
 }
 
-void Saisie_Nom_joueur(S_joueur tab_joueur[] ,int nb_joueur)
+void Saisie_Noms_Joueurs(S_joueur tab_joueur[] ,int nb_joueur)
 {
     for(int i = 0; i < nb_joueur ; i++)
     {

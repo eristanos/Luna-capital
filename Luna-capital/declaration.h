@@ -12,7 +12,21 @@
 
 typedef struct tuile
 {
-    int type;                       // 0 : Vide , 1 : Vital , 2: Meteorite
+     /*
+    TYPE DE TUILE :
+    0 : Vide / démolition
+    1 : Vitaux
+    2 : Météorite : que sur les cartes
+    3 : Agence commerciale
+    4 : camps robots sélénites
+    5 : module habitation
+    6 : complexe résidentiel
+    7 : terrain d'alunissage
+    8 : échafaudage lunaire : que sur les cartes
+    */
+
+    int type;
+
     int sous_type;                  // l'indicatif sera celui d'une couleur pour eviter de mettre une variable redondante
 }S_tuile;
 
