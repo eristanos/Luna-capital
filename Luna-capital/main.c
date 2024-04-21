@@ -16,7 +16,13 @@ int main()
     system("pause");
 
     // initialisation pour test
-
+    for(int i = 0; i < 500 ; i++)
+    {
+        dessiner_tuile(0,0, generateur_tuile());
+        positionner_curseur(20,25);
+        color(15,0);
+        system("pause");
+    }
 
     // test
 

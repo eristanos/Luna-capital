@@ -7,7 +7,7 @@
 #define NB_TUILE 4
 #define VALEUR_NUM_MAX 10
 #define NB_TYPE 2
-#define NB_TYPE_TUILE 3
+#define NB_TYPE_TUILE 8
 
 
 typedef struct tuile
@@ -18,11 +18,10 @@ typedef struct tuile
     1 : Vitaux
     2 : Météorite : que sur les cartes
     3 : Agence commerciale
-    4 : camps robots sélénites
-    5 : module habitation
-    6 : complexe résidentiel
-    7 : terrain d'alunissage
-    8 : échafaudage lunaire : que sur les cartes
+    4 : module habitation
+    5 : complexe résidentiel
+    6 : terrain d'alunissage
+    7 : échafaudage lunaire : que sur les cartes
     */
 
     int type;
