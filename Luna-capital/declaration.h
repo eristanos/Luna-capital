@@ -9,6 +9,34 @@
 #define NB_TYPE 2
 #define NB_TYPE_TUILE 8
 
+//Constantes d'affichage
+#define LAR_CARTE 15
+#define LON_CARTE 11
+
+#define MIL_CARTE_LAR 7
+#define MIL_CARTE_LON 5
+
+#define NB_TYPE_TUILE_CARTE 4
+#define NB_SOUS_TYPE_TUILE 6
+
+// pourcentage pour la génération des tuiles des cartes
+#define PART_METEORITE_CARTE 20
+#define PART_VITAUX_CARTE 20
+#define PART_VIDE_CARTE 50
+#define PART_ECHAFAUDAGE_CARTE 20
+
+
+// pourcentage pour la génération des tuiles
+#define PART_VITAUX_TUILE 30
+#define PART_REDISTRIBUTION_LOGISTIQUE_TUILE 10
+#define PART_METEORITE_TUILE 10
+#define PART_DEMOLITION_TUILE 10
+#define PART_AGENCE_COMMERCIALE_TUILE 10
+#define PART_TERRAIN_ALUNISAGE_TUILE 10
+#define PART_COMPLEXE_RESIDENTIEL_TUILE 10
+#define PART_MODULE_HABITATION 10
+
+#define CHANCE_ROBOT_SELENITE 10
 
 typedef struct tuile
 {
@@ -41,9 +69,13 @@ typedef struct joueur
 {
     S_carte_construction  deck_cartes[NB_CARTE_CONSTRUCTION_DECK];  // deck de cartes à poser du joueur
     S_tuile deck_tuiles[MAX_ELEMENT];                               // deck de tuile à poser du joueur
-    int sponsor;                                          // sponsor/ couleur du joueur
+    int sponsor;                                                    // sponsor/ couleur du joueur
     char nom[NB_CHAR];                                              // nom équipe
     int nb_selenite;                                                // stock le nombre de bonus selenite du joueur
+    S_carte_construction jeu[30][3];    // jeu de cartes positionnées
+    int nb_carte_jeu;
+    int nb_carte_deck;
+
 }S_joueur;
 
 #endif // DECLARATION_H_INCLUDED

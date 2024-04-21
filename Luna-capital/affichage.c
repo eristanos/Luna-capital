@@ -140,6 +140,16 @@ void dessiner_meteorite(int ligne, int colonne)
 }
 
 
+void afficher_deck_joueurs(S_joueur joueur)
+{
+    for(int i = 0 ; i < joueur.nb_carte_jeu; i++)
+    {
+
+    }
+
+}
+
+
 /*
 0.Noir
 1.Bleu fonce

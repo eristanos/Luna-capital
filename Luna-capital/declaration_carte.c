@@ -6,25 +6,6 @@
 #include "declaration.h"
 
 
-#define NB_TYPE_TUILE_CARTE 4
-#define NB_SOUS_TYPE_TUILE 6
-
-#define PART_METEORITE_CARTE 20
-#define PART_VITAUX_CARTE 20
-#define PART_VIDE_CARTE 50
-#define PART_ECHAFAUDAGE_CARTE 20
-
-#define PART_VITAUX_TUILE 30
-#define PART_REDISTRIBUTION_LOGISTIQUE_TUILE 10
-#define PART_METEORITE_TUILE 10
-#define PART_DEMOLITION_TUILE 10
-#define PART_AGENCE_COMMERCIALE_TUILE 10
-#define PART_TERRAIN_ALUNISAGE_TUILE 10
-#define PART_COMPLEXE_RESIDENTIEL_TUILE 10
-#define PART_MODULE_HABITATION 10
-
-#define CHANCE_ROBOT_SELENITE 10
-
 typedef struct proba_tuile{
     int type;
     int part;
@@ -64,7 +45,6 @@ S_carte_construction generateur_carte()
     }
     return carte;
 }
-
 
 S_tuile generateur_tuile()
 {
