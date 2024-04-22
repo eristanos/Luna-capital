@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1713707784 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
+1713730446 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -9,11 +9,11 @@
 	"declaration_cartes.h"
 	"saisie.h"
 
-1713717049 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
+1713730716 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
 
-1713700047 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
+1713717011 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
-1713700047 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
+1713730489 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -21,14 +21,14 @@
 	"declaration.h"
 	"affichage.h"
 
-1713709696 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
+1713730251 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
 	<time.h>
 	"declaration.h"
 
-1713708420 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
+1713709831 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
 
 1713024008 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
 	<stdio.h>

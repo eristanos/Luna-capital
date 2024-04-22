@@ -8,6 +8,12 @@
 #define VALEUR_NUM_MAX 10
 #define NB_TYPE 2
 #define NB_TYPE_TUILE 8
+#define NB_TYPE_TUILE_CARTE 4
+#define NB_SOUS_TYPE_TUILE 6
+
+#define LARG_MAX_JEU 8
+#define LONG_MAX_JEU 3
+
 
 //Constantes d'affichage
 #define LAR_CARTE 15
@@ -16,14 +22,13 @@
 #define MIL_CARTE_LAR 7
 #define MIL_CARTE_LON 5
 
-#define NB_TYPE_TUILE_CARTE 4
-#define NB_SOUS_TYPE_TUILE 6
+
 
 // pourcentage pour la génération des tuiles des cartes
-#define PART_METEORITE_CARTE 20
-#define PART_VITAUX_CARTE 20
-#define PART_VIDE_CARTE 50
-#define PART_ECHAFAUDAGE_CARTE 20
+#define PART_METEORITE_CARTE 8
+#define PART_VITAUX_CARTE 15
+#define PART_VIDE_CARTE 70
+#define PART_ECHAFAUDAGE_CARTE 7
 
 
 // pourcentage pour la génération des tuiles
@@ -59,7 +64,7 @@ typedef struct tuile
 
 typedef struct carte_construction
 {
-    int type;
+    int type;                        //0 : pas de carte
     S_tuile tuile[NB_TUILE];
     int valeur;                     // indice afficher indiquant ou ranger la carte dans l'ordre croissant
 }S_carte_construction;
@@ -72,7 +77,7 @@ typedef struct joueur
     int sponsor;                                                    // sponsor/ couleur du joueur
     char nom[NB_CHAR];                                              // nom équipe
     int nb_selenite;                                                // stock le nombre de bonus selenite du joueur
-    S_carte_construction jeu[30][3];    // jeu de cartes positionnées
+    S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU];    // jeu de cartes positionnées
     int nb_carte_jeu;
     int nb_carte_deck;
 

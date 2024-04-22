@@ -16,19 +16,31 @@ int main()
     system("pause");
 
     // initialisation pour test
-    for(int i = 0; i < 500 ; i++)
+    S_joueur joueur;
+    for(int i = 0 ; i < LARG_MAX_JEU; i++)
     {
+        for(int y = 0; y < LONG_MAX_JEU; y++)
+        {
+            int temp = rand()%2;
+            if(temp == 0)
+            {
+                joueur.jeu[i][y] = generateur_carte();
+            }
+            else
+            {
+                joueur.jeu[i][y].type = 0;
+            }
 
-        positionner_curseur(20,25);
-        color(15,0);
-        system("pause");
+        }
     }
+    afficher_deck_joueurs(joueur);
 
     // test
 
 
     // affichage du message de fermeture de fenêtre
-    positionner_curseur(20,25);
+    positionner_curseur(40,0);
     color(15,0);
+    printf("kakoukakou");
     return 0;
 }

@@ -56,6 +56,8 @@ void color (int couleurDuTexte, int couleurDuFond)
 
 void dessiner_carte_construction(int ligne, int colonne, S_carte_construction carte_construction)
 {
+    if(carte_construction.type != 0)
+    {
     // affichage fond de carte
     dessiner_rectangle(ligne,colonne,8,LON_CARTE, LAR_CARTE);
 
@@ -89,6 +91,7 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
     dessiner_tuile(ligne,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[1]);
     dessiner_tuile(ligne + MIL_CARTE_LON ,colonne,carte_construction.tuile[2]);
     dessiner_tuile(ligne + MIL_CARTE_LON ,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[3]);
+    }
 }
 
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affichage des tuiles
@@ -142,9 +145,23 @@ void dessiner_meteorite(int ligne, int colonne)
 
 void afficher_deck_joueurs(S_joueur joueur)
 {
-    for(int i = 0 ; i < joueur.nb_carte_jeu; i++)
+    for(int i = 0 ; i < LARG_MAX_JEU; i++)
     {
+        for(int y = 0; y < LONG_MAX_JEU; y++)
+        {
+            if(joueur.jeu[i][y].type != 0)
+            {
+                dessiner_carte_construction( y * LON_CARTE + y + 1, i * LAR_CARTE + i ,joueur.jeu[i][y]);
 
+            }
+        }
+    }
+    color(15, 0);
+
+    for(int i = 0; i < LONG_MAX_JEU * LON_CARTE + 4; i ++)
+    {
+        positionner_curseur(i,LARG_MAX_JEU*LAR_CARTE + 8);
+        printf("%c" , 179);
     }
 
 }
