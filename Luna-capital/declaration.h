@@ -40,9 +40,17 @@
 #define PART_TERRAIN_ALUNISAGE_TUILE 10
 #define PART_COMPLEXE_RESIDENTIEL_TUILE 10
 #define PART_MODULE_HABITATION 10
-
 #define CHANCE_ROBOT_SELENITE 10
 
+// pourcentage pour la generation du deck concessions
+#define PART_3_CARTE_COLONNE 25
+#define PART_3_ALIGNE 25
+#define PART_4_CARRE 9
+#define PART_FINIR_PHASE 4
+#define PART_POSSEDER_n_CARTE 25
+#define PART_5_RANGE 4
+#define PART_8_CONSTRUCTION 4
+#define PART_MOINS_RANGE 4
 typedef struct tuile
 {
      /*
@@ -62,12 +70,33 @@ typedef struct tuile
     int sous_type;                  // l'indicatif sera celui d'une couleur pour eviter de mettre une variable redondante
 }S_tuile;
 
+
+
 typedef struct carte_construction
 {
     int type;                        //0 : pas de carte
     S_tuile tuile[NB_TUILE];
     int valeur;                     // indice afficher indiquant ou ranger la carte dans l'ordre croissant
 }S_carte_construction;
+
+
+struct concession
+{
+    int type;
+ /* 0: posseder horizontal ou vertical
+    1: posseder 3 carte en colonne
+    2: posseder 4 construction en carre
+    3: finir une phase
+    4: posseder au moins n cartes
+    5: posseder au moins 5 carte construction sur meme rangée
+    6: posseder 8 constructions sur 2 lignes (adjacente)
+    7: moins de rangée de carte que les autres
+ */
+    int pattern[3][3];
+    int points;
+    S_tuile tuiles;
+};
+typedef struct concession S_concession;
 
 
 typedef struct joueur
@@ -82,5 +111,8 @@ typedef struct joueur
     int nb_carte_deck;
 
 }S_joueur;
+
+
+
 
 #endif // DECLARATION_H_INCLUDED
