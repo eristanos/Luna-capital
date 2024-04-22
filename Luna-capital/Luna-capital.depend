@@ -37,7 +37,7 @@
 
 1713023904 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.h
 
-1712754284 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.c
+1713778525 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -45,18 +45,18 @@
 	"declaration.h"
 	"affichage.h"
 
-1713774274 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration.h
+1713789092 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration.h
 
-1712750003 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.h
+1713774274 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.h
 
-1712754284 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_carte.c
+1713789041 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
 	<time.h>
 	"declaration.h"
 
-1712754284 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\main.c
+1713778525 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -64,13 +64,13 @@
 	"declaration.h"
 	"affichage.h"
 	"declaration_cartes.h"
-	"Saisie.h"
+	"saisie.h"
 
-1712750003 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_cartes.h
+1713788151 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_cartes.h
 
-1713195875 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.h
+1713778525 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.h
 
-1713195875 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.c
+1713778525 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.c
 	<stdio.h>
 	"declaration.h"
 	"saisie.h"

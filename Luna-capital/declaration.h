@@ -10,6 +10,7 @@
 #define NB_TYPE_TUILE 8
 #define NB_TYPE_TUILE_CARTE 4
 #define NB_SOUS_TYPE_TUILE 6
+#define TYPE_CONCESSION 8
 
 #define LARG_MAX_JEU 8
 #define LONG_MAX_JEU 3
@@ -43,8 +44,8 @@
 #define CHANCE_ROBOT_SELENITE 10
 
 // pourcentage pour la generation du deck concessions
-#define PART_3_CARTE_COLONNE 25
 #define PART_3_ALIGNE 25
+#define PART_3_CARTE_COLONNE 25
 #define PART_4_CARRE 9
 #define PART_FINIR_PHASE 4
 #define PART_POSSEDER_n_CARTE 25
@@ -94,7 +95,7 @@ struct concession
  */
     int pattern[3][3];
     int points;
-    S_tuile tuiles;
+    S_tuile tuile;
 };
 typedef struct concession S_concession;
 
