@@ -14,6 +14,9 @@
 #define LARG_MAX_JEU 8
 #define LONG_MAX_JEU 3
 
+#define LARG_WINDOWS 140
+#define LONG_WINDOWS 45
+
 
 //Constantes d'affichage
 #define LAR_CARTE 15
@@ -77,7 +80,7 @@ typedef struct joueur
     int sponsor;                                                    // sponsor/ couleur du joueur
     char nom[NB_CHAR];                                              // nom équipe
     int nb_selenite;                                                // stock le nombre de bonus selenite du joueur
-    S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU];    // jeu de cartes positionnées
+    S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU];           // jeu de cartes positionnées
     int nb_carte_jeu;
     int nb_carte_deck;
 

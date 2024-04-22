@@ -145,6 +145,7 @@ void dessiner_meteorite(int ligne, int colonne)
 
 void afficher_deck_joueurs(S_joueur joueur)
 {
+    dessiner_rectangle(0,0,0,LONG_WINDOWS , LARG_WINDOWS);
     for(int i = 0 ; i < LARG_MAX_JEU; i++)
     {
         for(int y = 0; y < LONG_MAX_JEU; y++)
