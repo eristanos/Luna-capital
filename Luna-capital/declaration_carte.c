@@ -82,7 +82,7 @@ S_concession generateur_concession()
     S_concession laconcession;
 
     // definition de la pondération
-    S_proba tab_pond[TYPE_CONCESSION] = {{0,PART_3_ALIGNE},{1, PART_3_CARTE_COLONNE},{2, PART_4_CARRE},{3,PART_FINIR_PHASE},{4,PART_POSSEDER_n_CARTE},{5, PART_5_RANGE},{6, PART_8_CONSTRUCTION},{7, PART_MOINS_RANGE}};
+    S_proba tab_pond[TYPE_CONCESSION] = {{C_ALIGNE,PART_3_ALIGNE},{C_COLONNE, PART_3_CARTE_COLONNE},{C_N_CARTE,PART_POSSEDER_n_CARTE}};
     // Tirage aleatoire
 
     int temp = rand() % 101;
@@ -98,18 +98,18 @@ S_concession generateur_concession()
     }
     // génération du sous type dans le cas des système vitaux
     srand(time(NULL));
-    int nb_aleatoire = rand() % 6;
+    int nb_aleatoire = rand() % 3;
 
     switch(nb_aleatoire)
     {
     case 0:
-        laconcession.tuile.type=1;
-        laconcession.tuile.sous_type = 0;       // 0 = collecteur d'hydrogene
-        if(laconcession.type == 0)
+        laconcession.tuile.type=VITAUX;
+        laconcession.tuile.sous_type = COLLECTEUR_HYDROGENE;       // 0 = collecteur d'hydrogene
+        if(laconcession.type == C_ALIGNE)
         {
             laconcession.points = 6;
         }
-        else if(laconcession.type == 1)
+        else if(laconcession.type == C_COLONNE)
         {
             laconcession.points = 7;
         }
@@ -119,13 +119,13 @@ S_concession generateur_concession()
         }
         break;
     case 1:
-        laconcession.tuile.type=1;
-        laconcession.tuile.sous_type = 1;        //1 = condenseurs d'eau
-        if(laconcession.type == 0)
+        laconcession.tuile.type=VITAUX;
+        laconcession.tuile.sous_type = CONDENSEUR_EAU;        //1 = condenseurs d'eau
+        if(laconcession.type == C_ALIGNE)
         {
             laconcession.points = 7;
         }
-        else if(laconcession.type == 1)
+        else if(laconcession.type == C_COLONNE)
         {
             laconcession.points = 8;
         }
@@ -136,13 +136,13 @@ S_concession generateur_concession()
         break;
 
     case 2:
-        laconcession.tuile.type=1;
-        laconcession.tuile.sous_type = 2;        //2 = agences commerciales
-        if(laconcession.type == 0)
+        laconcession.tuile.type=AGENCE;
+                                        //2 = agences commerciales
+        if(laconcession.type == C_ALIGNE)
         {
             laconcession.points = 6;
         }
-        else if(laconcession.type == 1)
+        else if(laconcession.type == C_COLONNE)
         {
             laconcession.points = 6;
         }
@@ -152,13 +152,13 @@ S_concession generateur_concession()
         }
         break;
     case 3:
-        laconcession.tuile.type=1;
-        laconcession.tuile.sous_type = 3;        //3 = collecteur oxygene
-        if(laconcession.type == 0)
+        laconcession.tuile.type=VITAUX;
+        laconcession.tuile.sous_type = COLLECTEUR_OXYGENE;        //3 = collecteur oxygene
+        if(laconcession.type == C_ALIGNE)
         {
             laconcession.points = 6;
         }
-        else if(laconcession.type == 1)
+        else if(laconcession.type == C_COLONNE)
         {
             laconcession.points = 7;
         }
@@ -168,13 +168,13 @@ S_concession generateur_concession()
         }
         break;
     case 4:
-        laconcession.tuile.type=1;
-        laconcession.tuile.sous_type = 4;        //4 = serre
-        if(laconcession.type == 0)
+        laconcession.tuile.type=VITAUX;
+        laconcession.tuile.sous_type = SERRE_1;        //4 = serre
+        if(laconcession.type == C_ALIGNE)
         {
             laconcession.points = 7;
         }
-        else if(laconcession.type == 1)
+        else if(laconcession.type == C_COLONNE)
         {
             laconcession.points = 6;
         }
@@ -184,12 +184,12 @@ S_concession generateur_concession()
         }
         break;
     case 5:
-        laconcession.tuile.type = 5;                  //5 = météorite
-        if(laconcession.type == 0)
+        laconcession.tuile.type = METEORITE;                  //2= météorite
+        if(laconcession.type == C_ALIGNE)
         {
             laconcession.points = 7;
         }
-        else if(laconcession.type == 1)
+        else if(laconcession.type == C_COLONNE)
         {
             laconcession.points = 6;
         }

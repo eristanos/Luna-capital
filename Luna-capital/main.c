@@ -16,7 +16,7 @@ int main()
     system("pause");
 
     // initialisation pour test
-    S_joueur joueur;
+   /* S_joueur joueur;
     for(int i = 0 ; i < LARG_MAX_JEU; i++)
     {
         for(int y = 0; y < LONG_MAX_JEU; y++)
@@ -33,10 +33,18 @@ int main()
 
         }
     }
-    afficher_deck_joueurs(joueur);
+    afficher_deck_joueurs(joueur);*/
 
     // test
-
+    int i=0;
+    while(i==0)
+    {
+        S_concession jeanne = generateur_concession();
+        printf(" points : %d\n", jeanne.points);
+        printf("type : %d\n", jeanne.type);
+        printf("tuile : \n type : %d \n sous type : %d" , jeanne.tuile.type, jeanne.tuile.sous_type);
+        system("pause");
+    }
 
     // affichage du message de fermeture de fenêtre
     positionner_curseur(40,0);

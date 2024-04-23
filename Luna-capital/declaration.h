@@ -10,11 +10,31 @@
 #define NB_TYPE_TUILE 8
 #define NB_TYPE_TUILE_CARTE 4
 #define NB_SOUS_TYPE_TUILE 6
-#define TYPE_CONCESSION 8
+#define TYPE_CONCESSION 3
 
 #define LARG_MAX_JEU 8
 #define LONG_MAX_JEU 3
-
+//indicatif SOUS TYPE
+#define CONDENSEUR_EAU 1
+#define COLLECTEUR_HYDROGENE 0
+#define COLLECTEUR_OXYGENE 3
+#define SERRE_1 4
+#define SERRE_2 5
+#define SERRE_3 6
+#define TOUTE_SERRE 7
+//indicatif tuile
+#define VIDE 0
+#define VITAUX 1
+#define METEORITE 2
+#define AGENCE 3
+#define MODULE 4
+#define COMPLEXE 5
+#define TERRAIN 6
+#define ECHAFAUDAGE 7
+//indicatif type concession
+#define C_ALIGNE 0
+#define C_COLONNE 1
+#define C_N_CARTE 2
 
 //Constantes d'affichage
 #define LAR_CARTE 15
@@ -44,14 +64,10 @@
 #define CHANCE_ROBOT_SELENITE 10
 
 // pourcentage pour la generation du deck concessions
-#define PART_3_ALIGNE 25
-#define PART_3_CARTE_COLONNE 25
-#define PART_4_CARRE 9
-#define PART_FINIR_PHASE 4
-#define PART_POSSEDER_n_CARTE 25
-#define PART_5_RANGE 4
-#define PART_8_CONSTRUCTION 4
-#define PART_MOINS_RANGE 4
+#define PART_3_ALIGNE 40
+#define PART_3_CARTE_COLONNE 30
+#define PART_POSSEDER_n_CARTE 30
+
 typedef struct tuile
 {
      /*
@@ -86,14 +102,9 @@ struct concession
     int type;
  /* 0: posseder horizontal ou vertical
     1: posseder 3 carte en colonne
-    2: posseder 4 construction en carre
-    3: finir une phase
-    4: posseder au moins n cartes
-    5: posseder au moins 5 carte construction sur meme rangée
-    6: posseder 8 constructions sur 2 lignes (adjacente)
-    7: moins de rangée de carte que les autres
+    2: posseder au moins n cartes
+
  */
-    int pattern[3][3];
     int points;
     S_tuile tuile;
 };
