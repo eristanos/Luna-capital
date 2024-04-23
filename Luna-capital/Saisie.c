@@ -34,3 +34,32 @@ void affectation_sponsor(S_joueur tab_joueur[] , int nb_joueur)
         scanf("%d", &tab_joueur[i].sponsor);
     }
 }
+
+int Saisie_coordonnees(int min , int max)
+{
+    int statut = 0;
+    int i = -1;
+
+    while(statut == 0)
+     {
+        scanf("%d", &i);
+        if(i > min && i <= max)
+            {
+                statut = 1;
+            }
+     }
+
+    return (i-1);
+
+}
+
+
+void placer_carte(S_carte_construction tab[][LONG_MAX_JEU] , S_carte_construction carte)
+{
+    printf("Saisir x : ");
+    int x = Saisie_coordonnees(0,LARG_MAX_JEU);
+    printf("Saisir y : ");
+    int y = Saisie_coordonnees(0,LONG_MAX_JEU);
+    tab[x][y] = carte;
+
+}

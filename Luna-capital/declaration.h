@@ -14,6 +14,7 @@
 
 #define LARG_MAX_JEU 8
 #define LONG_MAX_JEU 3
+
 //indicatif SOUS TYPE
 #define CONDENSEUR_EAU 1
 #define COLLECTEUR_HYDROGENE 0
@@ -35,6 +36,12 @@
 #define C_ALIGNE 0
 #define C_COLONNE 1
 #define C_N_CARTE 2
+=======
+
+#define LARG_WINDOWS 140
+#define LONG_WINDOWS 45
+
+
 
 //Constantes d'affichage
 #define LAR_CARTE 15
@@ -45,14 +52,14 @@
 
 
 
-// pourcentage pour la génération des tuiles des cartes
+// pourcentage pour la gÃ©nÃ©ration des tuiles des cartes
 #define PART_METEORITE_CARTE 8
 #define PART_VITAUX_CARTE 15
 #define PART_VIDE_CARTE 70
 #define PART_ECHAFAUDAGE_CARTE 7
 
 
-// pourcentage pour la génération des tuiles
+// pourcentage pour la gÃ©nÃ©ration des tuiles
 #define PART_VITAUX_TUILE 30
 #define PART_REDISTRIBUTION_LOGISTIQUE_TUILE 10
 #define PART_METEORITE_TUILE 10
@@ -72,14 +79,14 @@ typedef struct tuile
 {
      /*
     TYPE DE TUILE :
-    0 : Vide / démolition
+    0 : Vide / dÃ©molition
     1 : Vitaux
-    2 : Météorite : que sur les cartes
+    2 : MÃ©tÃ©orite : que sur les cartes
     3 : Agence commerciale
     4 : module habitation
-    5 : complexe résidentiel
+    5 : complexe rÃ©sidentiel
     6 : terrain d'alunissage
-    7 : échafaudage lunaire : que sur les cartes
+    7 : Ã©chafaudage lunaire : que sur les cartes
     */
 
     int type;
@@ -113,12 +120,12 @@ typedef struct concession S_concession;
 
 typedef struct joueur
 {
-    S_carte_construction  deck_cartes[NB_CARTE_CONSTRUCTION_DECK];  // deck de cartes à poser du joueur
-    S_tuile deck_tuiles[MAX_ELEMENT];                               // deck de tuile à poser du joueur
+    S_carte_construction  deck_cartes[NB_CARTE_CONSTRUCTION_DECK];  // deck de cartes Ã  poser du joueur
+    S_tuile deck_tuiles[MAX_ELEMENT];                               // deck de tuile Ã  poser du joueur
     int sponsor;                                                    // sponsor/ couleur du joueur
-    char nom[NB_CHAR];                                              // nom équipe
+    char nom[NB_CHAR];                                              // nom Ã©quipe
     int nb_selenite;                                                // stock le nombre de bonus selenite du joueur
-    S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU];    // jeu de cartes positionnées
+    S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU];           // jeu de cartes positionnÃ©es
     int nb_carte_jeu;
     int nb_carte_deck;
 
