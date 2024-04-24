@@ -8,5 +8,6 @@ void placer_carte(S_joueur *joueur, S_carte_construction carte);
 int Saisie_coordonnees(int min , int max);
 int verif_emplacement(int x, int y, S_carte_construction tab[][LONG_MAX_JEU]);
 int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], int valeur_carte);
+int verif_adjacent(int x, int y, S_carte_construction tab[][LONG_MAX_JEU]);
 
 #endif // SAISIE_H_INCLUDED

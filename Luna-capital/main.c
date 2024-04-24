@@ -17,27 +17,24 @@ int main()
     // initialisation pour test
     S_joueur joueur;
     joueur.nb_selenite = 2;
+    joueur.nb_tour_joueur = 0;
     for(int i = 0 ; i < LARG_MAX_JEU; i++)
     {
         for(int y = 0; y < LONG_MAX_JEU; y++)
         {
-            int temp = rand()%6;
-            if(temp == 0)
-            {
-                joueur.jeu[i][y] = generateur_carte();
-            }
-            else
-            {
-                joueur.jeu[i][y].type = 0;
-            }
+           joueur.jeu[i][y].type=0;
         }
     }
     afficher_deck_joueurs(joueur);
 
-
-    placer_carte(&joueur, generateur_carte());
+    int wsh = 0;
+    while(wsh == 0)
+    {
+       placer_carte(&joueur, generateur_carte());
     afficher_deck_joueurs(joueur);
     printf("%d",joueur.jeu[0][0].valeur);
+    }
+
 
     system("pause");
 
