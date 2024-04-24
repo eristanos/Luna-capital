@@ -15,39 +15,53 @@ int main()
     plein_ecran();
 
     // test paul
-    S_carte_construction tab[4];
-    for(int i = 0; i < NB_TUILE; i++)
+
+
+    S_joueur joueur;
+    S_plateau plateau;
+    for(int i = 0; i < 4; i++)
     {
-        tab[i]= generateur_carte();
+        joueur.deck_cartes[i].type = 0;
+        joueur.deck_tuiles[i].type = 0;
+        for(int y = 0; y < 4; y++)
+        {
+            joueur.deck_cartes[i].tuile[i].type = 0;
+        }
     }
-    for(int i = 0; i < NB_TUILE; i++)
+    for(int i=0;i<4;i++)
     {
-        dessiner_carte_construction(0,i*LAR_CARTE + i, tab[i]);
+
+        plateau.cartes[i]=generateur_carte();
+        plateau.tuiles[i]=generateur_tuile();
+        dessiner_carte_construction(0,i*LAR_CARTE + i, plateau.cartes[i]);
+        dessiner_tuile(12,i*LAR_CARTE + i , plateau.tuiles[i]);
+
     }
-    system("pause");
-    supprimer_carte(tab,2);
-    supprimer_carte(tab , 0);
-
-    for(int i = 0; i < NB_TUILE; i++)
-    {
-        dessiner_carte_construction(0,i*LAR_CARTE + i, tab[i]);
-    }
-
-
-
-
     // test mathieu
-    /*
-    int i=0;
-    while(i==0)
+    int dsfcf =0;
+    while(dsfcf ==0)
     {
-        S_concession jeanne = generateur_concession();
-        printf(" points : %d\n", jeanne.points);
-        printf("type : %d\n", jeanne.type);
-        printf("tuile : \n type : %d \n sous type : %d" , jeanne.tuile.type, jeanne.tuile.sous_type);
-        system("pause");
+
+
+
+
+
+
+    piocher_carte( &plateau, &joueur);
+
+    for(int i=0;i<4;i++)
+    {
+
+        dessiner_carte_construction(20,i*LAR_CARTE + i, joueur.deck_cartes[i]);
+        dessiner_tuile(34,i*LAR_CARTE + i , joueur.deck_tuiles[i]);
+        color(15,0);
+        dessiner_carte_construction(0,i*LAR_CARTE + i, plateau.cartes[i]);
+        dessiner_tuile(12,i*LAR_CARTE + i , plateau.tuiles[i]);
+
     }
-    */
+    }
+
+
 
     // affichage du message de fermeture de fenêtre
     positionner_curseur(40,0);

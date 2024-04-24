@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "declaration.h"
 #include "saisie.h"
+#include "declaration_cartes.h"
 
 int  Saisie_Nb_Joueurs()
 {
@@ -73,6 +74,34 @@ void supprimer_carte(S_carte_construction tab[], int n)
         tab[n].tuile[i].type = 0;
         tab[n].tuile[i].sous_type = 0;
     }
+}
+
+void piocher_carte(S_plateau *plateau , S_joueur *joueur)
+{
+    printf("Quelle carte voulez vous piocher : \n");
+    int n = Saisie_coordonnees(0,NB_CARTE_JEU);
+    int temp;
+    int temp1;
+    for(int i=0;i<NB_CARTE_CONSTRUCTION_DECK;i++)
+    {
+        if(joueur->deck_cartes[i].type == 0)
+        {
+            temp=i;
+            i=NB_CARTE_CONSTRUCTION_DECK;
+        }
+    }
+    joueur->deck_cartes[temp]=plateau->cartes[n];
+      for(int j=0;j<NB_TUILE;j++)
+    {
+        if(joueur->deck_tuiles[j].type == 0)
+        {
+            temp1=j;
+            j=NB_TUILE;
+        }
+    }
+    joueur->deck_tuiles[temp1]=plateau->tuiles[n];
+    plateau->tuiles[n] = generateur_tuile();
+    plateau->cartes[n] = generateur_carte();
 }
 
 

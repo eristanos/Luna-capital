@@ -1,7 +1,8 @@
 #ifndef DECLARATION_H_INCLUDED
 #define DECLARATION_H_INCLUDED
 
-#define NB_CARTE_CONSTRUCTION_DECK 3
+#define NB_CARTE_CONSTRUCTION_DECK 10
+#define NB_CARTE_JEU 4
 #define MAX_ELEMENT 8
 #define NB_CHAR 30
 #define NB_TUILE 4
@@ -60,15 +61,15 @@
 
 
 // pourcentage pour la génération des tuiles
-#define PART_VITAUX_TUILE 30
-#define PART_REDISTRIBUTION_LOGISTIQUE_TUILE 10
-#define PART_METEORITE_TUILE 10
-#define PART_DEMOLITION_TUILE 10
-#define PART_AGENCE_COMMERCIALE_TUILE 10
-#define PART_TERRAIN_ALUNISAGE_TUILE 10
-#define PART_COMPLEXE_RESIDENTIEL_TUILE 10
-#define PART_MODULE_HABITATION 10
-#define CHANCE_ROBOT_SELENITE 10
+#define PART_VITAUX_TUILE 70
+#define PART_REDISTRIBUTION_LOGISTIQUE_TUILE 0
+#define PART_METEORITE_TUILE 30
+#define PART_DEMOLITION_TUILE 0
+#define PART_AGENCE_COMMERCIALE_TUILE 0
+#define PART_TERRAIN_ALUNISAGE_TUILE 0
+#define PART_COMPLEXE_RESIDENTIEL_TUILE 0
+#define PART_MODULE_HABITATION 0
+#define CHANCE_ROBOT_SELENITE 0
 
 // pourcentage pour la generation du deck concessions
 #define PART_3_ALIGNE 40
@@ -117,6 +118,13 @@ struct concession
 };
 typedef struct concession S_concession;
 
+
+struct plateau
+{
+    S_tuile tuiles[NB_TUILE];
+    S_carte_construction cartes[NB_CARTE_JEU];
+};
+typedef struct plateau S_plateau;
 
 typedef struct joueur
 {

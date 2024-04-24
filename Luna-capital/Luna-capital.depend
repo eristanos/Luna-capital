@@ -37,7 +37,7 @@
 
 1713948310 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.h
 
-1713778525 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.c
+1713964689 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -45,18 +45,18 @@
 	"declaration.h"
 	"affichage.h"
 
-1713865861 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration.h
+1713965790 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration.h
 
 1713774274 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.h
 
-1713864312 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_carte.c
+1713949372 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
 	<time.h>
 	"declaration.h"
 
-1713863614 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\main.c
+1713965626 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -66,12 +66,13 @@
 	"declaration_cartes.h"
 	"saisie.h"
 
-1713788151 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_cartes.h
+1713949372 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_cartes.h
 
-1713778525 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.h
+1713952913 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.h
 
-1713778525 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.c
+1713965422 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.c
 	<stdio.h>
 	"declaration.h"
 	"saisie.h"
+	"declaration_cartes.h"
 

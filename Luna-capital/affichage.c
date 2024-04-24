@@ -17,6 +17,7 @@ void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la)
          printf("W");
         }
     }
+    color(15, 0);
 }
 
 void positionner_curseur(int ligne, int colonne)
@@ -140,7 +141,6 @@ void dessiner_meteorite(int ligne, int colonne)
     dessiner_rectangle(ligne + 2 , colonne + 2 , 0 , 1, 3);
     dessiner_rectangle(ligne + 3 , colonne + 1 , 0 , 1, 5);
     dessiner_rectangle(ligne + 4 , colonne + 2 , 0 , 1, 3);
-
 }
 
 
