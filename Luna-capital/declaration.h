@@ -36,7 +36,7 @@
 #define C_ALIGNE 0
 #define C_COLONNE 1
 #define C_N_CARTE 2
-=======
+
 
 #define LARG_WINDOWS 140
 #define LONG_WINDOWS 45

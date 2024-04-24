@@ -63,3 +63,16 @@ void placer_carte(S_carte_construction tab[][LONG_MAX_JEU] , S_carte_constructio
     tab[x][y] = carte;
 
 }
+
+void supprimer_carte(S_carte_construction tab[], int n)
+{
+    tab[n].type = 0;
+    tab[n].valeur = 0 ;
+    for(int i = 0; i < NB_TUILE ; i++)
+    {
+        tab[n].tuile[i].type = 0;
+        tab[n].tuile[i].sous_type = 0;
+    }
+}
+
+
