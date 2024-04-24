@@ -16,7 +16,7 @@ int main()
 
     // test paul
 
-
+    /*
     S_joueur joueur;
     joueur.nb_selenite = 2;
     joueur.nb_tour_joueur = 0;    S_plateau plateau;
@@ -61,6 +61,7 @@ int main()
 
     }
     }
+    */
 
 
 
