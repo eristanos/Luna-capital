@@ -16,7 +16,7 @@ int main()
 
     // initialisation pour test
     S_joueur joueur;
-
+    joueur.nb_selenite = 2;
     for(int i = 0 ; i < LARG_MAX_JEU; i++)
     {
         for(int y = 0; y < LONG_MAX_JEU; y++)
@@ -33,12 +33,11 @@ int main()
         }
     }
     afficher_deck_joueurs(joueur);
-    int i = 0;
-    while(i == 0)
-        {
-        placer_carte(joueur.jeu, generateur_carte());
-        afficher_deck_joueurs(joueur);
-        }
+
+
+    placer_carte(&joueur, generateur_carte());
+    afficher_deck_joueurs(joueur);
+    printf("%d",joueur.jeu[0][0].valeur);
 
     system("pause");
 

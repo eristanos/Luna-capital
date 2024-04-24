@@ -48,18 +48,90 @@ int Saisie_coordonnees(int min , int max)
                 statut = 1;
             }
      }
-
     return (i-1);
-
+}
+int verif_emplacement(int x, int y, S_carte_construction tab[][LONG_MAX_JEU])
+{
+    if(tab[x][y].type == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        printf("case deja occupée");
+        return 0;
+    }
+}
+int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], int valeur_carte)
+{
+    for(int i = 0; i < x ; i++)
+    {
+        if(tab[i][y].type != 0)
+        {
+            if(tab[i][y].valeur >= x)
+            {
+                printf("trop grand");
+                return 0;
+            }
+        }
+    }
+    for(int i = LARG_MAX_JEU; i > x ; i--)
+    {
+        if(tab[i][y].type != 0)
+        {
+            if(tab[i][y].valeur <= x)
+            {
+                printf("trop petit");
+                return 0;
+            }
+        }
+    }
+    return 1;
 }
 
 
-void placer_carte(S_carte_construction tab[][LONG_MAX_JEU] , S_carte_construction carte)
+void placer_carte(S_joueur *joueur , S_carte_construction carte)
 {
-    printf("Saisir x : ");
-    int x = Saisie_coordonnees(0,LARG_MAX_JEU);
-    printf("Saisir y : ");
-    int y = Saisie_coordonnees(0,LONG_MAX_JEU);
-    tab[x][y] = carte;
+    int etat = 0;
+    carte.type = 1;
+    while(etat == 0)
+    {
+        printf("valeur = %d" , carte.valeur);
+        printf("Saisir x : ");
+        int x = Saisie_coordonnees(0,LARG_MAX_JEU);
+        printf("Saisir y : ");
+        int y = Saisie_coordonnees(0,LONG_MAX_JEU);
+        if(verif_emplacement(x,y,joueur->jeu) == 1)
+        {
+            int n = 0;
 
+            if(joueur->nb_selenite > 0)
+            {
+                printf("Voulez vous utilisez un selenite ?  ( 0 : NON, 1 : OUI )  : ");
+                scanf("%d" ,&n);
+                n = 1;
+            }
+            if(n == 1)
+            {
+                printf("nique le jeu");
+                joueur->jeu[x][y] = carte;
+                printf("joueur %d", joueur->jeu[x][y].valeur);
+                joueur->nb_selenite --;
+                etat = 1;
+                printf("placeeeee");
+
+            }
+            else
+            {
+                printf("vive les juifs");
+                if(verif_ordre_carte(x,y,joueur->jeu,carte.valeur) == 1)
+                {
+                    joueur->jeu[x][y] = carte;
+                    etat = 1;
+                    printf("placeeeee");
+
+                }
+            }
+        }
+    }
 }

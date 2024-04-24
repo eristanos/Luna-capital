@@ -56,7 +56,7 @@ void color (int couleurDuTexte, int couleurDuFond)
 
 void dessiner_carte_construction(int ligne, int colonne, S_carte_construction carte_construction)
 {
-    if(carte_construction.type != 0)
+    if(carte_construction.type != 0) // on ne dessiner que si la carte existe
     {
     // affichage fond de carte
     dessiner_rectangle(ligne,colonne,8,LON_CARTE, LAR_CARTE);

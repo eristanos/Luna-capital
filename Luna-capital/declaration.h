@@ -9,14 +9,13 @@
 #define NB_TYPE 2
 #define NB_TYPE_TUILE 8
 #define NB_TYPE_TUILE_CARTE 4
-#define NB_SOUS_TYPE_TUILE 6
+#define NB_SOUS_TYPE_TUILE 7
 
 #define LARG_MAX_JEU 8
 #define LONG_MAX_JEU 3
 
 #define LARG_WINDOWS 140
 #define LONG_WINDOWS 45
-
 
 //Constantes d'affichage
 #define LAR_CARTE 15
@@ -25,14 +24,11 @@
 #define MIL_CARTE_LAR 7
 #define MIL_CARTE_LON 5
 
-
-
 // pourcentage pour la génération des tuiles des cartes
 #define PART_METEORITE_CARTE 8
 #define PART_VITAUX_CARTE 15
 #define PART_VIDE_CARTE 70
 #define PART_ECHAFAUDAGE_CARTE 7
-
 
 // pourcentage pour la génération des tuiles
 #define PART_VITAUX_TUILE 30
