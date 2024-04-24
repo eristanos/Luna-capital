@@ -22,10 +22,10 @@ void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la)
 
 void positionner_curseur(int ligne, int colonne)
 {
-    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);//permet de déclarer la variable "hstdout" qui fait référénce à la console
-    COORD pos; // COORD est un type structuré défini dans la bibliothèque windows.h
-    pos.X=colonne;// numéro de la colonne
-    pos.Y=ligne;// numéro de la ligne
+    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);//permet de dï¿½clarer la variable "hstdout" qui fait rï¿½fï¿½rï¿½nce ï¿½ la console
+    COORD pos; // COORD est un type structurï¿½ dï¿½fini dans la bibliothï¿½que windows.h
+    pos.X=colonne;// numï¿½ro de la colonne
+    pos.Y=ligne;// numï¿½ro de la ligne
     SetConsoleCursorPosition(hStdout, pos);
 }
 
@@ -63,7 +63,7 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
         // affichage fond de carte
         dessiner_rectangle(ligne,colonne,8,LON_CARTE, LAR_CARTE);
 
-        // affichage numéro associé à la carte
+        // affichage numï¿½ro associï¿½ ï¿½ la carte
         positionner_curseur(ligne,colonne);
         color(15,8);
         printf("%d", carte_construction.valeur);
@@ -98,10 +98,10 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
 
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affichage des tuiles
 {
-    // on remet un fond pour supprimer les éventuels caractères présent
+    // on remet un fond pour supprimer les ï¿½ventuels caractï¿½res prï¿½sent
     dessiner_rectangle(ligne + 1, colonne , 8 , 4 , 7);
 
-    // on affiche la ligne de délimitation supérieur
+    // on affiche la ligne de dï¿½limitation supï¿½rieur
     color(15,8);
     positionner_curseur(ligne + 1,colonne);
     printf("%c%c%c", 196,196,217);
@@ -137,7 +137,7 @@ void dessiner_vitaux(int ligne, int colonne, int sous_type)
 
 void dessiner_meteorite(int ligne, int colonne)
 {
-    // affichage de la tuile météorite
+    // affichage de la tuile mï¿½tï¿½orite
     dessiner_rectangle(ligne + 2 , colonne + 2 , 0 , 1, 3);
     dessiner_rectangle(ligne + 3 , colonne + 1 , 0 , 1, 5);
     dessiner_rectangle(ligne + 4 , colonne + 2 , 0 , 1, 3);

@@ -18,7 +18,8 @@ int main()
 
 
     S_joueur joueur;
-    S_plateau plateau;
+    joueur.nb_selenite = 2;
+    joueur.nb_tour_joueur = 0;    S_plateau plateau;
     for(int i = 0; i < 4; i++)
     {
         joueur.deck_cartes[i].type = 0;

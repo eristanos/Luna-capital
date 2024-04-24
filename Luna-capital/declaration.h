@@ -136,6 +136,7 @@ typedef struct joueur
     S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU];           // jeu de cartes positionnées
     int nb_carte_jeu;
     int nb_carte_deck;
+    int nb_tour_joueur;
 
 }S_joueur;
 
