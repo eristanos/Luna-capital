@@ -17,7 +17,7 @@ void dessiner_vitaux(int ligne, int colonne , int sous_type);
 void dessiner_meteorite(int ligne, int colonne);
 
 // affichages principaux
-void afficher_deck_joueurs(S_joueur joueur);
+void afficher_jeu_joueur(S_joueur joueur);
 
 
 

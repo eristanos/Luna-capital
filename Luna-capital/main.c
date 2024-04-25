@@ -16,6 +16,26 @@ int main()
 
     // test paul
 
+    S_joueur joueur;
+    for(int i =0; i < MAX_ELEMENT; i++)
+    {
+        joueur.deck_tuiles[i] = generateur_tuile();
+    }
+    for(int x = 0 ; x < LARG_MAX_JEU; x++)
+    {
+        for(int y = 0; y < LONG_MAX_JEU; y++)
+        {
+            joueur.jeu[x][y] = generateur_carte();
+        }
+    }
+    int esfdf = 0;
+    while(esfdf == 0)
+    {
+        afficher_jeu_joueur(joueur);
+        placer_tuile(&joueur);
+
+    }
+
     /*
     S_joueur joueur;
     joueur.nb_selenite = 2;

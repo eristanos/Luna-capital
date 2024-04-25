@@ -8,7 +8,7 @@
 #define NB_TUILE 4
 #define VALEUR_NUM_MAX 10
 #define NB_TYPE 2
-#define NB_TYPE_TUILE 8
+#define NB_TYPE_TUILE 9
 #define NB_TYPE_TUILE_CARTE 4
 #define NB_SOUS_TYPE_TUILE 6
 #define TYPE_CONCESSION 3
@@ -33,6 +33,7 @@
 #define COMPLEXE 5
 #define TERRAIN 6
 #define ECHAFAUDAGE 7
+#define DEMOLITION 8
 //indicatif type concession
 #define C_ALIGNE 0
 #define C_COLONNE 1
@@ -80,7 +81,7 @@ typedef struct tuile
 {
      /*
     TYPE DE TUILE :
-    0 : Vide / démolition
+    0 : Vide
     1 : Vitaux
     2 : Météorite : que sur les cartes
     3 : Agence commerciale
@@ -88,6 +89,7 @@ typedef struct tuile
     5 : complexe résidentiel
     6 : terrain d'alunissage
     7 : échafaudage lunaire : que sur les cartes
+    8 : démolition
     */
 
     int type;
@@ -136,6 +138,7 @@ typedef struct joueur
     S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU];           // jeu de cartes positionnées
     int nb_carte_jeu;
     int nb_carte_deck;
+    int nb_tuile_deck;
     int nb_tour_joueur;
 
 }S_joueur;

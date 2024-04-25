@@ -23,7 +23,7 @@ S_carte_construction generateur_carte()
     for (int i = 0; i < NB_TUILE; i++)
     {
         // definition de la pondération
-        S_proba tab_pond[NB_TYPE_TUILE_CARTE] = {{0,PART_VIDE_CARTE},{1, PART_VITAUX_CARTE},{2, PART_METEORITE_CARTE},{7, PART_ECHAFAUDAGE_CARTE}};
+        S_proba tab_pond[NB_TYPE_TUILE_CARTE] = {{VIDE,PART_VIDE_CARTE},{VITAUX, PART_VITAUX_CARTE},{METEORITE, PART_METEORITE_CARTE},{ECHAFAUDAGE, PART_ECHAFAUDAGE_CARTE}};
         // Tirage aléatoire
         temp = rand() % 101;
         somme_ponderation = 0;
@@ -39,7 +39,7 @@ S_carte_construction generateur_carte()
         }
 
         // génération du sous type dans le cas des vitaux
-        if (carte.tuile[i].type == 1)
+        if (carte.tuile[i].type == VITAUX)
         {
             carte.tuile[i].sous_type = (rand() % NB_SOUS_TYPE_TUILE);
         }
@@ -53,7 +53,7 @@ S_tuile generateur_tuile()
 
     // definition de la pondération
 
-    S_proba tab_pond[NB_TYPE_TUILE] = {{0,PART_DEMOLITION_TUILE},{1, PART_VITAUX_TUILE},{2, PART_METEORITE_TUILE},{3,PART_AGENCE_COMMERCIALE_TUILE},{4,PART_MODULE_HABITATION},{5, PART_COMPLEXE_RESIDENTIEL_TUILE},{6, PART_TERRAIN_ALUNISAGE_TUILE},{7, PART_ECHAFAUDAGE_CARTE}};
+    S_proba tab_pond[NB_TYPE_TUILE] = {{DEMOLITION,PART_DEMOLITION_TUILE},{VITAUX, PART_VITAUX_TUILE},{METEORITE, PART_METEORITE_TUILE},{AGENCE,PART_AGENCE_COMMERCIALE_TUILE},{MODULE,PART_MODULE_HABITATION},{COMPLEXE, PART_COMPLEXE_RESIDENTIEL_TUILE},{TERRAIN, PART_TERRAIN_ALUNISAGE_TUILE},{ECHAFAUDAGE, PART_ECHAFAUDAGE_CARTE}};
     // Tirage aléatoire
 
     int temp = rand() % 101;

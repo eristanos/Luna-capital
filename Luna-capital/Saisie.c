@@ -2,6 +2,7 @@
 #include "declaration.h"
 #include "saisie.h"
 #include "declaration_cartes.h"
+#include "affichage.h"
 
 int  Saisie_Nb_Joueurs()
 {
@@ -59,7 +60,6 @@ int verif_emplacement(int x, int y, S_carte_construction tab[][LONG_MAX_JEU])
     }
     else
     {
-        printf("case deja occupée");
         return 0;
     }
 }
@@ -180,6 +180,12 @@ void placer_carte(S_joueur *joueur , S_carte_construction carte)
                 }
             }
         }
+        else if(verif_emplacement(x,y,joueur->jeu) == 0)
+        {
+            printf("case deja occupée");
+
+        }
+
     }
 }
 
@@ -202,7 +208,7 @@ void piocher_carte(S_plateau *plateau , S_joueur *joueur)
     int temp1;
     for(int i=0;i<NB_CARTE_CONSTRUCTION_DECK;i++)
     {
-        if(joueur->deck_cartes[i].type == 0)
+        if(joueur->deck_cartes[i].type == VIDE)
         {
             temp=i;
             i=NB_CARTE_CONSTRUCTION_DECK;
@@ -211,7 +217,7 @@ void piocher_carte(S_plateau *plateau , S_joueur *joueur)
     joueur->deck_cartes[temp]=plateau->cartes[n];
       for(int j=0;j<NB_TUILE;j++)
     {
-        if(joueur->deck_tuiles[j].type == 0)
+        if(joueur->deck_tuiles[j].type == VIDE)
         {
             temp1=j;
             j=NB_TUILE;
@@ -220,6 +226,90 @@ void piocher_carte(S_plateau *plateau , S_joueur *joueur)
     joueur->deck_tuiles[temp1]=plateau->tuiles[n];
     plateau->tuiles[n] = generateur_tuile();
     plateau->cartes[n] = generateur_carte();
+}
+int verif_vide_tuile(S_carte_construction carte, int pos)
+{
+    if(carte.tuile[pos].type == VIDE)
+    {
+        return 1;
+    }
+    else if(carte.tuile[pos].type == DEMOLITION)
+    {
+        return 1;
+    }
+    else if(carte.tuile[pos].type == ECHAFAUDAGE)
+    {
+        return 2;
+    }
+    else{
+        return 0;
+    }
+}
+
+
+void placer_tuile(S_joueur *joueur)
+{
+    int n = joueur ->nb_tuile_deck;
+    for(int i = 0; i < n; i++ )
+    {
+        int etat = 0;
+        while(etat == 0)
+        {
+            printf("placer tuile %d" , i+1);
+            printf("TYPE : %d\n" , joueur->deck_tuiles[i].type);
+            printf("SOUS TYPE : %d" ,joueur->deck_tuiles[i].sous_type);
+
+
+            // choix de la carte pour poser la tuile
+            printf("Choississez une carte : ");
+
+            printf("Saisir x : ");
+            int x = Saisie_coordonnees(0,LARG_MAX_JEU);
+            printf("Saisir y : ");
+            int y = Saisie_coordonnees(0,LONG_MAX_JEU);
+            if(verif_emplacement(x,y, joueur->jeu) == 0)
+            {
+                // choix de la tuile
+                printf("Saisir position de la tuile : \n");
+                int pos = Saisie_coordonnees(0 , NB_TUILE);
+
+                // vérification d'emplacement disponible
+                if (joueur->deck_tuiles[i].type == MODULE || joueur->deck_tuiles[i].type == COMPLEXE || joueur->deck_tuiles[i].type == TERRAIN)
+                {
+                    if(verif_vide_tuile(joueur->jeu[x][y] , pos) == 1 ||verif_vide_tuile(joueur->jeu[x][y] , pos) == 2)
+                    {
+                        printf("kim jong boum\n");
+                        joueur->jeu[x][y].tuile[pos] = joueur ->deck_tuiles[i];
+                        joueur ->deck_tuiles[i].type = 0;
+                        afficher_jeu_joueur(*joueur);
+                        etat = 1;
+                    }
+                    printf("jean paul franco\n");
+
+                }
+                else if(verif_vide_tuile(joueur->jeu[x][y] , pos) == 1)
+                    {
+                        printf("vive la shoah\n");
+                        joueur->jeu[x][y].tuile[pos] = joueur ->deck_tuiles[i];
+                        joueur ->deck_tuiles[i].type = 0;
+                        afficher_jeu_joueur(*joueur);
+
+                        etat = 1;
+                    }
+                else
+                {
+                    printf("case deja occupe\n");
+                }
+
+            }
+            else
+            {
+                printf("pas de carte ici \n");
+            }
+        }
+
+    }
+
 }
 
 
