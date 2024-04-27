@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1714045571 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
+1714233126 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -9,14 +9,13 @@
 	"declaration_cartes.h"
 	"saisie.h"
 
-1714034669 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
+1714235207 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
 
-1714044979 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
+1714230727 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
-1714044979 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
+1714237270 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
-	<time.h>
 	<windows.h>
 	"declaration.h"
 	"affichage.h"
@@ -30,11 +29,12 @@
 
 1713980101 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
 
-1714045324 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
+1714232243 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
 	<stdio.h>
 	"declaration.h"
 	"saisie.h"
 	"declaration_cartes.h"
+	"affichage.h"
 
 1714035813 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.h
 
@@ -76,4 +76,14 @@
 	"declaration.h"
 	"saisie.h"
 	"declaration_cartes.h"
+
+1714237321 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.c
+	<stdio.h>
+	<stdlib.h>
+	"jeux.h"
+	"declaration_cartes.h"
+	"Saisie.h"
+
+1714233089 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.h
+	"declaration.h"
 

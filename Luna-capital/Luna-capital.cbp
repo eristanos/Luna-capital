@@ -46,6 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="declaration_cartes.h" />
+		<Unit filename="jeux.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="jeux.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

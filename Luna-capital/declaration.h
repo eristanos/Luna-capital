@@ -1,9 +1,8 @@
 #ifndef DECLARATION_H_INCLUDED
 #define DECLARATION_H_INCLUDED
 
-#define NB_CARTE_CONSTRUCTION_DECK 10
 #define NB_CARTE_JEU 4
-#define MAX_ELEMENT 8
+#define MAX_ELEMENT 10
 #define NB_CHAR 30
 #define NB_TUILE 4
 #define VALEUR_NUM_MAX 10
@@ -12,9 +11,15 @@
 #define NB_TYPE_TUILE_CARTE 4
 #define NB_SOUS_TYPE_TUILE 6
 #define TYPE_CONCESSION 3
+#define ZONE_ECRITURE_HAUT 6
+#define ZONE_ECRITURE_GAUCHE 129
+
 
 #define LARG_MAX_JEU 8
 #define LONG_MAX_JEU 3
+
+#define LARG_MENU 27
+#define LONG_MENU 40
 
 //indicatif SOUS TYPE
 #define CONDENSEUR_EAU 1
@@ -130,7 +135,7 @@ typedef struct plateau S_plateau;
 
 typedef struct joueur
 {
-    S_carte_construction  deck_cartes[NB_CARTE_CONSTRUCTION_DECK];  // deck de cartes à poser du joueur
+    S_carte_construction  deck_cartes[MAX_ELEMENT];  // deck de cartes à poser du joueur
     S_tuile deck_tuiles[MAX_ELEMENT];                               // deck de tuile à poser du joueur
     int sponsor;                                                    // sponsor/ couleur du joueur
     char nom[NB_CHAR];                                              // nom équipe

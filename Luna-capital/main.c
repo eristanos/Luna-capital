@@ -6,6 +6,7 @@
 #include "affichage.h"
 #include "declaration_cartes.h"
 #include "saisie.h"
+#include "jeux.h"
 
 
 
@@ -16,6 +17,8 @@ int main()
 
     // test paul
 
+
+    /*
     S_joueur joueur;
     for(int i =0; i < MAX_ELEMENT; i++)
     {
@@ -32,11 +35,12 @@ int main()
     while(esfdf == 0)
     {
         afficher_jeu_joueur(joueur);
+        afficher_menu(joueur);
         placer_tuile(&joueur);
 
     }
 
-    /*
+
     S_joueur joueur;
     joueur.nb_selenite = 2;
     joueur.nb_tour_joueur = 0;    S_plateau plateau;
@@ -82,6 +86,14 @@ int main()
     }
     }
     */
+
+
+    // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
+    int nb_joueur = Saisie_Nb_Joueurs();
+    S_joueur joueurs[nb_joueur];
+    S_plateau plateau;
+    initialiser_jeu(joueurs , &plateau , nb_joueur);
+    afficher_menu(joueurs[0]);
 
 
 

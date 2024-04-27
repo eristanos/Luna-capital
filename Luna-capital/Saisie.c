@@ -206,12 +206,12 @@ void piocher_carte(S_plateau *plateau , S_joueur *joueur)
     int n = Saisie_coordonnees(0,NB_CARTE_JEU);
     int temp;
     int temp1;
-    for(int i=0;i<NB_CARTE_CONSTRUCTION_DECK;i++)
+    for(int i=0;i<MAX_ELEMENT ;i++)
     {
         if(joueur->deck_cartes[i].type == VIDE)
         {
             temp=i;
-            i=NB_CARTE_CONSTRUCTION_DECK;
+            i=MAX_ELEMENT;
         }
     }
     joueur->deck_cartes[temp]=plateau->cartes[n];

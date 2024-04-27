@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <windows.h>
 
 #include "declaration.h"
@@ -165,6 +164,49 @@ void afficher_jeu_joueur(S_joueur joueur)
         positionner_curseur(i,LARG_MAX_JEU*LAR_CARTE + 8);
         printf("%c" , 179);
     }
+
+}
+
+
+void afficher_menu(S_joueur joueur)
+{
+
+    color(15, 0);
+
+    for(int i = 0; i < LONG_MAX_JEU * LON_CARTE + 4; i ++)
+    {
+        positionner_curseur(i,LARG_MAX_JEU*LAR_CARTE + 8);
+        printf("%c" , 179);
+    }
+
+
+    dessiner_rectangle(0 , ZONE_ECRITURE_GAUCHE, 0 , LONG_MENU , LARG_MENU);
+    positionner_curseur(0 ,ZONE_ECRITURE_GAUCHE);
+    printf("    INFORMATION");
+    positionner_curseur(2 ,ZONE_ECRITURE_GAUCHE);
+    printf("Joueur : %s" , joueur.nom);
+    positionner_curseur(3,ZONE_ECRITURE_GAUCHE);
+    printf("Sponsor : %d " , joueur.sponsor);
+    positionner_curseur(4,ZONE_ECRITURE_GAUCHE);
+    printf("Tour de jeu : %d" , joueur.nb_tour_joueur);
+    positionner_curseur(5 ,ZONE_ECRITURE_GAUCHE);
+    printf("Selenites : %d" , joueur.nb_selenite);
+
+
+
+}
+
+int choix_actions()
+{
+    positionner_curseur(ZONE_ECRITURE_HAUT,ZONE_ECRITURE_GAUCHE);
+    printf("VEILLEZ CHOISIR : ");
+    positionner_curseur(ZONE_ECRITURE_HAUT + 1,ZONE_ECRITURE_GAUCHE);
+    printf("1 : Voir le jeu");
+    printf("2 : Voir les decks");
+
+
+
+
 
 }
 
