@@ -15,7 +15,7 @@ typedef struct proba
 S_carte_construction generateur_carte()
 {
     S_carte_construction carte;
-    carte.type = (rand() % NB_TYPE) + 1;
+    carte.type = 1;
     carte.valeur = (rand() % VALEUR_NUM_MAX) + 1;
     int temp = 0;
     int somme_ponderation;

@@ -1,4 +1,4 @@
-#include <stdio.h>
+  #include <stdio.h>
 #include <stdlib.h>
 #include "jeux.h"
 #include "declaration_cartes.h"
@@ -9,12 +9,11 @@ void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
 {
     printf("initialisation");
     // on demande les noms des différents joueurs : le premier à saisir commencera
-    Saisie_Noms_Joueurs(tab_joueur , nb_joueur);
-    affectation_sponsor(tab_joueur , nb_joueur);
+    //Saisie_Noms_Joueurs(tab_joueur , nb_joueur);
+    //affectation_sponsor(tab_joueur , nb_joueur);
     // on supprime les éventuels donnéees de la mémoire
     for(int i = 0; i < nb_joueur ; i++)
     {
-        tab_joueur[i].nb_carte_deck = 0;
         tab_joueur[i].nb_carte_jeu = 0;
         tab_joueur[i].nb_selenite = 0;
         tab_joueur[i].nb_tour_joueur = 0;
@@ -38,6 +37,7 @@ void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
             if(n < 3)
             {
                 tab_joueur[i].deck_cartes[n] = generateur_carte();
+                tab_joueur[i].nb_carte_deck ++;
             }
             else
             {
@@ -54,8 +54,11 @@ void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
             tab_joueur[i].deck_tuiles[n].sous_type = 0;
 
         }
-
-
+        for(int i =0 ; i < NB_CARTE_JEU ; i++)
+        {
+            plateau->cartes[i] = generateur_carte();
+            plateau->tuiles[i] = generateur_tuile();
+        }
     }
 
 }
