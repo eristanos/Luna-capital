@@ -7,7 +7,7 @@
 #include "declaration_cartes.h"
 #include "saisie.h"
 #include "jeux.h"
-
+#include "verification.h"
 
 
 int main()
@@ -15,8 +15,8 @@ int main()
     srand(time(NULL)); // permet d'initialsier le générateur pseudo aléatoire doit se faire qu'un seule fois au début d'un programme si vous utiliser la fonction rand()
     plein_ecran();
 
-    // test paul
 
+    // test paul
 
 
     int nb_joueur = Saisie_Nb_Joueurs();
@@ -105,6 +105,31 @@ int main()
 
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
     */
+
+    */
+     S_joueur joueur[2];
+     S_plateau plateau;
+     initialiser_jeu(&joueur, &plateau,2);
+     for(int x = 0; x < LARG_MAX_JEU ; x++ )
+        {
+            for(int y = 0; y < LONG_MAX_JEU ; y++)
+            {
+                int temp = rand() % 2;
+                if(temp==0)
+                {
+                    joueur[0].jeu[x][y] = generateur_carte();
+                }
+
+            }
+    }
+     afficher_jeu_joueur(joueur[0]);
+     positionner_curseur(50,50);
+     color(2,5);
+     printf( "ici----------%d-----------------ici", calcul_nb_construction(joueur[0].jeu));
+
+
+    // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
+
    /*
     int nb_joueur = Saisie_Nb_Joueurs();
     S_joueur joueurs[nb_joueur];
@@ -112,6 +137,8 @@ int main()
     initialiser_jeu(joueurs , &plateau , nb_joueur);
     afficher_menu(joueurs[0]);
     */
+
+
 
 
     // affichage du message de fermeture de fenêtre

@@ -364,5 +364,3 @@ void placer_tuile(S_joueur *joueur)
     }
 
 }
-
-
