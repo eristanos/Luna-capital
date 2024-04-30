@@ -44,12 +44,15 @@ int Saisie_coordonnees(int min , int max)
 
     while(statut == 0)
      {
+        positionner_curseur(ZONE_ECRITURE_HAUT + 5,ZONE_ECRITURE_GAUCHE);
+
         scanf("%d", &i);
         if(i > min && i <= max)
             {
                 statut = 1;
             }
      }
+     dessiner_rectangle(ZONE_ECRITURE_HAUT + 5,ZONE_ECRITURE_GAUCHE, 0 , LONG_MENU , 1);
     return (i-1);
 }
 int verif_emplacement(int x, int y, S_carte_construction tab[][LONG_MAX_JEU])
@@ -71,6 +74,7 @@ int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], in
         {
             if(tab[i][y].valeur >= valeur_carte)
             {
+                positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
                 printf("trop grand\n");
                 return 0;
             }
@@ -82,6 +86,7 @@ int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], in
         {
             if(tab[i][y].valeur <= valeur_carte)
             {
+                positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
                 printf("trop petit\n");
                 return 0;
             }
@@ -94,6 +99,7 @@ int verif_adjacent(int x, int y, S_carte_construction tab[][LONG_MAX_JEU])
 {
     int i =0;
     // verif haut
+
     if(y > 0)
     {
         if(tab[x][y-1].type == 1)
@@ -103,6 +109,7 @@ int verif_adjacent(int x, int y, S_carte_construction tab[][LONG_MAX_JEU])
     }
 
     // verif bas
+
     if(y < LONG_MAX_JEU-1)
     {
         if(tab[x][y+1].type == 1)
@@ -112,6 +119,7 @@ int verif_adjacent(int x, int y, S_carte_construction tab[][LONG_MAX_JEU])
     }
 
     // verif gauche
+
     if(x > 0)
     {
         if(tab[x - 1][y].type == 1)
@@ -131,31 +139,58 @@ int verif_adjacent(int x, int y, S_carte_construction tab[][LONG_MAX_JEU])
     }
     if(i == 0)
     {
-        printf("non adjacent");
+
+        positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
+
+        printf("non adjacent       ");
     }
     return(i);
 }
 
 
 
-void placer_carte(S_joueur *joueur , S_carte_construction carte)
+void placer_carte(S_joueur *joueur)
 {
     int etat = 0;
-    carte.type = 1;
+    // on choisit une carte
+    afficher_menu(*joueur);
+    afficher_deck_joueur(*joueur);
+    color(15,0);
+    positionner_curseur(ZONE_ECRITURE_HAUT, ZONE_ECRITURE_GAUCHE);
+    printf("Prenez une carte :");
+    int n;
+    do
+    {
+        positionner_curseur(ZONE_ECRITURE_HAUT + 1,ZONE_ECRITURE_GAUCHE);
+        scanf("%d" , &n);
+    }while((n < 0) && (n > MAX_ELEMENT+1 && joueur->deck_cartes[n-1].type ==0 ));
+
+    S_carte_construction carte = joueur->deck_cartes[n-1];
+    joueur->deck_cartes[n-1].type = 0;
+    afficher_menu(*joueur);
+
+    // on place la carte
     while(etat == 0)
     {
+        afficher_jeu_joueur(*joueur);
+        positionner_curseur(ZONE_ECRITURE_HAUT + 1,ZONE_ECRITURE_GAUCHE);
+
         printf("valeur = %d" , carte.valeur);
+        positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
+
         printf("Saisir x : ");
         int x = Saisie_coordonnees(0,LARG_MAX_JEU);
+        positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
         printf("Saisir y : ");
         int y = Saisie_coordonnees(0,LONG_MAX_JEU);
         if(verif_emplacement(x,y,joueur->jeu) == 1 && (verif_adjacent(x,y,joueur->jeu) == 1 || joueur->nb_tour_joueur == 0))
         {
             int n = 0;
-
+            afficher_menu(*joueur);
             if(joueur->nb_selenite > 0)
             {
-                printf("Voulez vous utilisez un selenite ?  ( 0 : NON, 1 : OUI )  : ");
+                positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
+                printf("utilisez un selenite ? 0 : non, 1 : oui ");
                 scanf("%d" ,&n);
 
             }
@@ -182,11 +217,13 @@ void placer_carte(S_joueur *joueur , S_carte_construction carte)
         }
         else if(verif_emplacement(x,y,joueur->jeu) == 0)
         {
+            positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
             printf("case deja occupée");
 
         }
 
     }
+    afficher_jeu_joueur(*joueur);
 }
 
 void supprimer_carte(S_carte_construction tab[], int n)
@@ -202,6 +239,8 @@ void supprimer_carte(S_carte_construction tab[], int n)
 
 void piocher_carte(S_plateau *plateau , S_joueur *joueur)
 {
+    afficher_menu(*joueur);
+    positionner_curseur(ZONE_ECRITURE_HAUT ,ZONE_ECRITURE_GAUCHE);
     printf("Quelle carte voulez vous piocher : \n");
     int n = Saisie_coordonnees(0,NB_CARTE_JEU);
     int temp;
@@ -249,28 +288,43 @@ int verif_vide_tuile(S_carte_construction carte, int pos)
 
 void placer_tuile(S_joueur *joueur)
 {
+    afficher_deck_joueur(*joueur);
     int n = joueur ->nb_tuile_deck;
     for(int i = 0; i < n; i++ )
     {
         int etat = 0;
         while(etat == 0)
         {
+            positionner_curseur(ZONE_ECRITURE_HAUT,ZONE_ECRITURE_GAUCHE);
             printf("placer tuile %d" , i+1);
-            printf("TYPE : %d\n" , joueur->deck_tuiles[i].type);
+
+            positionner_curseur(ZONE_ECRITURE_HAUT + 1,ZONE_ECRITURE_GAUCHE);
+            printf("TYPE : %d" , joueur->deck_tuiles[i].type);
+
+            positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
             printf("SOUS TYPE : %d" ,joueur->deck_tuiles[i].sous_type);
 
 
             // choix de la carte pour poser la tuile
+            positionner_curseur(ZONE_ECRITURE_HAUT + 3,ZONE_ECRITURE_GAUCHE);
             printf("Choississez une carte : ");
+            afficher_jeu_joueur(*joueur);
 
+            positionner_curseur(ZONE_ECRITURE_HAUT + 4,ZONE_ECRITURE_GAUCHE);
             printf("Saisir x : ");
             int x = Saisie_coordonnees(0,LARG_MAX_JEU);
+
+            positionner_curseur(ZONE_ECRITURE_HAUT + 4,ZONE_ECRITURE_GAUCHE);
             printf("Saisir y : ");
             int y = Saisie_coordonnees(0,LONG_MAX_JEU);
+
+
             if(verif_emplacement(x,y, joueur->jeu) == 0)
             {
+                afficher_menu(*joueur);
                 // choix de la tuile
-                printf("Saisir position de la tuile : \n");
+                positionner_curseur(ZONE_ECRITURE_HAUT,ZONE_ECRITURE_GAUCHE);
+                printf("Saisir position de la tuile : ");
                 int pos = Saisie_coordonnees(0 , NB_TUILE);
 
                 // vérification d'emplacement disponible
@@ -278,18 +332,15 @@ void placer_tuile(S_joueur *joueur)
                 {
                     if(verif_vide_tuile(joueur->jeu[x][y] , pos) == 1 ||verif_vide_tuile(joueur->jeu[x][y] , pos) == 2)
                     {
-                        printf("kim jong boum\n");
                         joueur->jeu[x][y].tuile[pos] = joueur ->deck_tuiles[i];
                         joueur ->deck_tuiles[i].type = 0;
                         afficher_jeu_joueur(*joueur);
                         etat = 1;
                     }
-                    printf("jean paul franco\n");
 
                 }
                 else if(verif_vide_tuile(joueur->jeu[x][y] , pos) == 1)
                     {
-                        printf("vive la shoah\n");
                         joueur->jeu[x][y].tuile[pos] = joueur ->deck_tuiles[i];
                         joueur ->deck_tuiles[i].type = 0;
                         afficher_jeu_joueur(*joueur);
@@ -298,13 +349,15 @@ void placer_tuile(S_joueur *joueur)
                     }
                 else
                 {
-                    printf("case deja occupe\n");
+                    positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
+                    printf("case deja occupe");
                 }
 
             }
             else
             {
-                printf("pas de carte ici \n");
+                positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
+                printf("pas de carte ici ");
             }
         }
 

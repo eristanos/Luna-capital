@@ -18,8 +18,10 @@ void dessiner_meteorite(int ligne, int colonne);
 
 // affichages principaux
 void afficher_jeu_joueur(S_joueur joueur);
+void afficher_plateau(S_plateau plateau);
 void afficher_menu(S_joueur joueur);
-int choix_actions();
+void choix_actions(S_joueur *joueur, S_plateau *plateau);
+void afficher_deck_joueur(S_joueur joueur);
 
 
 

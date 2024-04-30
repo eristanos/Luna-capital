@@ -4,6 +4,7 @@
 
 #include "declaration.h"
 #include "affichage.h"
+#include "Saisie.h"
 
 void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la)
 {
@@ -92,6 +93,7 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
         dessiner_tuile(ligne,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[1]);
         dessiner_tuile(ligne + MIL_CARTE_LON ,colonne,carte_construction.tuile[2]);
         dessiner_tuile(ligne + MIL_CARTE_LON ,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[3]);
+        color(15,0);
     }
 }
 
@@ -145,7 +147,7 @@ void dessiner_meteorite(int ligne, int colonne)
 
 void afficher_jeu_joueur(S_joueur joueur)
 {
-    dessiner_rectangle(0,0,0,LONG_WINDOWS , LARG_WINDOWS);
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE ,LARG_MAX_JEU*LAR_CARTE);
     for(int i = 0 ; i < LARG_MAX_JEU; i++)
     {
         for(int y = 0; y < LONG_MAX_JEU; y++)
@@ -153,17 +155,10 @@ void afficher_jeu_joueur(S_joueur joueur)
             if(joueur.jeu[i][y].type != 0)
             {
                 dessiner_carte_construction( y * LON_CARTE + y + 1, i * LAR_CARTE + i ,joueur.jeu[i][y]);
-
             }
         }
     }
-    color(15, 0);
 
-    for(int i = 0; i < LONG_MAX_JEU * LON_CARTE + 4; i ++)
-    {
-        positionner_curseur(i,LARG_MAX_JEU*LAR_CARTE + 8);
-        printf("%c" , 179);
-    }
 
 }
 
@@ -195,18 +190,91 @@ void afficher_menu(S_joueur joueur)
 
 
 }
-
-int choix_actions()
+void afficher_plateau(S_plateau plateau)
 {
-    positionner_curseur(ZONE_ECRITURE_HAUT,ZONE_ECRITURE_GAUCHE);
-    printf("VEILLEZ CHOISIR : ");
-    positionner_curseur(ZONE_ECRITURE_HAUT + 1,ZONE_ECRITURE_GAUCHE);
-    printf("1 : Voir le jeu");
-    printf("2 : Voir les decks");
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE ,LARG_MAX_JEU*LAR_CARTE);
+    for(int i = 0 ; i < NB_CARTE_JEU; i++)
+    {
+        dessiner_carte_construction( 0 , i * LAR_CARTE + i + 1 , plateau.cartes[i]);
+        dessiner_tuile(LON_CARTE + 3 , i * LAR_CARTE + i + 1 , plateau.tuiles[i]);
+        positionner_curseur(LON_CARTE +9 ,i * LAR_CARTE + i + 1);
+
+    }
+}
+
+void afficher_deck_joueur(S_joueur joueur)
+{
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE+8 ,LARG_MAX_JEU*LAR_CARTE+8);
+    for(int i = 0 ; i < MAX_ELEMENT; i++)
+    {
+        if(joueur.deck_cartes[i].type == 1)
+        {
+            dessiner_carte_construction( 0 , i * LAR_CARTE + i + 1 , joueur.deck_cartes[i]);
+            positionner_curseur(LON_CARTE +9 ,i * LAR_CARTE + i + 1);
+            printf("%d" , i+1);
+        }
+        if(joueur.deck_tuiles[i].type != 0)
+        {
+            dessiner_tuile(LON_CARTE + 3 , i * LAR_CARTE + i + 1 , joueur.deck_tuiles[i]);
+            positionner_curseur(LON_CARTE +9 ,i * LAR_CARTE + i + 1);
+            printf("%d" , i+1);
+        }
+    }
+}
 
 
+void choix_actions(S_joueur *joueur, S_plateau *plateau)
+{
+    afficher_menu(*joueur);
+    int etat = 0;
+    do
+    {
+        //afficher_menu(*joueur)
+        positionner_curseur(ZONE_ECRITURE_HAUT, ZONE_ECRITURE_GAUCHE);
+        printf("ACTIONS : ");
+        positionner_curseur(ZONE_ECRITURE_HAUT + 1,ZONE_ECRITURE_GAUCHE);
+        printf("1 : Voir le jeu");
+        positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
+        printf("2 : Voir les decks");
+        positionner_curseur(ZONE_ECRITURE_HAUT + 3,ZONE_ECRITURE_GAUCHE);
+        printf("3 : Voir les concessions");
+        positionner_curseur(ZONE_ECRITURE_HAUT + 4,ZONE_ECRITURE_GAUCHE);
+        printf("4 : placer une carte");
+        positionner_curseur(ZONE_ECRITURE_HAUT + 5,ZONE_ECRITURE_GAUCHE);
+        printf("5 : placer une tuile");
+        positionner_curseur(ZONE_ECRITURE_HAUT + 6,ZONE_ECRITURE_GAUCHE);
+        printf("CHOIX :");
+        int choix;
+        scanf("%d" ,&choix);
+        positionner_curseur(ZONE_ECRITURE_HAUT + 7,ZONE_ECRITURE_GAUCHE);
 
-
+        switch(choix)
+        {
+        case 1:
+            afficher_jeu_joueur(*joueur);
+            etat = 1;
+            break;
+        case 2:
+            afficher_deck_joueur(*joueur);
+            etat = 1;
+            break;
+        case 3:
+            printf("TOUJOURS PAS IMPLEMENTER BANDE DE CHOMEUR FAUT SE BOUGER LE CUL");
+            etat = 1;
+            break;
+        case 4:
+            placer_carte(&(*joueur));
+            etat = 1;
+            break;
+        case 5:
+            placer_tuile(&(*joueur));
+            etat = 1;
+            break;
+        default :
+            printf("valeur invalide");
+            break;
+        }
+    }while(etat ==0);
 
 }
 

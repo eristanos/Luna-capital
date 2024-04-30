@@ -18,27 +18,42 @@ int main()
 
     // test paul
 
-    /*
-    S_joueur joueur;
-    for(int i =0; i < MAX_ELEMENT; i++)
+
+    int nb_joueur = Saisie_Nb_Joueurs();
+    S_joueur joueurs[nb_joueur];
+    S_plateau plateau;
+    initialiser_jeu(joueurs , &plateau , nb_joueur);
+
+
+    for(int i =0; i < 3; i++)
     {
-        joueur.deck_tuiles[i] = generateur_tuile();
+        joueurs[0].deck_tuiles[i] = generateur_tuile();
+        joueurs[0].nb_tuile_deck++;
     }
+    for(int i = 3; i < 10 ; i++)
+    {
+        joueurs[0].deck_tuiles[i].type = 0;
+
+    }
+
+    /*
     for(int x = 0 ; x < LARG_MAX_JEU; x++)
     {
         for(int y = 0; y < LONG_MAX_JEU; y++)
         {
-            joueur.jeu[x][y] = generateur_carte();
+            joueurs[0].jeu[x][y] = generateur_carte();
         }
     }
+    */
     int esfdf = 0;
+    joueurs[0].nb_tuile_deck = 3;
     while(esfdf == 0)
     {
-        afficher_jeu_joueur(joueur);
-        afficher_menu(joueur);
-        placer_tuile(&joueur);
+        choix_actions(&joueurs[0] , &plateau);
 
     }
+
+    /*
 
 
     S_joueur joueur;
@@ -85,6 +100,12 @@ int main()
 
     }
     }
+
+
+
+    // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
+    */
+
     */
      S_joueur joueur[2];
      S_plateau plateau;
@@ -108,13 +129,16 @@ int main()
 
 
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
+
    /*
     int nb_joueur = Saisie_Nb_Joueurs();
     S_joueur joueurs[nb_joueur];
     S_plateau plateau;
     initialiser_jeu(joueurs , &plateau , nb_joueur);
     afficher_menu(joueurs[0]);
-*/
+    */
+
+
 
 
     // affichage du message de fermeture de fenêtre
