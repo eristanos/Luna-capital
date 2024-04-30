@@ -74,6 +74,7 @@ int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], in
         {
             if(tab[i][y].valeur >= valeur_carte)
             {
+                positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
                 printf("trop grand\n");
                 return 0;
             }
@@ -85,6 +86,7 @@ int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], in
         {
             if(tab[i][y].valeur <= valeur_carte)
             {
+                positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
                 printf("trop petit\n");
                 return 0;
             }
@@ -165,11 +167,11 @@ void placer_carte(S_joueur *joueur)
 
     S_carte_construction carte = joueur->deck_cartes[n-1];
     joueur->deck_cartes[n-1].type = 0;
+    afficher_menu(*joueur);
 
     // on place la carte
     while(etat == 0)
     {
-        afficher_menu(*joueur);
         afficher_jeu_joueur(*joueur);
         positionner_curseur(ZONE_ECRITURE_HAUT + 1,ZONE_ECRITURE_GAUCHE);
 
@@ -293,7 +295,6 @@ void placer_tuile(S_joueur *joueur)
         int etat = 0;
         while(etat == 0)
         {
-            afficher_menu(*joueur);
             positionner_curseur(ZONE_ECRITURE_HAUT,ZONE_ECRITURE_GAUCHE);
             printf("placer tuile %d" , i+1);
 

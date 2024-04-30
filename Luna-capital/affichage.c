@@ -93,6 +93,7 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
         dessiner_tuile(ligne,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[1]);
         dessiner_tuile(ligne + MIL_CARTE_LON ,colonne,carte_construction.tuile[2]);
         dessiner_tuile(ligne + MIL_CARTE_LON ,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[3]);
+        color(15,0);
     }
 }
 
