@@ -1,8 +1,10 @@
-  #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "jeux.h"
 #include "declaration_cartes.h"
 #include "Saisie.h"
+#include "affichage.h"
+#include "declaration_cartes.h"
 
 
 void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
@@ -57,8 +59,28 @@ void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
         for(int i =0 ; i < NB_CARTE_JEU ; i++)
         {
             plateau->cartes[i] = generateur_carte();
-            plateau->tuiles[i] = generateur_tuile();
+            for(int y = 0 ; y < NB_TUILE ; y++)
+            {
+                if(y == 0 || y ==1)
+                {
+                    plateau->tuiles[i][y] = generateur_tuile();
+                }
+                else
+                {
+                    plateau->tuiles[i][y] = generateur_tuile();
+                   // plateau->tuiles[i][y].type = PAS_TUILE;
+                }
+            }
         }
     }
+}
+
+void tour_jeu(S_joueur *joueur , S_plateau *plateau)
+{
+    afficher_plateau(*plateau);
+    afficher_menu(*joueur);
+    piocher_carte(&(*plateau) , &(*joueur));
+    placer_carte(&(*joueur));
+    choix_actions(&(*joueur) , &(*plateau));
 
 }
