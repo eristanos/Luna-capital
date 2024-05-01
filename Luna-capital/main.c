@@ -106,9 +106,9 @@ int main()
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
     */
 
-    */
+    /*
      S_joueur joueur[2];
-     S_plateau plateau;
+
      initialiser_jeu(&joueur, &plateau,2);
      for(int x = 0; x < LARG_MAX_JEU ; x++ )
         {
@@ -127,7 +127,7 @@ int main()
      color(2,5);
      printf( "ici----------%d-----------------ici", calcul_nb_construction(joueur[0].jeu));
 
-
+    */
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
 
    /*

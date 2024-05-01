@@ -118,11 +118,26 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affic
         case 0:
             break;
 
-        case 1 :
+        case VITAUX :
             dessiner_vitaux(ligne,colonne,tuile.sous_type);
             break;
-        case 2 :
+        case METEORITE :
             dessiner_meteorite(ligne,colonne);
+            break;
+        case AGENCE :
+            dessiner_agence_commercial(ligne,colonne);
+            break;
+        case MODULE :
+            dessiner_module_habitation(ligne,colonne,tuile.sous_type);
+            break;
+        case ECHAFAUDAGE :
+            dessiner_echafaudage(ligne,colonne);
+            break;
+        case  COMPLEXE :
+            dessiner_complexe_residentiel(ligne,colonne);
+            break;
+        case TERRAIN :
+            dessiner_terrain_alunissage(ligne,colonne);
             break;
         default :
             break;
@@ -138,10 +153,50 @@ void dessiner_vitaux(int ligne, int colonne, int sous_type)
 
 void dessiner_meteorite(int ligne, int colonne)
 {
-    // affichage de la tuile m�t�orite
+    // affichage de la tuile meteorite
     dessiner_rectangle(ligne + 2 , colonne + 2 , 0 , 1, 3);
     dessiner_rectangle(ligne + 3 , colonne + 1 , 0 , 1, 5);
     dessiner_rectangle(ligne + 4 , colonne + 2 , 0 , 1, 3);
+}
+void dessiner_agence_commercial(int ligne, int colonne)
+{
+    // affichage de la tuile agence commerciale
+    dessiner_rectangle(ligne + 2, colonne +4 ,14 , 1, 1);
+    dessiner_rectangle(ligne + 3, colonne +1 , 14, 1 ,4);
+    dessiner_rectangle(ligne + 3, colonne +1 , 14, 1 ,4);
+}
+
+void dessiner_module_habitation(int ligne, int colonne, int sous_type)
+{
+    //affichage de la tuile module habitation
+    dessiner_rectangle(ligne + 1, colonne +3 ,14 , 1, 1);
+    dessiner_rectangle(ligne + 2, colonne +2 ,14 , 1, 3);
+    dessiner_rectangle(ligne + 3, colonne +1 ,14 , 2, 5);
+    dessiner_rectangle(ligne + 3, colonne +2 , sous_type, 1, 3);
+}
+
+void dessiner_echafaudage(int ligne, int colonne)
+{
+    //affichage de l'echafaudage lunaire
+    dessiner_rectangle(ligne + 2, colonne + 2, 7, 1, 3);
+    dessiner_rectangle(ligne + 3,colonne + 1,15, 2, 2);
+    dessiner_rectangle(ligne + 3, colonne + 4, 0, 2,1);
+}
+void dessiner_complexe_residentiel(int ligne, int colonne)
+{
+    //affichage du complexe residentiel
+    dessiner_rectangle(ligne +1,colonne + 3, 4, 1, 2);
+    dessiner_rectangle(ligne +2,colonne + 3, 9, 3, 2);
+    dessiner_rectangle(ligne +4,colonne + 2, 7, 1, 1);
+    dessiner_rectangle(ligne +4, colonne + 5, 7 , 1, 1);
+}
+void dessiner_terrain_alunissage(int ligne, int colonne)
+{
+    //affichage du terrain d'alunissage
+    dessiner_rectangle(ligne + 2, colonne + 1, 9, 1, 3);
+    dessiner_rectangle(ligne + 3, colonne + 2, 3, 2, 1);
+    dessiner_rectangle(ligne +4, colonne + 4, 0, 1, 1);
+    dessiner_rectangle(ligne +2, colonne +6, 9, 3, 1);
 }
 
 
