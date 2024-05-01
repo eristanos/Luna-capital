@@ -15,6 +15,11 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile);
 // design des tuiles
 void dessiner_vitaux(int ligne, int colonne , int sous_type);
 void dessiner_meteorite(int ligne, int colonne);
+void dessiner_agence_commercial(int ligne, int colonne);
+void dessiner_module_habitation(int ligne, int colonne, int sous_type);
+void dessiner_echafaudage(int ligne, int colonne);
+void dessiner_complexe_residentiel(int ligne, int colonne);
+void dessiner_terrain_alunissage(int ligne, int colonne);
 
 // affichages principaux
 void afficher_jeu_joueur(S_joueur joueur);
