@@ -30,6 +30,7 @@
 #define SERRE_3 6
 #define TOUTE_SERRE 7
 //indicatif tuile
+#define PAS_TUILE -1
 #define VIDE 0
 #define VITAUX 1
 #define METEORITE 2
@@ -128,7 +129,7 @@ typedef struct concession S_concession;
 
 struct plateau
 {
-    S_tuile tuiles[NB_TUILE];
+    S_tuile tuiles[NB_CARTE_JEU][NB_TUILE];
     S_carte_construction cartes[NB_CARTE_JEU];
 };
 typedef struct plateau S_plateau;

@@ -99,33 +99,38 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
 
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affichage des tuiles
 {
-    // on remet un fond pour supprimer les �ventuels caract�res pr�sent
-    dessiner_rectangle(ligne + 1, colonne , 8 , 4 , 7);
-
-    // on affiche la ligne de d�limitation sup�rieur
-    color(15,8);
-    positionner_curseur(ligne + 1,colonne);
-    printf("%c%c%c", 196,196,217);
-    positionner_curseur(ligne,colonne +2);
-    printf("%c" , 218);
-    for(int i = 3; i < MIL_CARTE_LAR; i++)
+    if(tuile.type != PAS_TUILE)
     {
-        printf("%c",196);
-    }
 
-    // on affiche le design de la tuile selon son type
-    switch(tuile.type){
-        case 0:
-            break;
 
-        case 1 :
-            dessiner_vitaux(ligne,colonne,tuile.sous_type);
-            break;
-        case 2 :
-            dessiner_meteorite(ligne,colonne);
-            break;
-        default :
-            break;
+        // on remet un fond pour supprimer les eventuels caracteres present
+        dessiner_rectangle(ligne + 1, colonne , 8 , 4 , 7);
+
+        // on affiche la ligne de d�limitation sup�rieur
+        color(15,8);
+        positionner_curseur(ligne + 1,colonne);
+        printf("%c%c%c", 196,196,217);
+        positionner_curseur(ligne,colonne +2);
+        printf("%c" , 218);
+        for(int i = 3; i < MIL_CARTE_LAR; i++)
+        {
+            printf("%c",196);
+        }
+
+        // on affiche le design de la tuile selon son type
+        switch(tuile.type){
+            case VIDE:
+                break;
+
+            case VITAUX :
+                dessiner_vitaux(ligne,colonne,tuile.sous_type);
+                break;
+            case METEORITE :
+                dessiner_meteorite(ligne,colonne);
+                break;
+            default :
+                break;
+        }
     }
 }
 
@@ -195,11 +200,17 @@ void afficher_plateau(S_plateau plateau)
     dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE ,LARG_MAX_JEU*LAR_CARTE);
     for(int i = 0 ; i < NB_CARTE_JEU; i++)
     {
-        dessiner_carte_construction( 0 , i * LAR_CARTE + i + 1 , plateau.cartes[i]);
-        dessiner_tuile(LON_CARTE + 3 , i * LAR_CARTE + i + 1 , plateau.tuiles[i]);
+        dessiner_carte_construction( 0 , i * LAR_CARTE + i*2 + 1 , plateau.cartes[i]);
+        for(int y = 0; y < NB_TUILE ; y++)
+        {
+            dessiner_tuile((LON_CARTE * y)/2 + LON_CARTE + 1+ y , i * LAR_CARTE + i*2 + 1 , plateau.tuiles[i][y]);
+        }
         positionner_curseur(LON_CARTE +9 ,i * LAR_CARTE + i + 1);
 
+
     }
+
+
 }
 
 void afficher_deck_joueur(S_joueur joueur)

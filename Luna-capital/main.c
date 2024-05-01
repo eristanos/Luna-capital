@@ -24,7 +24,6 @@ int main()
     S_plateau plateau;
     initialiser_jeu(joueurs , &plateau , nb_joueur);
 
-
     for(int i =0; i < 3; i++)
     {
         joueurs[0].deck_tuiles[i] = generateur_tuile();
@@ -38,7 +37,7 @@ int main()
 
     /*
     for(int x = 0 ; x < LARG_MAX_JEU; x++)
-    {
+        {
         for(int y = 0; y < LONG_MAX_JEU; y++)
         {
             joueurs[0].jeu[x][y] = generateur_carte();
@@ -49,8 +48,8 @@ int main()
     joueurs[0].nb_tuile_deck = 3;
     while(esfdf == 0)
     {
-        choix_actions(&joueurs[0] , &plateau);
-
+        afficher_plateau(plateau);
+        esfdf = 1;
     }
 
     /*
@@ -106,7 +105,7 @@ int main()
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
     */
 
-    */
+    /*
      S_joueur joueur[2];
      S_plateau plateau;
      initialiser_jeu(&joueur, &plateau,2);
@@ -130,7 +129,7 @@ int main()
 
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
 
-   /*
+
     int nb_joueur = Saisie_Nb_Joueurs();
     S_joueur joueurs[nb_joueur];
     S_plateau plateau;
@@ -144,6 +143,5 @@ int main()
     // affichage du message de fermeture de fenêtre
     positionner_curseur(40,0);
     color(15,0);
-    printf("kakoukakou");
     return 0;
 }

@@ -242,7 +242,13 @@ void piocher_carte(S_plateau *plateau , S_joueur *joueur)
     afficher_menu(*joueur);
     positionner_curseur(ZONE_ECRITURE_HAUT ,ZONE_ECRITURE_GAUCHE);
     printf("Quelle carte voulez vous piocher : \n");
+    positionner_curseur(ZONE_ECRITURE_HAUT + 1, ZONE_ECRITURE_GAUCHE);
+    printf("Colonne : ");
     int n = Saisie_coordonnees(0,NB_CARTE_JEU);
+
+    positionner_curseur(ZONE_ECRITURE_HAUT + 1, ZONE_ECRITURE_GAUCHE);
+    printf("Tuile :    ");
+    int t = Saisie_coordonnees(0,NB_TUILE);
     int temp;
     int temp1;
     for(int i=0;i<MAX_ELEMENT ;i++)
@@ -262,8 +268,8 @@ void piocher_carte(S_plateau *plateau , S_joueur *joueur)
             j=NB_TUILE;
         }
     }
-    joueur->deck_tuiles[temp1]=plateau->tuiles[n];
-    plateau->tuiles[n] = generateur_tuile();
+    joueur->deck_tuiles[temp1]=plateau->tuiles[n][t];
+    plateau->tuiles[n][t] = generateur_tuile();
     plateau->cartes[n] = generateur_carte();
 }
 int verif_vide_tuile(S_carte_construction carte, int pos)
