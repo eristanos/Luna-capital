@@ -48,7 +48,7 @@ int main()
     joueurs[0].nb_tuile_deck = 3;
     while(esfdf == 0)
     {
-        afficher_plateau(plateau);
+        tour_jeu(&joueurs[0] , &plateau);
         esfdf = 1;
     }
 
@@ -128,7 +128,7 @@ int main()
 
     */
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
-
+    /*
 
     int nb_joueur = Saisie_Nb_Joueurs();
     S_joueur joueurs[nb_joueur];
