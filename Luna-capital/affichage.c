@@ -198,6 +198,13 @@ void dessiner_terrain_alunissage(int ligne, int colonne)
     dessiner_rectangle(ligne +2, colonne +6, 9, 3, 1);
 }
 
+void dessiner_jeton_construction(int ligne, int colonne)
+{
+    //affichage du jeton construction
+    dessiner_rectangle(ligne + 2, colonne +1, 15, 3, 5);
+    dessiner_rectangle(ligne +3, colonne +2, 2, 1, 3);
+}
+
 
 void afficher_jeu_joueur(S_joueur joueur)
 {
