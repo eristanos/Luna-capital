@@ -300,37 +300,38 @@ void choix_actions(S_joueur *joueur, S_plateau *plateau)
         positionner_curseur(ZONE_ECRITURE_HAUT + 3,ZONE_ECRITURE_GAUCHE);
         printf("3 : Voir les concessions");
         positionner_curseur(ZONE_ECRITURE_HAUT + 4,ZONE_ECRITURE_GAUCHE);
-        printf("4 : placer une carte");
+        printf("4 : glossaire tuile");
         positionner_curseur(ZONE_ECRITURE_HAUT + 5,ZONE_ECRITURE_GAUCHE);
         printf("5 : placer une tuile");
         positionner_curseur(ZONE_ECRITURE_HAUT + 6,ZONE_ECRITURE_GAUCHE);
+        printf("6 : Fin du tour");
+        positionner_curseur(ZONE_ECRITURE_HAUT + 7,ZONE_ECRITURE_GAUCHE);
         printf("CHOIX :");
         int choix;
         scanf("%d" ,&choix);
-        positionner_curseur(ZONE_ECRITURE_HAUT + 7,ZONE_ECRITURE_GAUCHE);
+        positionner_curseur(ZONE_ECRITURE_HAUT + 8,ZONE_ECRITURE_GAUCHE);
 
         switch(choix)
         {
         case 1:
             afficher_jeu_joueur(*joueur);
-            etat = 1;
             break;
         case 2:
             afficher_deck_joueur(*joueur);
-            etat = 1;
             break;
         case 3:
             printf("TOUJOURS PAS IMPLEMENTER BANDE DE CHOMEUR FAUT SE BOUGER LE CUL");
-            etat = 1;
             break;
         case 4:
-            placer_carte(&(*joueur));
-            etat = 1;
+            printf("TOUJOURS PAS IMPLEMENTER MEME MARWAN BENRAMEUR SAURAIT FAIRE CA");
             break;
         case 5:
             placer_tuile(&(*joueur));
+            break;
+        case 6 :
             etat = 1;
             break;
+
         default :
             printf("valeur invalide");
             break;

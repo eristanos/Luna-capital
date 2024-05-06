@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "declaration.h"
+#include "verification.h"
+
 
 
 int calcul_nb_construction(S_carte_construction tab[][LONG_MAX_JEU])
@@ -14,9 +16,260 @@ int calcul_nb_construction(S_carte_construction tab[][LONG_MAX_JEU])
                 nb++;
 
             }
-            printf("x :%d , y : %d, etat : %d\n", i,y,tab[i][y].type);
         }
-
     }
     return nb;
+}
+int place_tab(S_co tab[])
+{
+    for(int i =0 ; i < MAX_TUILE_VERIF; i++)
+    {
+        if(tab[i].x == -1)
+        {
+            return(i);
+
+        }
+    }
+    return(-1);
+}
+
+int calcul_plus_grand_ensemble(S_carte_construction tab_jeu[][LONG_MAX_JEU] , int sous_type_r)
+{
+    // on crée un tableau plus adapté contenant seulement 1 quand on à la tuile recherché 0 sinon
+    S_verif tab_verif[LARG_MAX_JEU*2][LONG_MAX_JEU*2];
+
+    for(int x = 0 ; x < LARG_MAX_JEU ; x++)
+    {
+        for(int y = 0 ; y < LONG_MAX_JEU ; y++)
+        {
+            if(tab_jeu[x][y].type == 1)
+            {
+                for(int pos = 0 ; pos < NB_TUILE ; pos ++)
+                {
+                    if(tab_jeu[x][y].tuile[pos].type == VITAUX && tab_jeu[x][y].tuile[pos].sous_type == sous_type_r)  // limitons seulement au tuile nous intéressant
+                    {
+                        switch(pos)
+                        {
+                            case 0:
+                                tab_verif[x*2][y*2].valeur = 1;
+                                tab_verif[x*2][y*2].etat = 0;
+
+                                break;
+                            case 1:
+                                tab_verif[x*2+1][y*2].valeur = 1;
+                                tab_verif[x*2+1][y*2].etat = 0;
+                                break;
+                            case 2:
+                                tab_verif[x*2][y*2+1].valeur = 1;
+                                tab_verif[x*2][y*2+1].etat = 0;
+                                break;
+                            case 3:
+                                tab_verif[x*2+1][y*2+1].valeur = 1;
+                                tab_verif[x*2+1][y*2+1].etat = 0;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        tab_verif[x*2][y*2].valeur = 0;
+                        tab_verif[x*2][y*2].etat =0;
+
+                        tab_verif[x*2+1][y*2].valeur = 0;
+                        tab_verif[x*2+1][y*2].etat = 0;
+
+                        tab_verif[x*2][y*2+1].valeur = 0;
+                        tab_verif[x*2][y*2+1].etat = 0;
+
+                        tab_verif[x*2+1][y*2+1].valeur = 0;
+                        tab_verif[x*2+1][y*2+1].etat = 0;
+                    }
+                }
+            }
+
+            else
+            {
+                tab_verif[x*2][y*2].valeur = 0;
+                tab_verif[x*2][y*2].etat = 0;
+
+                tab_verif[x*2+1][y*2].valeur = 0;
+                tab_verif[x*2+1][y*2].etat = 0;
+
+                tab_verif[x*2][y*2+1].valeur = 0;
+                tab_verif[x*2][y*2+1].etat = 0;
+
+                tab_verif[x*2+1][y*2+1].valeur = 0;
+                tab_verif[x*2+1][y*2+1].etat = 0;
+            }
+        }
+    }
+
+
+    int taille_ensemble = 0;
+
+    // parcourons le tableau pour trouver une carte du type recherché
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("\n");
+
+
+    for(int x = 0 ; x < LARG_MAX_JEU * 2; x++)
+    {
+        for(int y = 0 ; y < LONG_MAX_JEU * 2; y++)
+        {
+            if(tab_verif[x][y].valeur == 1 && tab_verif[x][y].etat == 0)
+            {
+                // programme calculant la taille de l'ensemble de cette tuile
+
+                int compteur_temp = 1; // au moin une tuile
+                tab_verif[x][y].etat = 1;
+                int fini = 1;
+
+
+                // on initialise un tableau des coordonnéees à vérifier : -1 est un caractère de rupture
+                S_co tab_co[MAX_TUILE_VERIF];
+                for(int i = 0 ; i < MAX_TUILE_VERIF ; i++)
+                {
+                    tab_co[i].x = -1;
+                    tab_co[i].y = -1;
+                }
+
+                // on met les coordonnées de notres première tuile dans le tableau
+                tab_co[0].x = x;
+                tab_co[0].y = y;
+                printf("x base : %d , y base : %d\n" , x , y);
+
+
+                // ajout des tuiles adjacente à la file d'attente si elles sont du même type
+                while(fini == 1)
+                {
+                    //on va utiliser les  derniers coordonnées du tableau
+                    // on considère que les -1 sont forcémments dans la dernière partie du tableau
+                    int ya;
+                    int xa;
+                    int temp = -1;
+                    for(int i = 0; i < MAX_TUILE_VERIF ; i++)
+                    {
+                        if(tab_co[i].x != -1)
+                        {
+                            xa = tab_co[i].x;
+                            ya = tab_co[i].y;
+                            temp = i; // on garde en mémoire l'emplacement de la dernière case pour supprimer les coordonnées
+                        }
+                        else
+                        {
+                            i = MAX_TUILE_VERIF;
+                        }
+
+                    }
+                    if(temp == -1)
+                    {
+                        // on arrete quand le tableau est vide
+                        fini = 0;
+                    }
+                    else
+                    {
+                        tab_co[temp].x = -1;
+                        tab_co[temp].y = -1;
+                        tab_verif[xa][ya].etat = 1;
+
+                        // on a maintenant un coordonnée : vérifions les tuiles adjacentes
+                        printf("x : %d  y : %d  \n" , xa , ya);
+                        // haut
+                        if(ya > 0)
+                        {
+                           if(tab_verif[xa][ya-1].valeur == 1 && tab_verif[xa][ya-1].etat == 0)
+                           {
+                               tab_verif[xa][ya-1].etat = -1;
+                               compteur_temp ++;
+                               int place  = place_tab(tab_co);
+                               tab_co[place].x = xa;
+                               tab_co[place].y = ya-1;
+                               printf("haut");
+
+                           }
+                        }
+
+
+                        // bas
+                        if(ya < (LONG_MAX_JEU*2)-1)
+                        {
+                            if(tab_verif[xa][ya+1].valeur == 1 && tab_verif[xa][ya+1].etat == 0)
+                            {
+                                tab_verif[xa][ya+1].etat = -1;
+                                compteur_temp ++;
+                                int place  = place_tab(tab_co);
+                                tab_co[place].x = xa;
+                                tab_co[place].y = ya+1;
+                                printf("bas");
+                            }
+                        }
+
+                        // gauche
+
+                        if(xa > 0)
+                        {
+                            if(tab_verif[xa-1][ya].valeur == 1 &&  tab_verif[xa-1][ya].etat == 0)
+                            {
+                                tab_verif[xa-1][ya].etat = -1;
+                                compteur_temp ++;
+                                int place  = place_tab(tab_co);
+                                tab_co[place].x = xa-1;
+                                tab_co[place].y = ya;
+                                printf("gauche");
+                            }
+                        }
+
+                        // droite
+
+                        if(xa < (LARG_MAX_JEU*2)-1)
+                        {
+                            if(tab_verif[xa+1][ya].valeur == 1 && tab_verif[xa+1][ya].etat == 0)
+                            {
+                                tab_verif[xa+1][ya].etat = -1;
+                                compteur_temp ++;
+                                int place  = place_tab(tab_co);
+                                tab_co[place].x = xa+1;
+                                tab_co[place].y = ya;
+                                printf("droite");
+                            }
+                        }
+                    }
+                }
+                // comparons pour savoir si l'ensemble est le plus grand présent sur le jeu
+                if(compteur_temp > taille_ensemble)
+                {
+                    taille_ensemble = compteur_temp;
+                }
+            }
+
+        }
+    }
+return(taille_ensemble);
 }

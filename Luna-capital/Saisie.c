@@ -239,39 +239,49 @@ void supprimer_carte(S_carte_construction tab[], int n)
 
 void piocher_carte(S_plateau *plateau , S_joueur *joueur)
 {
-    afficher_menu(*joueur);
-    positionner_curseur(ZONE_ECRITURE_HAUT ,ZONE_ECRITURE_GAUCHE);
-    printf("Quelle carte voulez vous piocher : \n");
-    positionner_curseur(ZONE_ECRITURE_HAUT + 1, ZONE_ECRITURE_GAUCHE);
+    positionner_curseur(ZONE_ECRITURE_HAUT + 1 ,ZONE_ECRITURE_GAUCHE);
+    printf("Piochez une carte : ");
+    positionner_curseur(ZONE_ECRITURE_HAUT + 2, ZONE_ECRITURE_GAUCHE);
     printf("Colonne : ");
     int n = Saisie_coordonnees(0,NB_CARTE_JEU);
 
-    positionner_curseur(ZONE_ECRITURE_HAUT + 1, ZONE_ECRITURE_GAUCHE);
-    printf("Tuile :    ");
-    int t = Saisie_coordonnees(0,NB_TUILE);
     int temp;
     int temp1;
     for(int i=0;i<MAX_ELEMENT ;i++)
-    {
-        if(joueur->deck_cartes[i].type == VIDE)
         {
-            temp=i;
-            i=MAX_ELEMENT;
+            if(joueur->deck_cartes[i].type == VIDE)
+            {
+                temp=i;
+                i=MAX_ELEMENT;
+            }
         }
-    }
     joueur->deck_cartes[temp]=plateau->cartes[n];
-      for(int j=0;j<NB_TUILE;j++)
+    joueur->nb_carte_deck++;
+
+    // on pioche les tuiles
+    for(int t = 0; t < NB_TUILE ; t++)
     {
-        if(joueur->deck_tuiles[j].type == VIDE)
+        if(plateau->tuiles[n][t].type != -1)
         {
-            temp1=j;
-            j=NB_TUILE;
+            // on trouve une place
+            for(int j=0;j<MAX_ELEMENT;j++)
+            {
+                if(joueur->deck_tuiles[j].type == VIDE)
+                {
+                    temp1=j;
+                    j=MAX_ELEMENT;
+                }
+            }
+            joueur->deck_tuiles[temp1] = plateau->tuiles[n][t];
+            joueur->nb_tuile_deck++;
         }
+
     }
-    joueur->deck_tuiles[temp1]=plateau->tuiles[n][t];
-    plateau->tuiles[n][t] = generateur_tuile();
-    plateau->cartes[n] = generateur_carte();
+    generer_plateau(&(*plateau) , joueur->nb_tour_joueur);
+
 }
+
+
 int verif_vide_tuile(S_carte_construction carte, int pos)
 {
     if(carte.tuile[pos].type == VIDE)
@@ -301,14 +311,18 @@ void placer_tuile(S_joueur *joueur)
         int etat = 0;
         while(etat == 0)
         {
+            afficher_menu(*joueur);
             positionner_curseur(ZONE_ECRITURE_HAUT,ZONE_ECRITURE_GAUCHE);
             printf("placer tuile %d" , i+1);
 
             positionner_curseur(ZONE_ECRITURE_HAUT + 1,ZONE_ECRITURE_GAUCHE);
             printf("TYPE : %d" , joueur->deck_tuiles[i].type);
 
-            positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
-            printf("SOUS TYPE : %d" ,joueur->deck_tuiles[i].sous_type);
+            if(joueur->deck_tuiles[i].sous_type == VITAUX ||joueur->deck_tuiles[i].sous_type == MODULE)
+            {
+                positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
+                printf("SOUS TYPE : %d" ,joueur->deck_tuiles[i].sous_type);
+            }
 
 
             // choix de la carte pour poser la tuile

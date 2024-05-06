@@ -53,13 +53,13 @@ S_tuile generateur_tuile()
 
     // definition de la pondération
 
-    S_proba tab_pond[NB_TYPE_TUILE] = {{DEMOLITION,PART_DEMOLITION_TUILE},{VITAUX, PART_VITAUX_TUILE},{METEORITE, PART_METEORITE_TUILE},{AGENCE,PART_AGENCE_COMMERCIALE_TUILE},{MODULE,PART_MODULE_HABITATION},{COMPLEXE, PART_COMPLEXE_RESIDENTIEL_TUILE},{TERRAIN, PART_TERRAIN_ALUNISAGE_TUILE},{ECHAFAUDAGE, PART_ECHAFAUDAGE_CARTE}};
+    S_proba tab_pond[NB_TYPE_TUILE-1] = {{DEMOLITION,PART_DEMOLITION_TUILE},{VITAUX, PART_VITAUX_TUILE},{METEORITE, PART_METEORITE_TUILE},{AGENCE,PART_AGENCE_COMMERCIALE_TUILE},{MODULE,PART_MODULE_HABITATION},{COMPLEXE, PART_COMPLEXE_RESIDENTIEL_TUILE},{TERRAIN, PART_TERRAIN_ALUNISAGE_TUILE}};
     // Tirage aléatoire
 
     int temp = rand() % 101;
     int somme_ponderation = 0;
 
-    for(int y = 0 ; y < NB_TYPE_TUILE; y++)
+    for(int y = 0 ; y < NB_TYPE_TUILE-1; y++)
     {
         if(somme_ponderation < temp && temp < somme_ponderation + tab_pond[y].part)
         {
@@ -70,9 +70,10 @@ S_tuile generateur_tuile()
     }
 
     // génération du sous type dans le cas des vitaux
-    if (latuile.type == 1)
+    if (latuile.type == VITAUX || latuile.type == MODULE)
     {
-        latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE);
+        //latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE)+1;
+        latuile.sous_type = COLLECTEUR_HYDROGENE;
     }
     return latuile;
 }
@@ -204,6 +205,23 @@ S_concession generateur_concession()
 
     return laconcession;
 }
+
+void generer_plateau(S_plateau *plateau , int nb_tour)
+{
+    for(int i =0 ; i < NB_CARTE_JEU ; i++)
+        {
+            for(int y = 0 ; y < nb_tour + 1 ; y++)
+            {
+                plateau->tuiles[i][y] = generateur_tuile();
+            }
+            for(int y = nb_tour + 1 ; y < MAX_ELEMENT ; y++)
+            {
+                plateau->tuiles[i][y].type = -1;
+            }
+
+        }
+}
+
 
 
 

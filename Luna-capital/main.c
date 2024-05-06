@@ -19,11 +19,38 @@ int main()
     // test paul
 
 
-    int nb_joueur = Saisie_Nb_Joueurs();
-    S_joueur joueurs[nb_joueur];
-    S_plateau plateau;
-    initialiser_jeu(joueurs , &plateau , nb_joueur);
+   S_joueur joueur[2];
+   S_plateau plateau;
+   initialiser_jeu(joueur,&plateau , 2);
+   for(int x = 0 ; x < LARG_MAX_JEU ; x++)
+   {
+       for(int y = 0; y < LONG_MAX_JEU;y++)
+       {
+          int r = rand()%1;
+          if(r==0)
+          {
+              joueur[0].jeu[x][y] = generateur_carte();
+              for(int i = 0 ; i < 4 ; i++)
+              {
+                  int ra = rand()%2;
+                  if(ra == 0)
+                  {
+                      joueur[0].jeu[x][y].tuile[i] = generateur_tuile();
+                  }
 
+              }
+          }
+       }
+   }
+   afficher_jeu_joueur(joueur[0]);
+   positionner_curseur(ZONE_ECRITURE_HAUT , ZONE_ECRITURE_GAUCHE);
+   color(15,0);
+   printf("kakou");
+   printf("plus grand : %d",calcul_plus_grand_ensemble(joueur[0].jeu , COLLECTEUR_HYDROGENE));
+
+
+
+    /*
     for(int i =0; i < 3; i++)
     {
         joueurs[0].deck_tuiles[i] = generateur_tuile();
@@ -35,7 +62,7 @@ int main()
 
     }
 
-    /*
+
     for(int x = 0 ; x < LARG_MAX_JEU; x++)
         {
         for(int y = 0; y < LONG_MAX_JEU; y++)
@@ -43,7 +70,7 @@ int main()
             joueurs[0].jeu[x][y] = generateur_carte();
         }
     }
-    */
+
     int esfdf = 0;
     joueurs[0].nb_tuile_deck = 3;
     while(esfdf == 0)
@@ -52,7 +79,7 @@ int main()
         esfdf = 1;
     }
 
-    /*
+
 
 
     S_joueur joueur;
