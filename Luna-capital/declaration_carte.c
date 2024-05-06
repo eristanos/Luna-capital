@@ -58,7 +58,11 @@ S_tuile generateur_tuile()
 
     int temp = rand() % 101;
     int somme_ponderation = 0;
-
+    int aleatoire = rand() % 10;
+    if(aleatoire == 0)
+    {
+        latuile.selenite = 1;
+    }
     for(int y = 0 ; y < NB_TYPE_TUILE; y++)
     {
         if(somme_ponderation < temp && temp < somme_ponderation + tab_pond[y].part)
