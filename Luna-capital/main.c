@@ -78,9 +78,6 @@ int main()
         esfdf = 1;
     }
 
-
-
-
     S_joueur joueur;
     joueur.nb_selenite = 2;
     joueur.nb_tour_joueur = 0;    S_plateau plateau;

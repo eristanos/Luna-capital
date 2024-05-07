@@ -187,7 +187,6 @@ void dessiner_complexe_residentiel(int ligne, int colonne)
     //affichage du complexe residentiel
     dessiner_rectangle(ligne +1,colonne + 3, 4, 1, 2);
     dessiner_rectangle(ligne +2,colonne + 3, 9, 3, 2);
-    dessiner_rectangle(ligne +4,colonne + 2, 7, 1, 1);
     dessiner_rectangle(ligne +4, colonne + 5, 7 , 1, 1);
 }
 void dessiner_terrain_alunissage(int ligne, int colonne)
@@ -197,6 +196,13 @@ void dessiner_terrain_alunissage(int ligne, int colonne)
     dessiner_rectangle(ligne + 3, colonne + 2, 3, 2, 1);
     dessiner_rectangle(ligne +4, colonne + 4, 0, 1, 1);
     dessiner_rectangle(ligne +2, colonne +6, 9, 3, 1);
+}
+
+void dessiner_jeton_construction(int ligne, int colonne)
+{
+    //affichage du jeton construction
+    dessiner_rectangle(ligne + 2, colonne +1, 15, 3, 5);
+    dessiner_rectangle(ligne +3, colonne +2, 2, 1, 3);
 }
 
 
