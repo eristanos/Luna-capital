@@ -11,11 +11,11 @@
 	"jeux.h"
 	"verification.h"
 
-1715004416 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
+1715062350 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
 
-1714572875 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
+1715062327 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
-1715003879 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
+1715062350 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -23,16 +23,17 @@
 	"affichage.h"
 	"Saisie.h"
 
-1714986280 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
+1715062350 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
 	<time.h>
+	<string.h>
 	"declaration.h"
 
-1714573980 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
+1715062350 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
 
-1715003852 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
+1715062350 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
 	<stdio.h>
 	"declaration.h"
 	"saisie.h"
@@ -83,7 +84,7 @@
 	"declaration_cartes.h"
 	"affichage.h"
 
-1714835637 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.c
+1715062350 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.c
 	<stdio.h>
 	<stdlib.h>
 	"jeux.h"
@@ -92,7 +93,7 @@
 	"affichage.h"
 	"declaration_cartes.h"
 
-1714829279 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.h
+1715062350 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.h
 	"declaration.h"
 
 1714233089 on.h
@@ -158,10 +159,10 @@
 	"declaration_cartes.h"
 	"Saisie.h"
 
-1714996506 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.c
+1715062350 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.c
 	<stdio.h>
 	"declaration.h"
 	"verification.h"
 
-1714986144 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.h
+1715062350 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.h
 
