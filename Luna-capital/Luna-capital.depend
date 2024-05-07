@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1714496820 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
+1715004416 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -9,12 +9,13 @@
 	"declaration_cartes.h"
 	"saisie.h"
 	"jeux.h"
+	"verification.h"
 
-1714235207 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
+1715004416 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
 
-1714488520 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
+1714572875 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
-1714497578 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
+1715003879 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -22,23 +23,23 @@
 	"affichage.h"
 	"Saisie.h"
 
-1714487117 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
+1714986280 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
 	<time.h>
 	"declaration.h"
 
-1713980101 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
+1714573980 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
 
-1714496683 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
+1715003852 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
 	<stdio.h>
 	"declaration.h"
 	"saisie.h"
 	"declaration_cartes.h"
 	"affichage.h"
 
-1714401578 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.h
+1714505634 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.h
 
 1714642183 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.c
 	<stdio.h>
@@ -82,15 +83,17 @@
 	"declaration_cartes.h"
 	"affichage.h"
 
-1714492417 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.c
+1714835637 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.c
 	<stdio.h>
 	<stdlib.h>
 	"jeux.h"
 	"declaration_cartes.h"
 	"Saisie.h"
+	"affichage.h"
+	"declaration_cartes.h"
 
-1714233089 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.h
-	"declaration.h
+1714829279 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.h
+	"declaration.h"
 
 1714233089 on.h
 
@@ -154,4 +157,11 @@
 	"jeux.h"
 	"declaration_cartes.h"
 	"Saisie.h"
+
+1714996506 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.c
+	<stdio.h>
+	"declaration.h"
+	"verification.h"
+
+1714986144 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.h
 

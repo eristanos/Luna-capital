@@ -99,48 +99,48 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
 
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affichage des tuiles
 {
-    // on remet un fond pour supprimer les �ventuels caract�res pr�sent
-    dessiner_rectangle(ligne + 1, colonne , 8 , 4 , 7);
-
-    // on affiche la ligne de d�limitation sup�rieur
-    color(15,8);
-    positionner_curseur(ligne + 1,colonne);
-    printf("%c%c%c", 196,196,217);
-    positionner_curseur(ligne,colonne +2);
-    printf("%c" , 218);
-    for(int i = 3; i < MIL_CARTE_LAR; i++)
+    if(tuile.type != PAS_TUILE)
     {
-        printf("%c",196);
-    }
+        // on remet un fond pour supprimer les eventuels caracteres present
+        dessiner_rectangle(ligne + 1, colonne , 8 , 4 , 7);
 
-    // on affiche le design de la tuile selon son type
-    switch(tuile.type){
-        case 0:
-            break;
+        // on affiche la ligne de d�limitation sup�rieur
+        color(15,8);
+        positionner_curseur(ligne + 1,colonne);
+        printf("%c%c%c", 196,196,217);
+        positionner_curseur(ligne,colonne +2);
+        printf("%c" , 218);
+        for(int i = 3; i < MIL_CARTE_LAR; i++)
+        {
+            printf("%c",196);
+        }
 
-        case VITAUX :
+        // on affiche le design de la tuile selon son type
+        switch(tuile.type){
+          case VITAUX :
             dessiner_vitaux(ligne,colonne,tuile.sous_type);
             break;
-        case METEORITE :
+          case METEORITE :
             dessiner_meteorite(ligne,colonne);
             break;
-        case AGENCE :
+         case AGENCE :
             dessiner_agence_commercial(ligne,colonne);
             break;
-        case MODULE :
+          case MODULE :
             dessiner_module_habitation(ligne,colonne,tuile.sous_type);
             break;
-        case ECHAFAUDAGE :
+          case ECHAFAUDAGE :
             dessiner_echafaudage(ligne,colonne);
             break;
-        case  COMPLEXE :
+          case  COMPLEXE :
             dessiner_complexe_residentiel(ligne,colonne);
             break;
-        case TERRAIN :
+          case TERRAIN :
             dessiner_terrain_alunissage(ligne,colonne);
             break;
-        default :
+          default :
             break;
+        }
     }
 }
 
@@ -256,11 +256,17 @@ void afficher_plateau(S_plateau plateau)
     dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE ,LARG_MAX_JEU*LAR_CARTE);
     for(int i = 0 ; i < NB_CARTE_JEU; i++)
     {
-        dessiner_carte_construction( 0 , i * LAR_CARTE + i + 1 , plateau.cartes[i]);
-        dessiner_tuile(LON_CARTE + 3 , i * LAR_CARTE + i + 1 , plateau.tuiles[i]);
+        dessiner_carte_construction( 0 , i * LAR_CARTE + i*2 + 1 , plateau.cartes[i]);
+        for(int y = 0; y < NB_TUILE ; y++)
+        {
+            dessiner_tuile((LON_CARTE * y)/2 + LON_CARTE + 1+ y , i * LAR_CARTE + i*2 + 1 , plateau.tuiles[i][y]);
+        }
         positionner_curseur(LON_CARTE +9 ,i * LAR_CARTE + i + 1);
 
+
     }
+
+
 }
 
 void afficher_deck_joueur(S_joueur joueur)
@@ -300,37 +306,38 @@ void choix_actions(S_joueur *joueur, S_plateau *plateau)
         positionner_curseur(ZONE_ECRITURE_HAUT + 3,ZONE_ECRITURE_GAUCHE);
         printf("3 : Voir les concessions");
         positionner_curseur(ZONE_ECRITURE_HAUT + 4,ZONE_ECRITURE_GAUCHE);
-        printf("4 : placer une carte");
+        printf("4 : glossaire tuile");
         positionner_curseur(ZONE_ECRITURE_HAUT + 5,ZONE_ECRITURE_GAUCHE);
         printf("5 : placer une tuile");
         positionner_curseur(ZONE_ECRITURE_HAUT + 6,ZONE_ECRITURE_GAUCHE);
+        printf("6 : Fin du tour");
+        positionner_curseur(ZONE_ECRITURE_HAUT + 7,ZONE_ECRITURE_GAUCHE);
         printf("CHOIX :");
         int choix;
         scanf("%d" ,&choix);
-        positionner_curseur(ZONE_ECRITURE_HAUT + 7,ZONE_ECRITURE_GAUCHE);
+        positionner_curseur(ZONE_ECRITURE_HAUT + 8,ZONE_ECRITURE_GAUCHE);
 
         switch(choix)
         {
         case 1:
             afficher_jeu_joueur(*joueur);
-            etat = 1;
             break;
         case 2:
             afficher_deck_joueur(*joueur);
-            etat = 1;
             break;
         case 3:
             printf("TOUJOURS PAS IMPLEMENTER BANDE DE CHOMEUR FAUT SE BOUGER LE CUL");
-            etat = 1;
             break;
         case 4:
-            placer_carte(&(*joueur));
-            etat = 1;
+            printf("TOUJOURS PAS IMPLEMENTER MEME MARWAN BENRAMEUR SAURAIT FAIRE CA");
             break;
         case 5:
-            placer_tuile(&(*joueur));
+            placer_tuile(joueur);
+            break;
+        case 6 :
             etat = 1;
             break;
+
         default :
             printf("valeur invalide");
             break;
