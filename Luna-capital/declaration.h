@@ -3,6 +3,9 @@
 
 #define NB_CARTE_JEU 4
 #define MAX_ELEMENT 10
+#define MAX_TUILE_VERIF 96
+#define NB_TOUR 4
+#define NB_PHASE 3
 #define NB_CHAR 30
 #define NB_TUILE 4
 #define VALEUR_NUM_MAX 10
@@ -21,15 +24,17 @@
 #define LARG_MENU 27
 #define LONG_MENU 40
 
+
 //indicatif SOUS TYPE
 #define CONDENSEUR_EAU 1
-#define COLLECTEUR_HYDROGENE 0
+#define COLLECTEUR_HYDROGENE 2
 #define COLLECTEUR_OXYGENE 3
 #define SERRE_1 4
 #define SERRE_2 5
 #define SERRE_3 6
-#define TOUTE_SERRE 7
+
 //indicatif tuile
+#define PAS_TUILE -1
 #define VIDE 0
 #define VITAUX 1
 #define METEORITE 2
@@ -61,21 +66,21 @@
 
 // pourcentage pour la génération des tuiles des cartes
 #define PART_METEORITE_CARTE 8
-#define PART_VITAUX_CARTE 15
-#define PART_VIDE_CARTE 70
-#define PART_ECHAFAUDAGE_CARTE 7
+#define PART_VITAUX_CARTE 2
+#define PART_VIDE_CARTE 85
+#define PART_ECHAFAUDAGE_CARTE 10
 
 
 // pourcentage pour la génération des tuiles
-#define PART_VITAUX_TUILE 12
-#define PART_REDISTRIBUTION_LOGISTIQUE_TUILE 5
-#define PART_METEORITE_TUILE 20
-#define PART_DEMOLITION_TUILE 5
-#define PART_AGENCE_COMMERCIALE_TUILE 15
-#define PART_TERRAIN_ALUNISAGE_TUILE 13
-#define PART_COMPLEXE_RESIDENTIEL_TUILE 14
-#define PART_MODULE_HABITATION 11
-#define CHANCE_ROBOT_SELENITE 5
+#define PART_VITAUX_TUILE 100
+#define PART_REDISTRIBUTION_LOGISTIQUE_TUILE 0
+#define PART_METEORITE_TUILE 0
+#define PART_DEMOLITION_TUILE 0
+#define PART_AGENCE_COMMERCIALE_TUILE 0
+#define PART_TERRAIN_ALUNISAGE_TUILE 0
+#define PART_COMPLEXE_RESIDENTIEL_TUILE 0
+#define PART_MODULE_HABITATION 0
+#define CHANCE_ROBOT_SELENITE 0
 
 // pourcentage pour la generation du deck concessions
 #define PART_3_ALIGNE 40
@@ -96,13 +101,12 @@ typedef struct tuile
     7 : échafaudage lunaire : que sur les cartes
     8 : démolition
     */
-
+    char nom [NB_CHAR];
     int type;
     int selenite;
+
     int sous_type;                  // l'indicatif sera celui d'une couleur pour eviter de mettre une variable redondante
 }S_tuile;
-
-
 
 typedef struct carte_construction
 {
@@ -128,7 +132,7 @@ typedef struct concession S_concession;
 
 struct plateau
 {
-    S_tuile tuiles[NB_TUILE];
+    S_tuile tuiles[NB_CARTE_JEU][NB_TUILE];
     S_carte_construction cartes[NB_CARTE_JEU];
     S_concession tab_cartes_concession[NB_CONCESSION];
 };

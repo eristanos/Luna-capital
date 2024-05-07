@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <time.h>
+#include <string.h>
 
 #include "declaration.h"
 
@@ -22,9 +23,9 @@ S_carte_construction generateur_carte()
 
     for (int i = 0; i < NB_TUILE; i++)
     {
-        // definition de la pondération
+        // definition de la pondÃ©ration
         S_proba tab_pond[NB_TYPE_TUILE_CARTE] = {{VIDE,PART_VIDE_CARTE},{VITAUX, PART_VITAUX_CARTE},{METEORITE, PART_METEORITE_CARTE},{ECHAFAUDAGE, PART_ECHAFAUDAGE_CARTE}};
-        // Tirage aléatoire
+        // Tirage alÃ©atoire
         temp = rand() % 101;
         somme_ponderation = 0;
 
@@ -38,7 +39,7 @@ S_carte_construction generateur_carte()
             somme_ponderation += tab_pond[y].part;
         }
 
-        // génération du sous type dans le cas des vitaux
+        // gÃ©nÃ©ration du sous type dans le cas des vitaux
         if (carte.tuile[i].type == VITAUX)
         {
             carte.tuile[i].sous_type = (rand() % NB_SOUS_TYPE_TUILE);
@@ -51,10 +52,10 @@ S_tuile generateur_tuile()
 {
     S_tuile latuile;
 
-    // definition de la pondération
+    // definition de la pondÃ©ration
 
-    S_proba tab_pond[NB_TYPE_TUILE] = {{DEMOLITION,PART_DEMOLITION_TUILE},{VITAUX, PART_VITAUX_TUILE},{METEORITE, PART_METEORITE_TUILE},{AGENCE,PART_AGENCE_COMMERCIALE_TUILE},{MODULE,PART_MODULE_HABITATION},{COMPLEXE, PART_COMPLEXE_RESIDENTIEL_TUILE},{TERRAIN, PART_TERRAIN_ALUNISAGE_TUILE},{ECHAFAUDAGE, PART_ECHAFAUDAGE_CARTE}};
-    // Tirage aléatoire
+    S_proba tab_pond[NB_TYPE_TUILE-1] = {{DEMOLITION,PART_DEMOLITION_TUILE},{VITAUX, PART_VITAUX_TUILE},{METEORITE, PART_METEORITE_TUILE},{AGENCE,PART_AGENCE_COMMERCIALE_TUILE},{MODULE,PART_MODULE_HABITATION},{COMPLEXE, PART_COMPLEXE_RESIDENTIEL_TUILE},{TERRAIN, PART_TERRAIN_ALUNISAGE_TUILE}};
+    // Tirage alÃ©atoire
 
     int temp = rand() % 101;
     int somme_ponderation = 0;
@@ -63,7 +64,9 @@ S_tuile generateur_tuile()
     {
         latuile.selenite = 1;
     }
-    for(int y = 0 ; y < NB_TYPE_TUILE; y++)
+
+
+    for(int y = 0 ; y < NB_TYPE_TUILE-1; y++)
     {
         if(somme_ponderation < temp && temp < somme_ponderation + tab_pond[y].part)
         {
@@ -73,11 +76,36 @@ S_tuile generateur_tuile()
         somme_ponderation += tab_pond[y].part;
     }
 
-    // génération du sous type dans le cas des vitaux
-    if (latuile.type == 1)
+    // gÃ©nÃ©ration du sous type dans le cas des vitaux
+    if (latuile.type == VITAUX || latuile.type == MODULE)
     {
-        latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE);
+        //latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE)+1;
+        latuile.sous_type = COLLECTEUR_HYDROGENE;
     }
+    switch(latuile.type)
+    {
+    case CONDENSEUR_EAU:
+        strcpy(latuile.nom , "Condensateur eau");
+        break;
+    case COLLECTEUR_HYDROGENE:
+        strcpy(latuile.nom , "Collecteur hydrogÃ¨ne");
+        break;
+    case COLLECTEUR_OXYGENE:
+        strcpy(latuile.nom , "Collecteur oxygÃ¨ne");
+        break;
+    case SERRE_1:
+        strcpy(latuile.nom , "Serre_pomme");
+        break;
+    case SERRE_2:
+        strcpy(latuile.nom , "Serre_myrtille");
+        break;
+    case SERRE_3:
+        strcpy(latuile.nom , "Serre_salade");
+        break;
+
+    }
+
+
     return latuile;
 }
 
@@ -85,7 +113,7 @@ S_concession generateur_concession()
 {
     S_concession laconcession;
 
-    // definition de la pondération
+    // definition de la pondÃ©ration
     S_proba tab_pond[TYPE_CONCESSION] = {{C_ALIGNE,PART_3_ALIGNE},{C_COLONNE, PART_3_CARTE_COLONNE},{C_N_CARTE,PART_POSSEDER_n_CARTE}};
     // Tirage aleatoire
 
@@ -100,7 +128,7 @@ S_concession generateur_concession()
         }
         somme_ponderation += tab_pond[y].part;
     }
-    // génération du sous type dans le cas des système vitaux
+    // gÃ©nÃ©ration du sous type dans le cas des systÃ¨me vitaux
     srand(time(NULL));
     int nb_aleatoire = rand() % 3;
 
@@ -188,7 +216,7 @@ S_concession generateur_concession()
         }
         break;
     case 5:
-        laconcession.tuile.type = METEORITE;                  //2= météorite
+        laconcession.tuile.type = METEORITE;                  //2= mÃ©tÃ©orite
         if(laconcession.type == C_ALIGNE)
         {
             laconcession.points = 7;
@@ -208,6 +236,23 @@ S_concession generateur_concession()
 
     return laconcession;
 }
+
+void generer_plateau(S_plateau *plateau , int nb_tour)
+{
+    for(int i =0 ; i < NB_CARTE_JEU ; i++)
+        {
+            for(int y = 0 ; y < nb_tour + 1 ; y++)
+            {
+                plateau->tuiles[i][y] = generateur_tuile();
+            }
+            for(int y = nb_tour + 1 ; y < MAX_ELEMENT ; y++)
+            {
+                plateau->tuiles[i][y].type = -1;
+            }
+
+        }
+}
+
 
 
 
