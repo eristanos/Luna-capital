@@ -12,6 +12,7 @@ void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la);
 void dessiner_carte_construction(int ligne, int colonne, S_carte_construction carte_construction);
 void dessiner_tuile(int ligne, int colonne, S_tuile tuile);
 void dessiner_jeton_construction(int ligne, int colonne);
+void dessiner_carte_concession(S_concession carte_concession);
 
 // design des tuiles
 void dessiner_vitaux(int ligne, int colonne , int sous_type);

@@ -51,6 +51,17 @@ int main()
         esfdf = 1;
     }
 
+
+    for(int i=0;i<5;i++)
+    {
+        plateau.tab_cartes_concession[i]=generateur_concession();
+    }
+
+    /*
+
+
+
+
     S_joueur joueur;
     joueur.nb_selenite = 2;
     joueur.nb_tour_joueur = 0;    S_plateau plateau;
