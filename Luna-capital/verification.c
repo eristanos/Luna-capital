@@ -71,17 +71,26 @@ int calcul_plus_grand_ensemble(S_carte_construction tab_jeu[][LONG_MAX_JEU] , in
                     }
                     else
                     {
-                        tab_verif[x*2][y*2].valeur = 0;
-                        tab_verif[x*2][y*2].etat =0;
+                        switch(pos)
+                        {
+                            case 0:
+                                tab_verif[x*2][y*2].valeur = 0;
+                                tab_verif[x*2][y*2].etat = 0;
 
-                        tab_verif[x*2+1][y*2].valeur = 0;
-                        tab_verif[x*2+1][y*2].etat = 0;
-
-                        tab_verif[x*2][y*2+1].valeur = 0;
-                        tab_verif[x*2][y*2+1].etat = 0;
-
-                        tab_verif[x*2+1][y*2+1].valeur = 0;
-                        tab_verif[x*2+1][y*2+1].etat = 0;
+                                break;
+                            case 1:
+                                tab_verif[x*2+1][y*2].valeur = 0;
+                                tab_verif[x*2+1][y*2].etat = 0;
+                                break;
+                            case 2:
+                                tab_verif[x*2][y*2+1].valeur = 0;
+                                tab_verif[x*2][y*2+1].etat = 0;
+                                break;
+                            case 3:
+                                tab_verif[x*2+1][y*2+1].valeur = 0;
+                                tab_verif[x*2+1][y*2+1].etat = 0;
+                                break;
+                        }
                     }
                 }
             }
@@ -107,36 +116,7 @@ int calcul_plus_grand_ensemble(S_carte_construction tab_jeu[][LONG_MAX_JEU] , in
     int taille_ensemble = 0;
 
     // parcourons le tableau pour trouver une carte du type recherché
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
 
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
-printf("\n");
 
 
     for(int x = 0 ; x < LARG_MAX_JEU * 2; x++)
@@ -163,7 +143,6 @@ printf("\n");
                 // on met les coordonnées de notres première tuile dans le tableau
                 tab_co[0].x = x;
                 tab_co[0].y = y;
-                printf("x base : %d , y base : %d\n" , x , y);
 
 
                 // ajout des tuiles adjacente à la file d'attente si elles sont du même type
@@ -200,7 +179,6 @@ printf("\n");
                         tab_verif[xa][ya].etat = 1;
 
                         // on a maintenant un coordonnée : vérifions les tuiles adjacentes
-                        printf("x : %d  y : %d  \n" , xa , ya);
                         // haut
                         if(ya > 0)
                         {
@@ -211,11 +189,9 @@ printf("\n");
                                int place  = place_tab(tab_co);
                                tab_co[place].x = xa;
                                tab_co[place].y = ya-1;
-                               printf("haut");
 
                            }
                         }
-
 
                         // bas
                         if(ya < (LONG_MAX_JEU*2)-1)
@@ -227,7 +203,6 @@ printf("\n");
                                 int place  = place_tab(tab_co);
                                 tab_co[place].x = xa;
                                 tab_co[place].y = ya+1;
-                                printf("bas");
                             }
                         }
 
@@ -242,7 +217,6 @@ printf("\n");
                                 int place  = place_tab(tab_co);
                                 tab_co[place].x = xa-1;
                                 tab_co[place].y = ya;
-                                printf("gauche");
                             }
                         }
 
@@ -257,11 +231,11 @@ printf("\n");
                                 int place  = place_tab(tab_co);
                                 tab_co[place].x = xa+1;
                                 tab_co[place].y = ya;
-                                printf("droite");
                             }
                         }
                     }
                 }
+                printf("taille : %d\n" , compteur_temp);
                 // comparons pour savoir si l'ensemble est le plus grand présent sur le jeu
                 if(compteur_temp > taille_ensemble)
                 {

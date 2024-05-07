@@ -326,7 +326,7 @@ void choix_actions(S_joueur *joueur, S_plateau *plateau)
             printf("TOUJOURS PAS IMPLEMENTER MEME MARWAN BENRAMEUR SAURAIT FAIRE CA");
             break;
         case 5:
-            placer_tuile(&(*joueur));
+            placer_tuile(joueur);
             break;
         case 6 :
             etat = 1;

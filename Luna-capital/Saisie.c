@@ -270,14 +270,19 @@ void piocher_carte(S_plateau *plateau , S_joueur *joueur)
                 {
                     temp1=j;
                     j=MAX_ELEMENT;
+
                 }
+            }
+            if(plateau->tuiles[n][t].selenite == 1)
+            {
+                joueur->nb_selenite++;
             }
             joueur->deck_tuiles[temp1] = plateau->tuiles[n][t];
             joueur->nb_tuile_deck++;
         }
 
     }
-    generer_plateau(&(*plateau) , joueur->nb_tour_joueur);
+    generer_plateau(plateau , joueur->nb_tour_joueur);
 
 }
 

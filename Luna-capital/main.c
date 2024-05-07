@@ -45,7 +45,6 @@ int main()
    afficher_jeu_joueur(joueur[0]);
    positionner_curseur(ZONE_ECRITURE_HAUT , ZONE_ECRITURE_GAUCHE);
    color(15,0);
-   printf("kakou");
    printf("plus grand : %d",calcul_plus_grand_ensemble(joueur[0].jeu , COLLECTEUR_HYDROGENE));
 
 

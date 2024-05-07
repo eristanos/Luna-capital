@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <time.h>
+#include <string.h>
 
 #include "declaration.h"
 
@@ -75,6 +76,30 @@ S_tuile generateur_tuile()
         //latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE)+1;
         latuile.sous_type = COLLECTEUR_HYDROGENE;
     }
+    switch(latuile.type)
+    {
+    case CONDENSEUR_EAU:
+        strcpy(latuile.nom , "Condensateur eau");
+        break;
+    case COLLECTEUR_HYDROGENE:
+        strcpy(latuile.nom , "Collecteur hydrogène");
+        break;
+    case COLLECTEUR_OXYGENE:
+        strcpy(latuile.nom , "Collecteur oxygène");
+        break;
+    case SERRE_1:
+        strcpy(latuile.nom , "Serre_pomme");
+        break;
+    case SERRE_2:
+        strcpy(latuile.nom , "Serre_myrtille");
+        break;
+    case SERRE_3:
+        strcpy(latuile.nom , "Serre_salade");
+        break;
+
+    }
+
+
     return latuile;
 }
 

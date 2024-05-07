@@ -32,7 +32,7 @@
 #define SERRE_1 4
 #define SERRE_2 5
 #define SERRE_3 6
-#define TOUTE_SERRE 7
+
 //indicatif tuile
 #define PAS_TUILE -1
 #define VIDE 0
@@ -101,8 +101,9 @@ typedef struct tuile
     7 : échafaudage lunaire : que sur les cartes
     8 : démolition
     */
-
+    char nom [NB_CHAR];
     int type;
+    int selenite;
 
     int sous_type;                  // l'indicatif sera celui d'une couleur pour eviter de mettre une variable redondante
 }S_tuile;
