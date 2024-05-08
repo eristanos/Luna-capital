@@ -13,8 +13,8 @@ void dessiner_rectangle(int ligne,int colonne,int c,int lg, int la)
     {
         for(int y = 0; y < lg; y++)
         {
-         positionner_curseur(ligne + y, colonne + x);
-         printf("W");
+            positionner_curseur(ligne + y, colonne + x);
+            printf("W");
         }
     }
     color(15, 0);
@@ -39,14 +39,14 @@ void plein_ecran()
 
 void affichage_caractere_speciaux()
 {
-     printf("%c\n\n",218);
-     printf("%c\n\n",196);
-     printf("%c\n\n",191);
-     printf("%c\n\n",179);
-     printf("%c\n\n",195);
-     printf("%c\n\n",180);
-     printf("%c\n\n",192);
-     printf("%c\n\n",217);
+    printf("%c\n\n",218);
+    printf("%c\n\n",196);
+    printf("%c\n\n",191);
+    printf("%c\n\n",179);
+    printf("%c\n\n",195);
+    printf("%c\n\n",180);
+    printf("%c\n\n",192);
+    printf("%c\n\n",217);
 }
 
 void color (int couleurDuTexte, int couleurDuFond)
@@ -57,7 +57,7 @@ void color (int couleurDuTexte, int couleurDuFond)
 
 void dessiner_carte_construction(int ligne, int colonne, S_carte_construction carte_construction)
 {
-    dessiner_rectangle(ligne , colonne , 0 , LON_CARTE , LAR_CARTE);
+    dessiner_rectangle(ligne, colonne, 0, LON_CARTE, LAR_CARTE);
     if(carte_construction.type != 0)
     {
         // affichage fond de carte
@@ -91,8 +91,8 @@ void dessiner_carte_construction(int ligne, int colonne, S_carte_construction ca
         // affichage de chacune des tuiles de la carte
         dessiner_tuile(ligne,colonne,carte_construction.tuile[0]);
         dessiner_tuile(ligne,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[1]);
-        dessiner_tuile(ligne + MIL_CARTE_LON ,colonne,carte_construction.tuile[2]);
-        dessiner_tuile(ligne + MIL_CARTE_LON ,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[3]);
+        dessiner_tuile(ligne + MIL_CARTE_LON,colonne,carte_construction.tuile[2]);
+        dessiner_tuile(ligne + MIL_CARTE_LON,colonne + MIL_CARTE_LAR + 1,carte_construction.tuile[3]);
         color(15,0);
     }
 }
@@ -114,6 +114,10 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affic
         {
             printf("%c",196);
         }
+       if(tuile.selenite == 1)
+      {
+         dessiner_rectangle(ligne +1, colonne + 6, 15, 1, 1);
+      }
 
         // on affiche le design de la tuile selon son type
         switch(tuile.type){
@@ -147,32 +151,32 @@ void dessiner_tuile(int ligne, int colonne, S_tuile tuile)              // affic
 void dessiner_vitaux(int ligne, int colonne, int sous_type)
 {
     // affichage des tuiles de type vitales selon leur sous type
-    dessiner_rectangle(ligne + 2, colonne + 1, 4, 3 , 5);
+    dessiner_rectangle(ligne + 2, colonne + 1, 4, 3, 5);
     dessiner_rectangle(ligne + 3, colonne + 2, sous_type, 1,3);
 }
 
 void dessiner_meteorite(int ligne, int colonne)
 {
     // affichage de la tuile meteorite
-    dessiner_rectangle(ligne + 2 , colonne + 2 , 0 , 1, 3);
-    dessiner_rectangle(ligne + 3 , colonne + 1 , 0 , 1, 5);
-    dessiner_rectangle(ligne + 4 , colonne + 2 , 0 , 1, 3);
+    dessiner_rectangle(ligne + 2, colonne + 2, 0, 1, 3);
+    dessiner_rectangle(ligne + 3, colonne + 1, 0, 1, 5);
+    dessiner_rectangle(ligne + 4, colonne + 2, 0, 1, 3);
 }
 void dessiner_agence_commercial(int ligne, int colonne)
 {
     // affichage de la tuile agence commerciale
-    dessiner_rectangle(ligne + 2, colonne +4 ,14 , 1, 1);
-    dessiner_rectangle(ligne + 3, colonne +1 , 14, 1 ,4);
-    dessiner_rectangle(ligne + 3, colonne +1 , 14, 1 ,4);
+    dessiner_rectangle(ligne + 2, colonne +4,14, 1, 1);
+    dessiner_rectangle(ligne + 3, colonne +1, 14, 1,4);
+    dessiner_rectangle(ligne + 3, colonne +1, 14, 1,4);
 }
 
 void dessiner_module_habitation(int ligne, int colonne, int sous_type)
 {
     //affichage de la tuile module habitation
-    dessiner_rectangle(ligne + 1, colonne +3 ,14 , 1, 1);
-    dessiner_rectangle(ligne + 2, colonne +2 ,14 , 1, 3);
-    dessiner_rectangle(ligne + 3, colonne +1 ,14 , 2, 5);
-    dessiner_rectangle(ligne + 3, colonne +2 , sous_type, 1, 3);
+    dessiner_rectangle(ligne + 1, colonne +3,14, 1, 1);
+    dessiner_rectangle(ligne + 2, colonne +2,14, 1, 3);
+    dessiner_rectangle(ligne + 3, colonne +1,14, 2, 5);
+    dessiner_rectangle(ligne + 3, colonne +2, sous_type, 1, 3);
 }
 
 void dessiner_echafaudage(int ligne, int colonne)
@@ -187,7 +191,7 @@ void dessiner_complexe_residentiel(int ligne, int colonne)
     //affichage du complexe residentiel
     dessiner_rectangle(ligne +1,colonne + 3, 4, 1, 2);
     dessiner_rectangle(ligne +2,colonne + 3, 9, 3, 2);
-    dessiner_rectangle(ligne +4, colonne + 5, 7 , 1, 1);
+    dessiner_rectangle(ligne +4, colonne + 5, 7, 1, 1);
 }
 void dessiner_terrain_alunissage(int ligne, int colonne)
 {
@@ -205,17 +209,62 @@ void dessiner_jeton_construction(int ligne, int colonne)
     dessiner_rectangle(ligne +3, colonne +2, 2, 1, 3);
 }
 
+void afficher_carte_concession(S_plateau plateau)
+{
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE,LARG_MAX_JEU*LAR_CARTE);
+    positionner_curseur(0,0);
+    for(int i=0 ; i < TYPE_CONCESSION; i++)
+    {
+        int type = plateau.tab_cartes_concession[i].type;
+
+        switch(type)
+        {
+        case 0:                     // 0 = collecteur d'hydrogene
+            printf("Posseder 3 cartes en colonne avec au moins 1 Collecteur d hydrogene sur chacune. Points : 7 \n");
+            printf("Posseder 3 Collecteurs d hydrogene alignes (verticalement ou horizontalement). Points : 6 \n");
+            printf("Posseder au moins 5 Collecteurs d hydrogene. Points : 9 \n");
+            break;
+        case 1:                     // 1 = condenseurs d'eau
+            printf("Posseder 3 cartes en colonne avec au moins 1 Condenseur d eau sur chacune. Points : 8 \n");
+            printf("Posseder 3 Condenseurs d eau alignes (verticalement ou horizontalement). Points : 7 \n");
+            printf("Posseder au moins 5 Condenseurs d eau. Points : 10 \n");
+            break;
+        case 2:                     // 2 = agences commerciales
+            printf("Posseder 3 cartes en colonne avec au moins 1 Agence commerciale sur chacune. Points : 6 \n");
+            printf("Posseder 3 Agences commerciales alignees (verticalement ou horizontalement). Points : 6 \n");
+            printf("Posseder au moins 4 Agences commerciales. Points : 8 \n");
+            break;
+        case 3:                     //3 = collecteur d'oxygene
+            printf("Posseder 3 cartes en colonne avec au moins 1 Collecteur d oxygene sur chacune. Points : 7 \n");
+            printf("Posseder 3 Collecteurs d oxygene alignes (verticalement ou horizontalement). Points : 6 \n");
+            printf("Posseder au moins 5 Collecteurs d oxygene. Points : 9 \n");
+            break;
+        case 4:                     //4 = serre
+            printf("Posseder 3 cartes en colonne avec au moins 1 Serre (tout type) sur chacune. Points : 7 \n");
+            printf("Posseder 3 Serres (tout type) alignees (verticalement ou horizontalement). Points : 6 \n");
+            printf("Posseder au moins 5 Serres (tous types confondus). Points : 10 \n");
+            break;
+        case 5:                     // 5 = meteorite
+            printf("Posseder 3 cartes en colonne avec au moins 1 Meteorite sur chacune. Points : 6 \n");
+            printf("Posseder 3 Meteorites alignees (verticalement ou horizontalement). Points : 7 \n");
+            printf("Posseder au moins 6 Meteorites. Points : 9 \n");
+            break;
+
+        }
+
+    }
+}
 
 void afficher_jeu_joueur(S_joueur joueur)
 {
-    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE ,LARG_MAX_JEU*LAR_CARTE);
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE,LARG_MAX_JEU*LAR_CARTE);
     for(int i = 0 ; i < LARG_MAX_JEU; i++)
     {
         for(int y = 0; y < LONG_MAX_JEU; y++)
         {
             if(joueur.jeu[i][y].type != 0)
             {
-                dessiner_carte_construction( y * LON_CARTE + y + 1, i * LAR_CARTE + i ,joueur.jeu[i][y]);
+                dessiner_carte_construction( y * LON_CARTE + y + 1, i * LAR_CARTE + i,joueur.jeu[i][y]);
             }
         }
     }
@@ -232,27 +281,25 @@ void afficher_menu(S_joueur joueur)
     for(int i = 0; i < LONG_MAX_JEU * LON_CARTE + 4; i ++)
     {
         positionner_curseur(i,LARG_MAX_JEU*LAR_CARTE + 8);
-        printf("%c" , 179);
+        printf("%c", 179);
     }
 
 
-    dessiner_rectangle(0 , ZONE_ECRITURE_GAUCHE, 0 , LONG_MENU , LARG_MENU);
-    positionner_curseur(0 ,ZONE_ECRITURE_GAUCHE);
+    dessiner_rectangle(0, ZONE_ECRITURE_GAUCHE, 0, LONG_MENU, LARG_MENU);
+    positionner_curseur(0,ZONE_ECRITURE_GAUCHE);
     printf("    INFORMATION");
-    positionner_curseur(2 ,ZONE_ECRITURE_GAUCHE);
-    printf("Joueur : %s" , joueur.nom);
+    positionner_curseur(2,ZONE_ECRITURE_GAUCHE);
+    printf("Joueur : %s", joueur.nom);
     positionner_curseur(3,ZONE_ECRITURE_GAUCHE);
-    printf("Sponsor : %d " , joueur.sponsor);
+    printf("Sponsor : %d ", joueur.sponsor);
     positionner_curseur(4,ZONE_ECRITURE_GAUCHE);
     positionner_curseur(5 ,ZONE_ECRITURE_GAUCHE);
     printf("Selenites : %d" , joueur.nb_selenite);
 
-
-
 }
 void afficher_plateau(S_plateau plateau)
 {
-    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE ,LARG_MAX_JEU*LAR_CARTE);
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE,LARG_MAX_JEU*LAR_CARTE);
     for(int i = 0 ; i < NB_CARTE_JEU; i++)
     {
         dessiner_carte_construction( 0 , i * LAR_CARTE + i*2 + 1 , plateau.cartes[i]);
@@ -262,28 +309,25 @@ void afficher_plateau(S_plateau plateau)
         }
         positionner_curseur(LON_CARTE +9 ,i * LAR_CARTE + i + 1);
 
-
     }
-
-
 }
 
 void afficher_deck_joueur(S_joueur joueur)
 {
-    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE+8 ,LARG_MAX_JEU*LAR_CARTE+8);
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE+8,LARG_MAX_JEU*LAR_CARTE+8);
     for(int i = 0 ; i < MAX_ELEMENT; i++)
     {
         if(joueur.deck_cartes[i].type == 1)
         {
-            dessiner_carte_construction( 0 , i * LAR_CARTE + i + 1 , joueur.deck_cartes[i]);
-            positionner_curseur(LON_CARTE +9 ,i * LAR_CARTE + i + 1);
-            printf("%d" , i+1);
+            dessiner_carte_construction( 0, i * LAR_CARTE + i + 1, joueur.deck_cartes[i]);
+            positionner_curseur(LON_CARTE +9,i * LAR_CARTE + i + 1);
+            printf("%d", i+1);
         }
         if(joueur.deck_tuiles[i].type != 0)
         {
-            dessiner_tuile(LON_CARTE + 3 , i * LAR_CARTE + i + 1 , joueur.deck_tuiles[i]);
-            positionner_curseur(LON_CARTE +9 ,i * LAR_CARTE + i + 1);
-            printf("%d" , i+1);
+            dessiner_tuile(LON_CARTE + 3, i * LAR_CARTE + i + 1, joueur.deck_tuiles[i]);
+            positionner_curseur(LON_CARTE +9,i * LAR_CARTE + i + 1);
+            printf("%d", i+1);
         }
     }
 }
@@ -313,6 +357,7 @@ void choix_actions(S_joueur *joueur, S_plateau *plateau)
         positionner_curseur(ZONE_ECRITURE_HAUT + 7,ZONE_ECRITURE_GAUCHE);
         printf("CHOIX :");
         int choix;
+
         scanf("%d" ,&choix);
         positionner_curseur(ZONE_ECRITURE_HAUT + 8,ZONE_ECRITURE_GAUCHE);
 
@@ -325,7 +370,7 @@ void choix_actions(S_joueur *joueur, S_plateau *plateau)
             afficher_deck_joueur(*joueur);
             break;
         case 3:
-            printf("TOUJOURS PAS IMPLEMENTER");
+            afficher_carte_concession(*plateau);
             break;
         case 4:
             printf("TOUJOURS PAS IMPLEMENTER");
@@ -348,7 +393,8 @@ void choix_actions(S_joueur *joueur, S_plateau *plateau)
             printf("valeur invalide");
             break;
         }
-    }while(etat ==0);
+    }
+    while(etat ==0);
 
 }
 

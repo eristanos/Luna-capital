@@ -16,7 +16,7 @@
 #define TYPE_CONCESSION 3
 #define ZONE_ECRITURE_HAUT 6
 #define ZONE_ECRITURE_GAUCHE 129
-
+#define NB_CONCESSION 3
 
 #define LARG_MAX_JEU 8
 #define LONG_MAX_JEU 3
@@ -107,8 +107,6 @@ typedef struct tuile
     int sous_type;                  // l'indicatif sera celui d'une couleur pour eviter de mettre une variable redondante
 }S_tuile;
 
-
-
 typedef struct carte_construction
 {
     int type;                        //0 : pas de carte
@@ -135,6 +133,7 @@ struct plateau
 {
     S_tuile tuiles[NB_CARTE_JEU][NB_TUILE];
     S_carte_construction cartes[NB_CARTE_JEU];
+    S_concession tab_cartes_concession[NB_CONCESSION];
 };
 typedef struct plateau S_plateau;
 

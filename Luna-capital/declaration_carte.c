@@ -23,9 +23,9 @@ S_carte_construction generateur_carte()
 
     for (int i = 0; i < NB_TUILE; i++)
     {
-        // definition de la pondération
+        // definition de la pondÃ©ration
         S_proba tab_pond[NB_TYPE_TUILE_CARTE] = {{VIDE,PART_VIDE_CARTE},{VITAUX, PART_VITAUX_CARTE},{METEORITE, PART_METEORITE_CARTE},{ECHAFAUDAGE, PART_ECHAFAUDAGE_CARTE}};
-        // Tirage aléatoire
+        // Tirage alÃ©atoire
         temp = rand() % 101;
         somme_ponderation = 0;
 
@@ -39,7 +39,7 @@ S_carte_construction generateur_carte()
             somme_ponderation += tab_pond[y].part;
         }
 
-        // génération du sous type dans le cas des vitaux
+        // gÃ©nÃ©ration du sous type dans le cas des vitaux
         if (carte.tuile[i].type == VITAUX)
         {
             carte.tuile[i].sous_type = (rand() % NB_SOUS_TYPE_TUILE);
@@ -52,13 +52,19 @@ S_tuile generateur_tuile()
 {
     S_tuile latuile;
 
-    // definition de la pondération
+    // definition de la pondÃ©ration
 
     S_proba tab_pond[NB_TYPE_TUILE-1] = {{DEMOLITION,PART_DEMOLITION_TUILE},{VITAUX, PART_VITAUX_TUILE},{METEORITE, PART_METEORITE_TUILE},{AGENCE,PART_AGENCE_COMMERCIALE_TUILE},{MODULE,PART_MODULE_HABITATION},{COMPLEXE, PART_COMPLEXE_RESIDENTIEL_TUILE},{TERRAIN, PART_TERRAIN_ALUNISAGE_TUILE}};
-    // Tirage aléatoire
+    // Tirage alÃ©atoire
 
     int temp = rand() % 101;
     int somme_ponderation = 0;
+    int aleatoire = rand() % 10;
+    if(aleatoire == 0)
+    {
+        latuile.selenite = 1;
+    }
+
 
     for(int y = 0 ; y < NB_TYPE_TUILE-1; y++)
     {
@@ -70,7 +76,7 @@ S_tuile generateur_tuile()
         somme_ponderation += tab_pond[y].part;
     }
 
-    // génération du sous type dans le cas des vitaux
+    // gÃ©nÃ©ration du sous type dans le cas des vitaux
     if (latuile.type == VITAUX || latuile.type == MODULE)
     {
         //latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE)+1;
@@ -78,27 +84,26 @@ S_tuile generateur_tuile()
     }
     if(latuile.type == VITAUX)
     {
-       switch(latuile.sous_type)
-        {
-        case CONDENSEUR_EAU:
-            strcpy(latuile.nom , "Condensateur eau");
-            break;
-        case COLLECTEUR_HYDROGENE:
-            strcpy(latuile.nom , "Collecteur hydrogène");
-            break;
-        case COLLECTEUR_OXYGENE:
-            strcpy(latuile.nom , "Collecteur oxygène");
-            break;
-        case SERRE_1:
-            strcpy(latuile.nom , "Serre_pomme");
-            break;
-        case SERRE_2:
-            strcpy(latuile.nom , "Serre_myrtille");
-            break;
-        case SERRE_3:
-            strcpy(latuile.nom , "Serre_salade");
-            break;
-        }
+
+    case CONDENSEUR_EAU:
+        strcpy(latuile.nom , "Condensateur eau");
+        break;
+    case COLLECTEUR_HYDROGENE:
+        strcpy(latuile.nom , "Collecteur hydrogÃ¨ne");
+        break;
+    case COLLECTEUR_OXYGENE:
+        strcpy(latuile.nom , "Collecteur oxygÃ¨ne");
+        break;
+    case SERRE_1:
+        strcpy(latuile.nom , "Serre_pomme");
+        break;
+    case SERRE_2:
+        strcpy(latuile.nom , "Serre_myrtille");
+        break;
+    case SERRE_3:
+        strcpy(latuile.nom , "Serre_salade");
+        break;
+
 
     }
     else
@@ -136,7 +141,7 @@ S_concession generateur_concession()
 {
     S_concession laconcession;
 
-    // definition de la pondération
+    // definition de la pondÃ©ration
     S_proba tab_pond[TYPE_CONCESSION] = {{C_ALIGNE,PART_3_ALIGNE},{C_COLONNE, PART_3_CARTE_COLONNE},{C_N_CARTE,PART_POSSEDER_n_CARTE}};
     // Tirage aleatoire
 
@@ -151,6 +156,7 @@ S_concession generateur_concession()
         }
         somme_ponderation += tab_pond[y].part;
     }
+
     srand(time(NULL));
     int nb_aleatoire = rand() % 3;
 
@@ -238,7 +244,7 @@ S_concession generateur_concession()
         }
         break;
     case 5:
-        laconcession.tuile.type = METEORITE;                  //2= météorite
+        laconcession.tuile.type = METEORITE;                  //2= mÃ©tÃ©orite
         if(laconcession.type == C_ALIGNE)
         {
             laconcession.points = 7;
