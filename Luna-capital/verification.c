@@ -20,6 +20,39 @@ int calcul_nb_construction(S_carte_construction tab[][LONG_MAX_JEU])
     }
     return nb;
 }
+
+int verif_carte_colonne(S_carte_construction jeu[][LONG_MAX_JEU] , S_concession concession)
+{
+    for(int x  = 0 ; x < LARG_MAX_JEU ; x++)
+    {
+        for(int pos = 0 ; pos < NB_TUILE ; pos++)
+        {
+           // cas des vitaux
+            if(jeu[x][1].tuile [pos].type == concession.tuile.type && jeu[x][1].tuile[pos].sous_type == concession.tuile.sous_type)
+            {
+                if(jeu[x-1][1].tuile [pos].type == concession.tuile.type && jeu[x-1][1].tuile[pos].sous_type == concession.tuile.sous_type)
+                {
+                    if(jeu[x+1][1].tuile [pos].type == concession.tuile.type && jeu[x+1][1].tuile[pos].sous_type == concession.tuile.sous_type)
+                    {
+                        return 1;           // on vérifie seulement le milieu d'une colonne pour limiter le nombre d'itération du programme
+                    }
+                }
+            }
+            if(jeu[x][1].tuile [pos].type == concession.tuile.type && jeu[x][1].tuile[pos].type == METEORITE)
+            {
+                if(jeu[x-1][1].tuile [pos].type == concession.tuile.type)
+                {
+                    if(jeu[x+1][1].tuile [pos].type == concession.tuile.type)
+                    {
+                        return 1;           // on vérifie seulement le milieu d'une colonne pour limiter le nombre d'itération du programme
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+}
+
 int place_tab(S_co tab[])
 {
     for(int i =0 ; i < MAX_TUILE_VERIF; i++)
