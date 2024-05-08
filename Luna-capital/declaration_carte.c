@@ -84,27 +84,28 @@ S_tuile generateur_tuile()
     }
     if(latuile.type == VITAUX)
     {
+        switch(latuile.sous_type)
+        {
+        case CONDENSEUR_EAU:
+            strcpy(latuile.nom , "Condensateur eau");
+            break;
+        case COLLECTEUR_HYDROGENE:
+            strcpy(latuile.nom , "Collecteur hydrogène");
+            break;
+        case COLLECTEUR_OXYGENE:
+            strcpy(latuile.nom , "Collecteur oxygène");
+            break;
+        case SERRE_1:
+            strcpy(latuile.nom , "Serre_pomme");
+            break;
+        case SERRE_2:
+            strcpy(latuile.nom , "Serre_myrtille");
+            break;
+        case SERRE_3:
+            strcpy(latuile.nom , "Serre_salade");
+            break;
 
-    case CONDENSEUR_EAU:
-        strcpy(latuile.nom , "Condensateur eau");
-        break;
-    case COLLECTEUR_HYDROGENE:
-        strcpy(latuile.nom , "Collecteur hydrogène");
-        break;
-    case COLLECTEUR_OXYGENE:
-        strcpy(latuile.nom , "Collecteur oxygène");
-        break;
-    case SERRE_1:
-        strcpy(latuile.nom , "Serre_pomme");
-        break;
-    case SERRE_2:
-        strcpy(latuile.nom , "Serre_myrtille");
-        break;
-    case SERRE_3:
-        strcpy(latuile.nom , "Serre_salade");
-        break;
-
-
+        }
     }
     else
     {
