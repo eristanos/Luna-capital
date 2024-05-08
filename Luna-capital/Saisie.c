@@ -183,7 +183,7 @@ void placer_carte(S_joueur *joueur)
         positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
         printf("Saisir y : ");
         int y = Saisie_coordonnees(0,LONG_MAX_JEU);
-        if(verif_emplacement(x,y,joueur->jeu) == 1 && (verif_adjacent(x,y,joueur->jeu) == 1 || joueur->nb_tour_joueur == 0))
+        if(verif_emplacement(x,y,joueur->jeu) == 1 && (verif_adjacent(x,y,joueur->jeu) == 1 || joueur->carte_place == 0))
         {
             int n = 0;
             afficher_menu(*joueur);
@@ -200,8 +200,7 @@ void placer_carte(S_joueur *joueur)
                 printf("joueur %d", joueur->jeu[x][y].valeur);
                 joueur->nb_selenite --;
                 etat = 1;
-                joueur->nb_tour_joueur++;
-
+                joueur->nb_carte_deck = joueur->nb_carte_deck -1;
             }
             else
             {
@@ -209,7 +208,6 @@ void placer_carte(S_joueur *joueur)
                 {
                     joueur->jeu[x][y] = carte;
                     etat = 1;
-                    joueur->nb_tour_joueur++;
 
 
                 }
@@ -282,8 +280,6 @@ void piocher_carte(S_plateau *plateau , S_joueur *joueur)
         }
 
     }
-    generer_plateau(plateau , joueur->nb_tour_joueur);
-
 }
 
 
@@ -321,13 +317,9 @@ void placer_tuile(S_joueur *joueur)
             printf("placer tuile %d" , i+1);
 
             positionner_curseur(ZONE_ECRITURE_HAUT + 1,ZONE_ECRITURE_GAUCHE);
-            printf("TYPE : %d" , joueur->deck_tuiles[i].type);
+            printf("Tuile : %s" , joueur->deck_tuiles[i].nom);
 
-            if(joueur->deck_tuiles[i].sous_type == VITAUX ||joueur->deck_tuiles[i].sous_type == MODULE)
-            {
-                positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
-                printf("SOUS TYPE : %d" ,joueur->deck_tuiles[i].sous_type);
-            }
+
 
 
             // choix de la carte pour poser la tuile
@@ -387,5 +379,6 @@ void placer_tuile(S_joueur *joueur)
         }
 
     }
+    joueur->nb_tuile_deck = 0;
 
 }

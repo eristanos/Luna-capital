@@ -244,7 +244,6 @@ void afficher_menu(S_joueur joueur)
     positionner_curseur(3,ZONE_ECRITURE_GAUCHE);
     printf("Sponsor : %d " , joueur.sponsor);
     positionner_curseur(4,ZONE_ECRITURE_GAUCHE);
-    printf("Tour de jeu : %d" , joueur.nb_tour_joueur);
     positionner_curseur(5 ,ZONE_ECRITURE_GAUCHE);
     printf("Selenites : %d" , joueur.nb_selenite);
 
@@ -326,16 +325,23 @@ void choix_actions(S_joueur *joueur, S_plateau *plateau)
             afficher_deck_joueur(*joueur);
             break;
         case 3:
-            printf("TOUJOURS PAS IMPLEMENTER BANDE DE CHOMEUR FAUT SE BOUGER LE CUL");
+            printf("TOUJOURS PAS IMPLEMENTER");
             break;
         case 4:
-            printf("TOUJOURS PAS IMPLEMENTER MEME MARWAN BENRAMEUR SAURAIT FAIRE CA");
+            printf("TOUJOURS PAS IMPLEMENTER");
             break;
         case 5:
             placer_tuile(joueur);
             break;
         case 6 :
-            etat = 1;
+            if(joueur->nb_tuile_deck == 0)
+            {
+               etat = 1;
+            }
+            else
+            {
+                printf("Placer d'abord vos tuiles");
+            }
             break;
 
         default :

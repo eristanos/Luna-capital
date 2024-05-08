@@ -17,10 +17,12 @@ void jeu()
     {
         for(int tour = 0 ; tour < NB_TOUR; tour ++)
         {
+            generer_plateau(&plateau , tour);
             for(int joueur_joue = 0 ;joueur_joue <nb_joueur; joueur_joue++)
             {
                 tour_jeu(&joueurs[joueur_joue], &plateau);
             }
+
         }
     }
 }
@@ -34,10 +36,9 @@ void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
     // on supprime les éventuels donnéees de la mémoire
     for(int i = 0; i < nb_joueur ; i++)
     {
-        tab_joueur[i].nb_carte_jeu = 0;
         tab_joueur[i].nb_selenite = 0;
-        tab_joueur[i].nb_tour_joueur = 0;
         tab_joueur[i].nb_tuile_deck = 0;
+        tab_joueur[i].carte_place = 0;
 
         // on vide son tableau de jeu
         for(int x = 0; x < LARG_MAX_JEU ; x++ )
@@ -90,12 +91,10 @@ void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
 
 void tour_jeu(S_joueur *joueur , S_plateau *plateau)
 {
-    printf("nb_tour : %d" , joueur->nb_tour_joueur);
-    generer_plateau(&(*plateau) , joueur->nb_tour_joueur);
     afficher_plateau(*plateau);
     afficher_menu(*joueur);
-    piocher_carte(&(*plateau) , &(*joueur));
-    placer_carte(&(*joueur));
-    choix_actions(&(*joueur) , &(*plateau));
+    piocher_carte(plateau , joueur);
+    placer_carte(joueur);
+    choix_actions(joueur , plateau);
 
 }

@@ -72,15 +72,14 @@
 
 
 // pourcentage pour la génération des tuiles
-#define PART_VITAUX_TUILE 100
-#define PART_REDISTRIBUTION_LOGISTIQUE_TUILE 0
-#define PART_METEORITE_TUILE 0
-#define PART_DEMOLITION_TUILE 0
-#define PART_AGENCE_COMMERCIALE_TUILE 0
-#define PART_TERRAIN_ALUNISAGE_TUILE 0
-#define PART_COMPLEXE_RESIDENTIEL_TUILE 0
-#define PART_MODULE_HABITATION 0
-#define CHANCE_ROBOT_SELENITE 0
+#define PART_VITAUX_TUILE 40
+#define PART_METEORITE_TUILE 7
+#define PART_DEMOLITION_TUILE 7
+#define PART_AGENCE_COMMERCIALE_TUILE 11
+#define PART_TERRAIN_ALUNISAGE_TUILE 10
+#define PART_COMPLEXE_RESIDENTIEL_TUILE 10
+#define PART_MODULE_HABITATION 15
+#define CHANCE_ROBOT_SELENITE 10
 
 // pourcentage pour la generation du deck concessions
 #define PART_3_ALIGNE 40
@@ -147,10 +146,9 @@ typedef struct joueur
     char nom[NB_CHAR];                                              // nom équipe
     int nb_selenite;                                                // stock le nombre de bonus selenite du joueur
     S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU];           // jeu de cartes positionnées
-    int nb_carte_jeu;
     int nb_carte_deck;
     int nb_tuile_deck;
-    int nb_tour_joueur;
+    int carte_place;                                                //pour savoir si la première carte à été placé avant de vérifier si il y  a des cases adjacentes
 
 }S_joueur;
 

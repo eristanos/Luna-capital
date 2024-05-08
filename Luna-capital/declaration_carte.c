@@ -76,30 +76,59 @@ S_tuile generateur_tuile()
         //latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE)+1;
         latuile.sous_type = COLLECTEUR_HYDROGENE;
     }
-    switch(latuile.type)
+    if(latuile.type == VITAUX)
     {
-    case CONDENSEUR_EAU:
-        strcpy(latuile.nom , "Condensateur eau");
-        break;
-    case COLLECTEUR_HYDROGENE:
-        strcpy(latuile.nom , "Collecteur hydrogène");
-        break;
-    case COLLECTEUR_OXYGENE:
-        strcpy(latuile.nom , "Collecteur oxygène");
-        break;
-    case SERRE_1:
-        strcpy(latuile.nom , "Serre_pomme");
-        break;
-    case SERRE_2:
-        strcpy(latuile.nom , "Serre_myrtille");
-        break;
-    case SERRE_3:
-        strcpy(latuile.nom , "Serre_salade");
-        break;
+       switch(latuile.sous_type)
+        {
+        case CONDENSEUR_EAU:
+            strcpy(latuile.nom , "Condensateur eau");
+            break;
+        case COLLECTEUR_HYDROGENE:
+            strcpy(latuile.nom , "Collecteur hydrogène");
+            break;
+        case COLLECTEUR_OXYGENE:
+            strcpy(latuile.nom , "Collecteur oxygène");
+            break;
+        case SERRE_1:
+            strcpy(latuile.nom , "Serre_pomme");
+            break;
+        case SERRE_2:
+            strcpy(latuile.nom , "Serre_myrtille");
+            break;
+        case SERRE_3:
+            strcpy(latuile.nom , "Serre_salade");
+            break;
+        }
 
     }
+    else
+    {
+        switch(latuile.type)
+        {
+        case VIDE:
+            strcpy(latuile.nom , "Vide");
+            break;
+        case MODULE:
+            strcpy(latuile.nom , "Modul'Hab");
+            break;
+        case METEORITE:
+            strcpy(latuile.nom , "Meterorite");
+            break;
+        case AGENCE:
+            strcpy(latuile.nom , "Agence");
+            break;
+        case ECHAFAUDAGE:
+            strcpy(latuile.nom , "Echafaudage");
+            break;
+        case TERRAIN:
+            strcpy(latuile.nom , "Terrain d'alunisage");
+            break;
+        case COMPLEXE:
+            strcpy(latuile.nom , "Complexe residentiel");
+            break;
 
-
+        }
+    }
     return latuile;
 }
 
@@ -122,7 +151,6 @@ S_concession generateur_concession()
         }
         somme_ponderation += tab_pond[y].part;
     }
-    // génération du sous type dans le cas des système vitaux
     srand(time(NULL));
     int nb_aleatoire = rand() % 3;
 
