@@ -5,6 +5,8 @@
 #include "Saisie.h"
 #include "affichage.h"
 #include "declaration_cartes.h"
+#include "verification.h"
+
 
 void jeu()
 {
@@ -17,22 +19,95 @@ void jeu()
     {
         for(int tour = 0 ; tour < NB_TOUR; tour ++)
         {
-            generer_plateau(&plateau , tour);
+
             for(int joueur_joue = 0 ;joueur_joue <nb_joueur; joueur_joue++)
             {
+                generer_plateau(&plateau , tour);
                 tour_jeu(&joueurs[joueur_joue], &plateau);
             }
 
         }
+        for(int joueur_joue = 0 ;joueur_joue <nb_joueur; joueur_joue++)
+        {
+            afficher_menu(joueurs[joueur_joue]);
+            positionner_curseur(ZONE_ECRITURE_HAUT , ZONE_ECRITURE_GAUCHE);
+            printf("Voulez vous revendiquez une concession ? ");
+            positionner_curseur(ZONE_ECRITURE_HAUT + 3,ZONE_ECRITURE_GAUCHE);
+            int n;
+            printf("0 : NON , 1 : OUI");
+            positionner_curseur(ZONE_ECRITURE_HAUT + 4,ZONE_ECRITURE_GAUCHE);
+            scanf("%d" ,&n);
+            if(n == 1)
+            {
+                int etat = 0;
+                while(etat == 0)
+                {
+
+                    afficher_carte_concession(plateau.tab_cartes_concession);
+                    afficher_menu(joueurs[joueur_joue]);
+
+                    positionner_curseur(ZONE_ECRITURE_HAUT , ZONE_ECRITURE_GAUCHE);
+                    printf("choisir une concession : ");
+                    positionner_curseur(ZONE_ECRITURE_HAUT+1 , ZONE_ECRITURE_GAUCHE);
+                    printf("Saisir 4 pour sortir");
+                    int choix = Saisie_coordonnees(0 , NB_CONCESSION+1);
+                    if(choix == 4)
+                    {
+                        etat = 1;
+                    }
+                    else
+                    {
+                        if(verif_concession(joueurs[joueur_joue].jeu ,plateau.tab_cartes_concession[choix])== 1)
+                        {
+                            joueurs[joueur_joue].point += plateau.tab_cartes_concession[choix].points;
+                            plateau.tab_cartes_concession[choix].etat = 1;
+                        }
+                        else
+                        {
+                            positionner_curseur(ZONE_ECRITURE_HAUT + 2 , ZONE_ECRITURE_GAUCHE);
+                            printf("Vous n'avez pas validé cette concession");
+                        }
+                    }
+                }
+            }
+        }
+
+
     }
+    for(int joueur_joue = 0 ;joueur_joue <nb_joueur; joueur_joue++)
+        {
+            joueurs[joueur_joue].point += calcul_point(joueurs[joueur_joue]);
+        }
+    int temp = 0;
+    int temp_j;
+    for(int joueur_joue = 0 ;joueur_joue <nb_joueur; joueur_joue++)
+        {
+            if(joueurs[joueur_joue].point > temp)
+            {
+               temp = joueurs[joueur_joue].point;
+               temp_j = joueur_joue;
+            }
+        }
+    dessiner_rectangle(0,0,0,LONG_WINDOWS , LARG_WINDOWS);
+    positionner_curseur(0,0);
+    printf("Le gagnant est : %s avec %d points" , joueurs[temp_j].nom , joueurs[temp_j].point);
 }
 
 void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
 {
     printf("initialisation\n");
+
     // on demande les noms des différents joueurs : le premier à saisir commencera
     Saisie_Noms_Joueurs(tab_joueur , nb_joueur);
     affectation_sponsor(tab_joueur , nb_joueur);
+    // on genère le tableau de concessions
+    for(int i = 0 ; i < NB_CONCESSION ; i++)
+    {
+        plateau->tab_cartes_concession[i] = generateur_concession();
+    }
+
+
+
     // on supprime les éventuels donnéees de la mémoire
     for(int i = 0; i < nb_joueur ; i++)
     {
@@ -54,12 +129,13 @@ void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
                 }
             }
         }
+
         for(int n = 0 ; n < MAX_ELEMENT ; n++)
         {
             if(n < 3)
             {
                 tab_joueur[i].deck_cartes[n] = generateur_carte();
-                tab_joueur[i].nb_carte_deck ++;
+
             }
             else
             {
@@ -87,6 +163,8 @@ void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
             }
         }
     }
+
+
 }
 
 void tour_jeu(S_joueur *joueur , S_plateau *plateau)

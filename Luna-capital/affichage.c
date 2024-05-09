@@ -210,45 +210,29 @@ void dessiner_jeton_construction(int ligne, int colonne)
     dessiner_rectangle(ligne +3, colonne +2, 2, 1, 3);
 }
 
-void afficher_carte_concession(S_plateau plateau)
+void afficher_carte_concession(S_concession tab[])
 {
-    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE,LARG_MAX_JEU*LAR_CARTE);
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE+8,LARG_MAX_JEU*LAR_CARTE+8);
     positionner_curseur(0,0);
     for(int i=0 ; i < TYPE_CONCESSION; i++)
     {
-        int type = plateau.tab_cartes_concession[i].type;
 
-        switch(type)
+        switch(tab[i].type)
         {
-        case 0:                     // 0 = collecteur d'hydrogene
-            printf("Posseder 3 cartes en colonne avec au moins 1 Collecteur d hydrogene sur chacune. Points : 7 \n");
-            printf("Posseder 3 Collecteurs d hydrogene alignes (verticalement ou horizontalement). Points : 6 \n");
-            printf("Posseder au moins 5 Collecteurs d hydrogene. Points : 9 \n");
+        case C_COLONNE:
+            dessiner_tuile(i *(LAR_CARTE/2+1)+3*i , 0 , tab[i].tuile);
+            positionner_curseur(i *(LAR_CARTE/2+1)+5*i , 7);
+            printf("Posseder 3 cartes en colonnes avec une tuile de ce type sur chacune");
             break;
-        case 1:                     // 1 = condenseurs d'eau
-            printf("Posseder 3 cartes en colonne avec au moins 1 Condenseur d eau sur chacune. Points : 8 \n");
-            printf("Posseder 3 Condenseurs d eau alignes (verticalement ou horizontalement). Points : 7 \n");
-            printf("Posseder au moins 5 Condenseurs d eau. Points : 10 \n");
+        case C_ALIGNE:
+            dessiner_tuile(i *(LAR_CARTE/2+1)+3*i , 0 , tab[i].tuile);
+            positionner_curseur(i *(LAR_CARTE/2+1)+5*i , 7);
+            printf("Posseder 3 tuiles de ce type alignees verticalement ou horizontalement");
             break;
-        case 2:                     // 2 = agences commerciales
-            printf("Posseder 3 cartes en colonne avec au moins 1 Agence commerciale sur chacune. Points : 6 \n");
-            printf("Posseder 3 Agences commerciales alignees (verticalement ou horizontalement). Points : 6 \n");
-            printf("Posseder au moins 4 Agences commerciales. Points : 8 \n");
-            break;
-        case 3:                     //3 = collecteur d'oxygene
-            printf("Posseder 3 cartes en colonne avec au moins 1 Collecteur d oxygene sur chacune. Points : 7 \n");
-            printf("Posseder 3 Collecteurs d oxygene alignes (verticalement ou horizontalement). Points : 6 \n");
-            printf("Posseder au moins 5 Collecteurs d oxygene. Points : 9 \n");
-            break;
-        case 4:                     //4 = serre
-            printf("Posseder 3 cartes en colonne avec au moins 1 Serre (tout type) sur chacune. Points : 7 \n");
-            printf("Posseder 3 Serres (tout type) alignees (verticalement ou horizontalement). Points : 6 \n");
-            printf("Posseder au moins 5 Serres (tous types confondus). Points : 10 \n");
-            break;
-        case 5:                     // 5 = meteorite
-            printf("Posseder 3 cartes en colonne avec au moins 1 Meteorite sur chacune. Points : 6 \n");
-            printf("Posseder 3 Meteorites alignees (verticalement ou horizontalement). Points : 7 \n");
-            printf("Posseder au moins 6 Meteorites. Points : 9 \n");
+        case C_5_TUILE:
+            dessiner_tuile(i *(LAR_CARTE/2+1)+3*i , 0 , tab[i].tuile);
+            positionner_curseur(i *(LAR_CARTE/2+1)+5*i , 7);
+            printf("Posseder 5 tuiles de ce type");
             break;
 
         }
@@ -258,7 +242,7 @@ void afficher_carte_concession(S_plateau plateau)
 
 void afficher_jeu_joueur(S_joueur joueur)
 {
-    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE,LARG_MAX_JEU*LAR_CARTE);
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE+8,LARG_MAX_JEU*LAR_CARTE+8);
     for(int i = 0 ; i < LARG_MAX_JEU; i++)
     {
         for(int y = 0; y < LONG_MAX_JEU; y++)
@@ -355,7 +339,7 @@ void afficher_menu(S_joueur joueur)
 }
 void afficher_plateau(S_plateau plateau)
 {
-    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE,LARG_MAX_JEU*LAR_CARTE);
+    dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE+8,LARG_MAX_JEU*LAR_CARTE+8);
     for(int i = 0 ; i < NB_CARTE_JEU; i++)
     {
         dessiner_carte_construction( 0, i * LAR_CARTE + i*2 + 1, plateau.cartes[i]);
@@ -366,10 +350,14 @@ void afficher_plateau(S_plateau plateau)
         positionner_curseur(LON_CARTE +9,i * LAR_CARTE + i + 1);
 
     }
+    positionner_curseur(30,0);
+    printf("PLATEAU DE JEU");
+
 }
 
 void afficher_deck_joueur(S_joueur joueur)
 {
+
     dessiner_rectangle(0,0,0,LONG_MAX_JEU*LON_CARTE+8,LARG_MAX_JEU*LAR_CARTE+8);
     for(int i = 0 ; i < MAX_ELEMENT; i++)
     {
@@ -386,6 +374,8 @@ void afficher_deck_joueur(S_joueur joueur)
             printf("%d", i+1);
         }
     }
+    positionner_curseur(30,0);
+    printf("DECK JOUEUR");
 }
 
 
@@ -426,7 +416,7 @@ void choix_actions(S_joueur *joueur, S_plateau *plateau)
             afficher_deck_joueur(*joueur);
             break;
         case 3:
-            afficher_carte_concession(*plateau);
+            afficher_carte_concession(plateau->tab_cartes_concession);
             break;
         case 4:
             afficher_glossaire_tuile();
