@@ -6,7 +6,52 @@
 
 int calcul_point(S_joueur joueur)
 {
+    int point = 0;
+    // calcul des ensemble
+    for(int i = 0 ; i < 6 ; i++)
+    {
+        int n = calcul_plus_grand_ensemble(joueur.jeu , i);
 
+        switch(n)
+        {
+            case 0:
+                point = point + 0;
+                break;
+            case 1:
+                point = point + 1;
+                break;
+            case 2:
+                point = point + 3;
+                break;
+            case 3:
+                point = point + 6;
+                break;
+            case 4:
+                point = point + 10;
+                break;
+            case 5:
+                point = point + 15;
+                break;
+            case 6:
+                point = point + 20;
+                break;
+            case 7:
+                point = point + 25;
+                break;
+            case 8:
+                point = point + 30;
+                break;
+            case 9:
+                point = point + 35;
+                break;
+            default:
+                point = point + 40;
+        }
+    }
+
+    // calcul des points des serre : on appellera la fct nb_tuile et on calculera le nb de serre de chaque type le nb d'ensemble sera le plus petit ensemble d'un tyoe de serre
+
+    return point;
 }
 
 int verif_concession(S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU] ,S_concession concession)
