@@ -18,10 +18,6 @@ int main()
 
     // test paul
 
-
-
-
-
     /*
     for(int i =0; i < 3; i++)
     {
@@ -56,9 +52,6 @@ int main()
     {
         plateau.tab_cartes_concession[i]=generateur_concession();
     }
-
-
-
 
     S_joueur joueur;
     joueur.nb_selenite = 2;
