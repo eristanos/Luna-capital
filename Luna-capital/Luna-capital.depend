@@ -42,7 +42,7 @@
 
 1714505634 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.h
 
-1715003319 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.c
+1715260934 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -50,18 +50,19 @@
 	"affichage.h"
 	"Saisie.h"
 
-1715002915 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration.h
+1715243752 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration.h
 
-1714664169 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.h
+1715255238 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\affichage.h
 
-1715003012 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_carte.c
+1715243752 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
 	<time.h>
+	<string.h>
 	"declaration.h"
 
-1714725632 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\main.c
+1715245039 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -73,11 +74,11 @@
 	"jeux.h"
 	"verification.h"
 
-1713949372 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_cartes.h
+1715176447 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\declaration_cartes.h
 
 1714551145 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.h
 
-1714551145 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.c
+1715243752 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\saisie.c
 	<stdio.h>
 	"declaration.h"
 	"saisie.h"
@@ -143,21 +144,24 @@
 	"declaration_cartes.h"
 	"affichage.h"
 
-1714399812 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\jeux.h
+1715176447 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\jeux.h
 	"declaration.h"
 
-1714406373 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\verification.c
+1715243752 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\verification.c
 	<stdio.h>
 	"declaration.h"
+	"verification.h"
 
-1714405238 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\verification.h
+1715176447 c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\verification.h
 
-1714551145 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\jeux.c
+1715243752 source:c:\users\matla\onedrive - estaca\tp algo\luna-capital\luna-capital\luna-capital\jeux.c
 	<stdio.h>
 	<stdlib.h>
 	"jeux.h"
 	"declaration_cartes.h"
 	"Saisie.h"
+	"affichage.h"
+	"declaration_cartes.h"
 
 1715201615 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.c
 	<stdio.h>

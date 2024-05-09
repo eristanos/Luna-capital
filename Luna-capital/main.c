@@ -57,7 +57,7 @@ int main()
         plateau.tab_cartes_concession[i]=generateur_concession();
     }
 
-    /*
+
 
 
 
