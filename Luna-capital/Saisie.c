@@ -13,7 +13,7 @@ int  Saisie_Nb_Joueurs()
     printf("Saisir le nombre de joueurs qui vont jouer : ");
     scanf("%d",&n);
 
-    }while(1>n || n>5);
+    }while(0>n || n>5);
     return n;
 
 }
@@ -72,11 +72,14 @@ int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], in
     {
         if(tab[i][y].type != 0)
         {
-            if(tab[i][y].valeur >= valeur_carte)
+            if(tab[i][y].valeur != -1)
             {
-                positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
-                printf("trop grand\n");
-                return 0;
+                if(tab[i][y].valeur >= valeur_carte)
+                {
+                    positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
+                    printf("trop grand\n");
+                    return 0;
+                }
             }
         }
     }
@@ -84,12 +87,16 @@ int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], in
     {
         if(tab[i][y].type != 0)
         {
-            if(tab[i][y].valeur <= valeur_carte)
+            if(tab[i][y].valeur != -1)
             {
-                positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
-                printf("trop petit\n");
-                return 0;
+                if(tab[i][y].valeur <= valeur_carte)
+                {
+                    positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
+                    printf("trop petit\n");
+                    return 0;
+                }
             }
+
         }
     }
     return 1;
@@ -190,23 +197,28 @@ void placer_carte(S_joueur *joueur)
             if(joueur->nb_selenite > 0)
             {
                 positionner_curseur(ZONE_ECRITURE_HAUT + 2,ZONE_ECRITURE_GAUCHE);
-                printf("utilisez un selenite ? 0 : non, 1 : oui ");
+                printf("utilisez un selenite ?");
+                positionner_curseur(ZONE_ECRITURE_HAUT + 3,ZONE_ECRITURE_GAUCHE);
+                printf("0 : NON , 1 : OUI");
+                positionner_curseur(ZONE_ECRITURE_HAUT + 4,ZONE_ECRITURE_GAUCHE);
                 scanf("%d" ,&n);
 
             }
             if(n == 1)
             {
                 joueur->jeu[x][y] = carte;
+                joueur->jeu[x][y].valeur = -1;
                 printf("joueur %d", joueur->jeu[x][y].valeur);
                 joueur->nb_selenite --;
                 etat = 1;
-                joueur->nb_carte_deck = joueur->nb_carte_deck -1;
+                joueur->carte_place = joueur->carte_place -1;
             }
             else
             {
                 if(verif_ordre_carte(x,y,joueur->jeu,carte.valeur) == 1)
                 {
                     joueur->jeu[x][y] = carte;
+                    joueur->carte_place = joueur->carte_place -1;
                     etat = 1;
 
 
@@ -254,7 +266,6 @@ void piocher_carte(S_plateau *plateau , S_joueur *joueur)
             }
         }
     joueur->deck_cartes[temp]=plateau->cartes[n];
-    joueur->nb_carte_deck++;
 
     // on pioche les tuiles
     for(int t = 0; t < NB_TUILE ; t++)

@@ -57,8 +57,6 @@ int main()
         plateau.tab_cartes_concession[i]=generateur_concession();
     }
 
-    /*
-
 
 
 
@@ -111,6 +109,7 @@ int main()
 
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
     */
+
     jeu();
 
     /*

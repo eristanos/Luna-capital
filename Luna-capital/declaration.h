@@ -47,7 +47,7 @@
 //indicatif type concession
 #define C_ALIGNE 0
 #define C_COLONNE 1
-#define C_N_CARTE 2
+#define C_5_TUILE 2
 
 
 #define LARG_WINDOWS 140
@@ -124,6 +124,7 @@ struct concession
 
  */
     int points;
+    int etat;                       // 0 : non pris , 1 : pris dans le tour , 2 pris avant , ne peut plus etre pris
     S_tuile tuile;
 };
 typedef struct concession S_concession;
@@ -145,9 +146,10 @@ typedef struct joueur
     char nom[NB_CHAR];                                              // nom équipe
     int nb_selenite;                                                // stock le nombre de bonus selenite du joueur
     S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU];           // jeu de cartes positionnées
-    int nb_carte_deck;
     int nb_tuile_deck;
     int carte_place;                                                //pour savoir si la première carte à été placé avant de vérifier si il y  a des cases adjacentes
+    int point;
+
 
 }S_joueur;
 

@@ -4,10 +4,46 @@
 
 
 
+int calcul_point(S_joueur joueur)
+{
+
+}
+
+int verif_concession(S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU] ,S_concession concession)
+{
+    switch(concession.type)
+    {
+    case C_COLONNE :
+        if(verif_carte_colonne(jeu , concession) == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+        break;
+    case C_ALIGNE :
+        if(verif_tuile_aligne(jeu , concession.tuile) == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+        break;
+    case C_5_TUILE :
+        break;
+    }
+    return 0;
+}
+
+
 int calcul_nb_construction(S_carte_construction tab[][LONG_MAX_JEU])
 {
-    int nb;
-    for(int i=0; i<LARG_MAX_JEU; i++)
+    int nb = 0;
+    for(int i = 0; i < LARG_MAX_JEU ; i++)
     {
         for(int y=0; y<LONG_MAX_JEU;y++)
         {
@@ -30,13 +66,20 @@ int verif_carte_colonne(S_carte_construction jeu[][LONG_MAX_JEU] , S_concession 
            // cas des vitaux
             if(jeu[x][1].tuile [pos].type == concession.tuile.type && jeu[x][1].tuile[pos].sous_type == concession.tuile.sous_type)
             {
-                if(jeu[x-1][1].tuile [pos].type == concession.tuile.type && jeu[x-1][1].tuile[pos].sous_type == concession.tuile.sous_type)
+                for(int posh = 0 ; posh < NB_TUILE ; posh ++)
                 {
-                    if(jeu[x+1][1].tuile [pos].type == concession.tuile.type && jeu[x+1][1].tuile[pos].sous_type == concession.tuile.sous_type)
+                    if(jeu[x-1][1].tuile [posh].type == concession.tuile.type && jeu[x-1][1].tuile[posh].sous_type == concession.tuile.sous_type)
                     {
-                        return 1;           // on vérifie seulement le milieu d'une colonne pour limiter le nombre d'itération du programme
+                        for(int posb = 0 ; posb < NB_TUILE ; posb ++)
+                        {
+                           if(jeu[x+1][1].tuile [posb].type == concession.tuile.type && jeu[x+1][1].tuile[posb].sous_type == concession.tuile.sous_type)
+                            {
+                            return 1;           // on vérifie seulement le milieu d'une colonne pour limiter le nombre d'itération du programme
+                            }
+                        }
                     }
                 }
+
             }
             if(jeu[x][1].tuile [pos].type == concession.tuile.type && jeu[x][1].tuile[pos].type == METEORITE)
             {
@@ -52,6 +95,111 @@ int verif_carte_colonne(S_carte_construction jeu[][LONG_MAX_JEU] , S_concession 
     }
     return 0;
 }
+
+int verif_tuile_aligne(S_carte_construction tab_jeu[LARG_MAX_JEU][LONG_MAX_JEU] , S_tuile tuile)
+{
+    // on genere un tableau plus adpate au comptage
+    S_verif tab_verif[LARG_MAX_JEU*2][LONG_MAX_JEU*2];
+
+    for(int x = 0 ; x < LARG_MAX_JEU ; x++)
+    {
+        for(int y = 0 ; y < LONG_MAX_JEU ; y++)
+        {
+            if(tab_jeu[x][y].type == 1)
+            {
+                for(int pos = 0 ; pos < NB_TUILE ; pos ++)
+                {
+                    if(tab_jeu[x][y].tuile[pos].type == tuile.type && tab_jeu[x][y].tuile[pos].sous_type == tuile.sous_type)  // limitons seulement au tuile nous intéressant
+                    {
+                        switch(pos)
+                        {
+                            case 0:
+                                tab_verif[x*2][y*2].valeur = 1;
+                                tab_verif[x*2][y*2].etat = 0;
+
+                                break;
+                            case 1:
+                                tab_verif[x*2+1][y*2].valeur = 1;
+                                tab_verif[x*2+1][y*2].etat = 0;
+                                break;
+                            case 2:
+                                tab_verif[x*2][y*2+1].valeur = 1;
+                                tab_verif[x*2][y*2+1].etat = 0;
+                                break;
+                            case 3:
+                                tab_verif[x*2+1][y*2+1].valeur = 1;
+                                tab_verif[x*2+1][y*2+1].etat = 0;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch(pos)
+                        {
+                            case 0:
+                                tab_verif[x*2][y*2].valeur = 0;
+                                tab_verif[x*2][y*2].etat = 0;
+
+                                break;
+                            case 1:
+                                tab_verif[x*2+1][y*2].valeur = 0;
+                                tab_verif[x*2+1][y*2].etat = 0;
+                                break;
+                            case 2:
+                                tab_verif[x*2][y*2+1].valeur = 0;
+                                tab_verif[x*2][y*2+1].etat = 0;
+                                break;
+                            case 3:
+                                tab_verif[x*2+1][y*2+1].valeur = 0;
+                                tab_verif[x*2+1][y*2+1].etat = 0;
+                                break;
+                        }
+                    }
+                }
+            }
+
+            else
+            {
+                tab_verif[x*2][y*2].valeur = 0;
+                tab_verif[x*2][y*2].etat = 0;
+
+                tab_verif[x*2+1][y*2].valeur = 0;
+                tab_verif[x*2+1][y*2].etat = 0;
+
+                tab_verif[x*2][y*2+1].valeur = 0;
+                tab_verif[x*2][y*2+1].etat = 0;
+
+                tab_verif[x*2+1][y*2+1].valeur = 0;
+                tab_verif[x*2+1][y*2+1].etat = 0;
+            }
+        }
+    }
+
+    // lisons maintenant le tableau juste crée
+
+    for(int x = 0 ; x < LARG_MAX_JEU*2 ; x++)
+    {
+        for(int y = 0 ; y < LONG_MAX_JEU*2 ; y++)
+        {
+            if(x < 0 && x < LARG_MAX_JEU -1)        // On verifie à partir du centre pour les horizontales
+            {
+                if(tab_verif[x][y].valeur == 1 && tab_verif[x-1][y].valeur == 1 && tab_verif[x+1][y].valeur == 1)
+                   {
+                       return 1;
+                   }
+            }
+            if(y < 0 && y < LONG_MAX_JEU -1)        // On verifie à partir du centre pour les horizontales
+            {
+                if(tab_verif[x][y].valeur == 1 && tab_verif[x][y-1].valeur == 1 && tab_verif[x][y+1].valeur == 1)
+                   {
+                       return 1;
+                   }
+            }
+        }
+    }
+    return 0;
+}
+
 
 int place_tab(S_co tab[])
 {
