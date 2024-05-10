@@ -19,6 +19,8 @@ int calcul_point(S_joueur joueur);
 int verif_concession(S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU] ,S_concession concession);
 int verif_carte_colonne(S_carte_construction jeu[][LONG_MAX_JEU] , S_concession concession);
 int verif_tuile_aligne(S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU] , S_tuile tuile);
+int point_modulhab(S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU]);
+
 
 
 

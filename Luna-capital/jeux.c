@@ -8,6 +8,7 @@
 #include "verification.h"
 
 
+
 void jeu()
 {
     int nb_joueur = Saisie_Nb_Joueurs();
@@ -78,16 +79,32 @@ void jeu()
         {
             joueurs[joueur_joue].point += calcul_point(joueurs[joueur_joue]);
         }
+
+    // comparaison météorite : On donne 10 au joueurs avec le plus de météorite
+    S_tuile meteorite;
+    meteorite.type = METEORITE;
+    meteorite.sous_type = 0;
+    int tempm = 0;
+    for(int i = 0 ; i < nb_joueur ; i++)
+    {
+        if(calcul_nb_tuile(joueurs[i].jeu , meteorite) > calcul_nb_tuile(joueurs[tempm].jeu , meteorite))
+        {
+            tempm = i;
+        }
+    }
+    joueurs[tempm].point += 10;
+
+
     int temp = 0;
     int temp_j;
     for(int joueur_joue = 0 ;joueur_joue <nb_joueur; joueur_joue++)
+    {
+        if(joueurs[joueur_joue].point > temp)
         {
-            if(joueurs[joueur_joue].point > temp)
-            {
-               temp = joueurs[joueur_joue].point;
-               temp_j = joueur_joue;
-            }
+            temp = joueurs[joueur_joue].point;
+            temp_j = joueur_joue;
         }
+    }
     dessiner_rectangle(0,0,0,LONG_WINDOWS , LARG_WINDOWS);
     positionner_curseur(0,0);
     printf("Le gagnant est : %s avec %d points" , joueurs[temp_j].nom , joueurs[temp_j].point);
@@ -163,8 +180,6 @@ void initialiser_jeu(S_joueur tab_joueur[] , S_plateau *plateau , int nb_joueur)
             }
         }
     }
-
-
 }
 
 void tour_jeu(S_joueur *joueur , S_plateau *plateau)
@@ -174,5 +189,4 @@ void tour_jeu(S_joueur *joueur , S_plateau *plateau)
     piocher_carte(plateau , joueur);
     placer_carte(joueur);
     choix_actions(joueur , plateau);
-
 }

@@ -50,8 +50,132 @@ int calcul_point(S_joueur joueur)
     }
 
     // calcul des points des serre : on appellera la fct nb_tuile et on calculera le nb de serre de chaque type le nb d'ensemble sera le plus petit ensemble d'un tyoe de serre
+    int nb_set;
+
+    S_tuile tuile1;
+    tuile1.type = 1;
+    tuile1.sous_type = SERRE_1;
+    int temp1 = calcul_nb_tuile(joueur.jeu , tuile1);
+
+    S_tuile tuile2;
+    tuile2.type = 1;
+    tuile2.sous_type = SERRE_2;
+    int temp2 = calcul_nb_tuile(joueur.jeu , tuile2);
+
+    S_tuile tuile3;
+    tuile3.type = 1;
+    tuile3.sous_type = SERRE_3;
+    int temp3 = calcul_nb_tuile(joueur.jeu , tuile3);
+
+    if(temp1 <= temp2 && temp1 <= temp3)
+    {
+        nb_set = temp1;
+    }
+    else if(temp2 <= temp1 && temp2 <= temp3)
+    {
+        nb_set = temp2;
+    }
+    else
+    {
+        nb_set = temp3;
+    }
+
+    switch(nb_set)
+    {
+    case 0:
+        break;
+    case 1:
+        point += 5;
+        break;
+    case 2:
+        point += 12;
+        break;
+    case 3:
+        point += 22;
+        break;
+
+    }
+    S_tuile agence;
+    agence.type = AGENCE;
+    agence.sous_type = 0;
+
+
+    // point agence commercial
+    point += calcul_nb_tuile(joueur.jeu , agence)*2;
+
+
+    // point complexe : ils sont tous de type agence
+    for(int x = 0 ; x < LARG_MAX_JEU ; x++)
+    {
+        for(int y = 0 ; y < LONG_MAX_JEU ; y++)
+        {
+            for(int pos = 0; pos < NB_TUILE ; pos ++)
+            {
+                if(joueur.jeu[x][y].tuile[pos].type == COMPLEXE)
+                {
+                    point += calcul_nb_tuile(joueur.jeu , agence);
+                }
+            }
+        }
+    }
+    // point modul'hab
+    point += point_modulhab(joueur.jeu);
+
 
     return point;
+}
+
+int point_modulhab(S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU])
+{
+    //generation tableau plus adapte
+    S_tuile tab_verif[LARG_MAX_JEU*2][LONG_MAX_JEU*2];
+
+    for(int x = 0 ; x < LARG_MAX_JEU ; x++)
+    {
+        for(int y = 0 ; y < LONG_MAX_JEU ; y++)
+        {
+            for(int pos = 0; pos < NB_TUILE ; pos ++)
+            {
+                switch(pos)
+                {
+                case 0:
+                    tab_verif[x*2][y*2] = jeu[x][y].tuile[pos];
+                    break;
+                case 1:
+                    tab_verif[x*2+1][y*2] = jeu[x][y].tuile[pos];
+                    break;
+                case 2:
+                    tab_verif[x*2][y*2+1] = jeu[x][y].tuile[pos];
+                    break;
+                case 3:
+                    tab_verif[x*2+1][y*2+1] = jeu[x][y].tuile[pos];
+                    break;
+                }
+            }
+        }
+    }
+    // on le parcourt
+    int point = 0;
+    for(int x = 0 ; x < LARG_MAX_JEU *2 ; x++)
+    {
+        for(int y = 0 ; y < LONG_MAX_JEU *2 ; y ++)
+        {
+            if(tab_verif[x][y].type == MODULE)
+            {
+                for(int i = x-1 ; i < x +2 ; i++)
+                {
+                    for(int j = y-1 ; j < y +2 ; j++)
+                    {
+                        if(tab_verif[i][j].type == VITAUX && tab_verif[i][j].sous_type == tab_verif[x][y].sous_type)
+                        {
+                            point += 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+   return point;
 }
 
 int verif_concession(S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU] ,S_concession concession)

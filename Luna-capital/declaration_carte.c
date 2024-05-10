@@ -86,7 +86,7 @@ S_tuile generateur_tuile()
     }
 
     // génération du sous type dans le cas des vitaux
-    if (latuile.type == VITAUX || latuile.type == MODULE)
+    if (latuile.type == VITAUX || latuile.type == MODULE || latuile.type == COMPLEXE)
     {
         latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE)+1;
     }

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1715291372 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
+1715353631 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -15,7 +15,7 @@
 
 1715291372 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
-1715291372 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
+1715293212 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -23,7 +23,7 @@
 	"affichage.h"
 	"Saisie.h"
 
-1715291372 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
+1715350803 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_carte.c
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
@@ -33,7 +33,7 @@
 
 1715062350 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
 
-1715291372 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
+1715350803 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
 	<stdio.h>
 	"declaration.h"
 	"saisie.h"
@@ -85,7 +85,7 @@
 	"declaration_cartes.h"
 	"affichage.h"
 
-1715291372 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.c
+1715354406 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.c
 	<stdio.h>
 	<stdlib.h>
 	"jeux.h"
@@ -95,7 +95,7 @@
 	"declaration_cartes.h"
 	"verification.h"
 
-1715062350 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.h
+1715354406 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\jeux.h
 	"declaration.h"
 
 1714233089 on.h
@@ -164,10 +164,10 @@
 	"affichage.h"
 	"declaration_cartes.h"
 
-1715292169 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.c
+1715355106 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.c
 	<stdio.h>
 	"declaration.h"
 	"verification.h"
 
-1715291372 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.h
+1715355081 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\verification.h
 

@@ -352,7 +352,7 @@ void placer_tuile(S_joueur *joueur)
                 afficher_menu(*joueur);
                 // choix de la tuile
                 positionner_curseur(ZONE_ECRITURE_HAUT,ZONE_ECRITURE_GAUCHE);
-                printf("Saisir position de la tuile : ");
+                printf("Saisir position de la tuile");
                 int pos = Saisie_coordonnees(0 , NB_TUILE);
 
                 // vérification d'emplacement disponible
