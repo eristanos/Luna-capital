@@ -13,7 +13,7 @@ int  Saisie_Nb_Joueurs()
     printf("Saisir le nombre de joueurs qui vont jouer : ");
     scanf("%d",&n);
 
-    }while(0>n || n>5);
+    }while(1>n || n>5);
     return n;
 
 }
