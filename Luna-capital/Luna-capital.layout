@@ -2,34 +2,19 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="declaration_cartes.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="declaration.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="644" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="288" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Saisie.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9661" topLine="363" />
-		</Cursor>
-	</File>
-	<File name="verification.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="885" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="affichage.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="962" topLine="6" />
+			<Cursor1 position="869" topLine="36" />
 		</Cursor>
 	</File>
 	<File name="main.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="457" topLine="2" />
+			<Cursor1 position="20" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="jeux.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="jeux.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="256" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="declaration_carte.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
@@ -37,14 +22,32 @@
 			<Cursor1 position="3092" topLine="86" />
 		</Cursor>
 	</File>
+	<File name="affichage.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="962" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="jeux.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2612" topLine="30" />
+		</Cursor>
+		<Folding>
+			<Collapse line="100" />
+		</Folding>
+	</File>
 	<File name="Saisie.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="295" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="verification.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="Saisie.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4546" topLine="103" />
+			<Cursor1 position="3335" topLine="138" />
+		</Cursor>
+	</File>
+	<File name="declaration_cartes.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="288" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="affichage.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
@@ -52,14 +55,14 @@
 			<Cursor1 position="6245" topLine="175" />
 		</Cursor>
 	</File>
-	<File name="jeux.c" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="verification.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="214" topLine="0" />
+			<Cursor1 position="814" topLine="1" />
 		</Cursor>
 	</File>
-	<File name="declaration.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="644" zoom_1="0" zoom_2="0">
+	<File name="verification.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2729" topLine="85" />
+			<Cursor1 position="5085" topLine="186" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

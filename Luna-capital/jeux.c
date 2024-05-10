@@ -32,7 +32,9 @@ void jeu()
         {
             afficher_menu(joueurs[joueur_joue]);
             positionner_curseur(ZONE_ECRITURE_HAUT , ZONE_ECRITURE_GAUCHE);
-            printf("Voulez vous revendiquez une concession ? ");
+            printf("Voulez vous revendiquez");
+            positionner_curseur(ZONE_ECRITURE_HAUT+1 , ZONE_ECRITURE_GAUCHE);
+            printf("une concession ?");
             positionner_curseur(ZONE_ECRITURE_HAUT + 3,ZONE_ECRITURE_GAUCHE);
             int n;
             printf("0 : NON , 1 : OUI");
@@ -58,7 +60,7 @@ void jeu()
                     }
                     else
                     {
-                        if(verif_concession(joueurs[joueur_joue].jeu ,plateau.tab_cartes_concession[choix])== 1)
+                        if(verif_concession(joueurs[joueur_joue].jeu ,plateau.tab_cartes_concession[choix])== 1 && plateau.tab_cartes_concession[choix].etat != 2)
                         {
                             joueurs[joueur_joue].point += plateau.tab_cartes_concession[choix].points;
                             plateau.tab_cartes_concession[choix].etat = 1;
@@ -66,12 +68,23 @@ void jeu()
                         else
                         {
                             positionner_curseur(ZONE_ECRITURE_HAUT + 2 , ZONE_ECRITURE_GAUCHE);
-                            printf("Vous n'avez pas valide cette concession");
+                            printf("Vous ne pouvez pas");
+                            positionner_curseur(ZONE_ECRITURE_HAUT + 3 , ZONE_ECRITURE_GAUCHE);
+                            printf("Valide cette concession");
+
                         }
                     }
                 }while(etat == 0);
             }
         }
+        for(int i = 0 ; i < NB_CONCESSION ; i++)
+        {
+            if(plateau.tab_cartes_concession[i].etat == 1)
+            {
+                plateau.tab_cartes_concession[i].etat = 2;
+            }
+        }
+
 
 
     }
