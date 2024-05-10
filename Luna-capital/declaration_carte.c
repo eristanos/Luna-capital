@@ -34,6 +34,7 @@ S_carte_construction generateur_carte()
             if(somme_ponderation < temp && temp < somme_ponderation + tab_pond[y].part)
             {
                 carte.tuile[i].type = tab_pond[y].type;
+                carte.tuile[i].selenite = 0;
                 y = NB_TYPE_TUILE_CARTE;
             }
             somme_ponderation += tab_pond[y].part;
@@ -43,6 +44,10 @@ S_carte_construction generateur_carte()
         if (carte.tuile[i].type == VITAUX)
         {
             carte.tuile[i].sous_type = (rand() % NB_SOUS_TYPE_TUILE);
+        }
+        else
+        {
+            carte.tuile[i].sous_type = 0;
         }
     }
     return carte;
@@ -64,6 +69,10 @@ S_tuile generateur_tuile()
     {
         latuile.selenite = 1;
     }
+    else
+    {
+        latuile.selenite = 0;
+    }
 
 
     for(int y = 0 ; y < NB_TYPE_TUILE-1; y++)
@@ -79,8 +88,11 @@ S_tuile generateur_tuile()
     // génération du sous type dans le cas des vitaux
     if (latuile.type == VITAUX || latuile.type == MODULE)
     {
-        //latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE)+1;
-        latuile.sous_type = COLLECTEUR_HYDROGENE;
+        latuile.sous_type = (rand() % NB_SOUS_TYPE_TUILE)+1;
+    }
+    else
+    {
+        latuile.sous_type = 0;
     }
     if(latuile.type == VITAUX)
     {
@@ -90,10 +102,10 @@ S_tuile generateur_tuile()
             strcpy(latuile.nom , "Condensateur eau");
             break;
         case COLLECTEUR_HYDROGENE:
-            strcpy(latuile.nom , "Collecteur hydrogène");
+            strcpy(latuile.nom , "Collecteur hydrogene");
             break;
         case COLLECTEUR_OXYGENE:
-            strcpy(latuile.nom , "Collecteur oxygène");
+            strcpy(latuile.nom , "Collecteur oxygene");
             break;
         case SERRE_1:
             strcpy(latuile.nom , "Serre_pomme");
@@ -143,7 +155,7 @@ S_concession generateur_concession()
     S_concession laconcession;
 
     // definition de la pondération
-    S_proba tab_pond[TYPE_CONCESSION] = {{C_ALIGNE,PART_3_ALIGNE},{C_COLONNE, PART_3_CARTE_COLONNE},{C_N_CARTE,PART_POSSEDER_n_CARTE}};
+    S_proba tab_pond[TYPE_CONCESSION] = {{C_ALIGNE,PART_3_ALIGNE},{C_COLONNE, PART_3_CARTE_COLONNE},{C_5_TUILE,PART_POSSEDER_n_CARTE}};
     // Tirage aleatoire
 
     int temp = rand() % 101;
@@ -158,8 +170,7 @@ S_concession generateur_concession()
         somme_ponderation += tab_pond[y].part;
     }
 
-    srand(time(NULL));
-    int nb_aleatoire = rand() % 3;
+    int nb_aleatoire = rand() % 6;
 
     switch(nb_aleatoire)
     {
@@ -272,11 +283,14 @@ void generer_plateau(S_plateau *plateau , int nb_tour)
         {
             for(int y = 0 ; y < nb_tour + 1 ; y++)
             {
-                plateau->tuiles[i][y] = generateur_tuile();
+                if(plateau->tuiles[i][y].type == PAS_TUILE)
+                {
+                    plateau->tuiles[i][y] = generateur_tuile();
+                }
             }
             for(int y = nb_tour + 1 ; y < MAX_ELEMENT ; y++)
             {
-                plateau->tuiles[i][y].type = -1;
+                plateau->tuiles[i][y].type = PAS_TUILE;
             }
 
         }

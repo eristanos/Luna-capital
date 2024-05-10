@@ -18,10 +18,6 @@ int main()
 
     // test paul
 
-
-
-
-
     /*
     for(int i =0; i < 3; i++)
     {
@@ -56,11 +52,6 @@ int main()
     {
         plateau.tab_cartes_concession[i]=generateur_concession();
     }
-
-
-
-
-
 
     S_joueur joueur;
     joueur.nb_selenite = 2;
@@ -124,7 +115,9 @@ int main()
         */
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
 
-  //  jeu();
+
+    jeu();
+
 
     /*
      S_joueur joueur[2];
