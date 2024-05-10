@@ -20,6 +20,24 @@ int calcul_nb_construction(S_carte_construction tab[][LONG_MAX_JEU])
     }
     return nb;
 }
+int calcul_nb_tuile(S_carte_construction tab_jeu[][LONG_MAX_JEU], S_tuile tuile)
+{
+    int nb;
+    for(int i = 0; i<LARG_MAX_JEU;i++)
+    {
+        for(int j = 0; j<LONG_MAX_JEU;j++)
+        {
+           for(int x =0; x<NB_TUILE; x++)
+           {
+               if(tab_jeu[i][j].tuile[x].type==tuile.type && tab_jeu[i][j].tuile[x].sous_type==tuile.sous_type)
+               {
+                   nb++;
+               }
+           }
+        }
+    }
+return nb;
+}
 
 int verif_carte_colonne(S_carte_construction jeu[][LONG_MAX_JEU] , S_concession concession)
 {
