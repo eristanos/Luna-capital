@@ -43,7 +43,7 @@
 #define COMPLEXE 5
 #define TERRAIN 6
 #define ECHAFAUDAGE 7
-#define DEMOLITION 1
+#define DEMOLITION 8
 //indicatif type concession
 #define C_ALIGNE 0
 #define C_COLONNE 1
