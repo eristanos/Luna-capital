@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include <windows.h>
+#include <stdlib.h>
 #include "declaration.h"
 #include "saisie.h"
 #include "declaration_cartes.h"
 #include "affichage.h"
+
 
 int  Saisie_Nb_Joueurs()
 {
@@ -78,6 +81,7 @@ int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], in
                 {
                     positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
                     printf("trop grand\n");
+                    system("pause");
                     return 0;
                 }
             }
@@ -93,6 +97,7 @@ int verif_ordre_carte(int x, int y, S_carte_construction tab[][LONG_MAX_JEU], in
                 {
                     positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
                     printf("trop petit\n");
+                    system("pause");
                     return 0;
                 }
             }
@@ -149,7 +154,8 @@ int verif_adjacent(int x, int y, S_carte_construction tab[][LONG_MAX_JEU])
 
         positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
 
-        printf("non adjacent       ");
+        printf("non adjacent");
+
     }
     return(i);
 }
@@ -229,6 +235,7 @@ void placer_carte(S_joueur *joueur)
         {
             positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
             printf("case deja occupée");
+            system("pause");
 
         }
 
@@ -379,6 +386,7 @@ void placer_tuile(S_joueur *joueur)
                 {
                     positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
                     printf("case deja occupe");
+                    system("pause");
                 }
 
             }
@@ -386,6 +394,7 @@ void placer_tuile(S_joueur *joueur)
             {
                 positionner_curseur(ZONE_ECRITURE_HAUT + 10,ZONE_ECRITURE_GAUCHE);
                 printf("pas de carte ici ");
+                system("pause");
             }
         }
 

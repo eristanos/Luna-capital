@@ -41,7 +41,7 @@ void jeu()
             if(n == 1)
             {
                 int etat = 0;
-                while(etat == 0)
+                do
                 {
 
                     afficher_carte_concession(plateau.tab_cartes_concession);
@@ -52,7 +52,7 @@ void jeu()
                     positionner_curseur(ZONE_ECRITURE_HAUT+1 , ZONE_ECRITURE_GAUCHE);
                     printf("Saisir 4 pour sortir");
                     int choix = Saisie_coordonnees(0 , NB_CONCESSION+1);
-                    if(choix == 4)
+                    if(choix == 3)
                     {
                         etat = 1;
                     }
@@ -66,10 +66,10 @@ void jeu()
                         else
                         {
                             positionner_curseur(ZONE_ECRITURE_HAUT + 2 , ZONE_ECRITURE_GAUCHE);
-                            printf("Vous n'avez pas validé cette concession");
+                            printf("Vous n'avez pas valide cette concession");
                         }
                     }
-                }
+                }while(etat == 0);
             }
         }
 
