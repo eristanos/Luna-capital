@@ -65,15 +65,28 @@ int main()
             joueur.deck_cartes[i].tuile[i].type = 0;
         }
     }
-    for(int i=0;i<4;i++)
+    */
+    S_joueur Jeu;
+    S_tuile tuile;
+    for(int i=0; i<4; i++)
     {
+        for(int j = 0; j<3; j++)
+        {
+            Jeu.jeu[i][j]=generateur_carte();
+            for(int pos = 0; pos<8; pos++)
+            {
+                Jeu.jeu[i][j].tuile[pos]=generateur_tuile();
+            }
 
-        plateau.cartes[i]=generateur_carte();
-        plateau.tuiles[i]=generateur_tuile();
-        dessiner_carte_construction(0,i*LAR_CARTE + i, plateau.cartes[i]);
-        dessiner_tuile(12,i*LAR_CARTE + i , plateau.tuiles[i]);
+        }
 
     }
+    afficher_jeu_joueur(Jeu);
+    tuile.type=AGENCE;
+    tuile.sous_type=0;
+    calcul_nb_tuile(Jeu.jeu, tuile);
+    printf("il y a %d", calcul_nb_tuile(Jeu.jeu, tuile));
+    /*
     // test mathieu
     int dsfcf =0;
     while(dsfcf ==0)
@@ -99,11 +112,12 @@ int main()
     }
 
 
-
+        */
     // vrai programme NE JAMAIS SUPPRIMER OU TES UN HOMME MORT
-    */
+
 
     jeu();
+
 
     /*
      S_joueur joueur[2];
