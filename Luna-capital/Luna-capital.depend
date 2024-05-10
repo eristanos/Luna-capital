@@ -11,7 +11,7 @@
 	"jeux.h"
 	"verification.h"
 
-1715291372 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
+1715356133 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration.h
 
 1715291372 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\affichage.h
 
@@ -33,7 +33,7 @@
 
 1715062350 c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\declaration_cartes.h
 
-1715350803 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
+1715355998 source:c:\users\paulb\onedrive - estaca\luna-capital\luna-capital\saisie.c
 	<stdio.h>
 	"declaration.h"
 	"saisie.h"

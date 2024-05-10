@@ -43,7 +43,7 @@
 #define COMPLEXE 5
 #define TERRAIN 6
 #define ECHAFAUDAGE 7
-#define DEMOLITION 8
+#define DEMOLITION 1
 //indicatif type concession
 #define C_ALIGNE 0
 #define C_COLONNE 1
@@ -98,7 +98,7 @@ typedef struct tuile
     5 : complexe résidentiel
     6 : terrain d'alunissage
     7 : échafaudage lunaire : que sur les cartes
-    8 : démolition
+    8 : démolition : non implémenté
     */
     char nom [NB_CHAR];
     int type;

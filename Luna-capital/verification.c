@@ -203,6 +203,10 @@ int verif_concession(S_carte_construction jeu[LARG_MAX_JEU][LONG_MAX_JEU] ,S_con
         }
         break;
     case C_5_TUILE :
+        if(calcul_nb_tuile(jeu , concession.tuile) > 4)
+        {
+            return 0;
+        }
         break;
     }
     return 0;
